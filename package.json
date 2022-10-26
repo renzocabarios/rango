@@ -1,0 +1,25 @@
+{
+  "name": "rango",
+  "version": "0.0.0",
+  "description": "Minimal Flexible Fast Asynchronous MicroFramework for Backend Development that highly focused on simplicity, speed, low overhead and developer experience.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mackignacio/rango.git"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "nodejs",
+    "router"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mackignacio/rango/issues"
+  },
+  "homepage": "https://github.com/mackignacio/rango#readme"
+}
