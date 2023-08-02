@@ -30,6 +30,11 @@
   "engines": {
     "node": ">= 18"
   },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib"
+  ],
   "devDependencies": {
     "@types/node": "^13.13.52",
     "@types/ws": "^8.5.3",
