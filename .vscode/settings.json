@@ -1,4 +1,4 @@
 {
-  "conventionalCommits.scopes": ["assets", "docs", "config", "deps"],
+  "conventionalCommits.scopes": ["assets", "docs", "config", "deps", "root"],
   "cSpell.words": ["rango"]
 }
