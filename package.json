@@ -8,7 +8,7 @@
     "clean": "rimraf index.js && rimraf index.d.ts && rimraf lib",
     "tgz": "rimraf *.tgz",
     "package": "node ./scripts/clean-package.js",
-    "prepack": "npm run clean && npm run package && tsc --outDir .",
+    "prepack": "npm run clean && npm run package && tsc",
     "start": "npm run clean && npm run tgz && nodemon src/index.ts"
   },
   "repository": {
@@ -29,13 +29,13 @@
   "homepage": "https://github.com/mackignacio/rango#readme",
   "devDependencies": {
     "@types/node": "^13.13.52",
-    "@types/ws": "^8.5.5",
+    "@types/ws": "^8.5.3",
     "nodemon": "^3.0.1",
     "rimraf": "^5.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "ws": "^8.13.0"
+    "ws": "^8.6.0"
   }
 }

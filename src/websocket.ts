@@ -1,6 +1,6 @@
-import ws from "ws";
+import ws, { WebSocket } from "ws";
 
-let WSS: ws.Server;
+let WSS: ws.Server<WebSocket>;
 const clients: ws[] = [];
 const port = 6969;
 
