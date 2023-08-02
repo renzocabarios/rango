@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "clean": "rimraf index.js && rimraf index.d.ts && rimraf lib",
+    "tgz": "rimraf *.tgz",
   },
   "repository": {
     "type": "git",
