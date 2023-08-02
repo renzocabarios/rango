@@ -12,7 +12,8 @@
     "utils",
     "middleware",
     "regex",
-    "req"
+    "req",
+    "res"
   ],
   "cSpell.words": ["rango"]
 }
