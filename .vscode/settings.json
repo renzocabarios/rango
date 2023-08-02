@@ -18,7 +18,8 @@
     "constants",
     "static",
     "interfaces",
-    "types"
+    "types",
+    "spelling"
   ],
   "cSpell.words": ["rango"]
 }

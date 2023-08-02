@@ -129,7 +129,7 @@ app.add({
 
 // Start the server
 const port = 3000;
-http.createServer(app).listen(PORT, () => {
+http.createServer(app).listen(port, () => {
   console.log(`Server listening on port ${port}.`);
 });
 ```
