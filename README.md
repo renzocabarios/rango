@@ -1,6 +1,8 @@
-# Lightweight Gunslinging Node.js Library
+# Lightweight Gunslinging Node.js API Library
 
-![Logo](rango_logo.png)
+<p align="center">
+  <img width="100%" height="100%" src="rango_logo.png">
+</p>
 
 *The name "**Rango**" comes from the animated adventure comedy film released in 2011. The story follows a chameleon named Rango, voiced by the legend actor Johnny Depp. However, it's worth noting that "Rango" is originally a Spanish word that means "range" or "to range." It seems that the movie title "Rango" is also the same in Tagalog and has been kept as is, possibly due to its original Spanish origin.*
 
@@ -20,7 +22,7 @@ Speaking of ace-high API development, RangoJS equips you with the tools to secur
 
 ### Blazingly-Fast Performance
 
-Built on top of Node.js, SwiftAPI harnesses the full potential of asynchronous I/O operations to deliver unmatched speed and responsiveness, even under heavy loads.
+Built on top of Node.js and Typescript, RangoJS harnesses the full potential of asynchronous I/O operations to deliver unmatched speed and responsiveness, even under heavy loads.
 
 ### Featherweight Footprint
 
@@ -30,9 +32,13 @@ RangoJS streamlined design guarantees minimal resource consumption, allowing you
 
 Embrace the gunslinger way of coding with RangoJS's intuitive syntax approach and well-documented features, making API development a breeze for developers of all backgrounds.
 
-### Lean and Efficient
+### In the Saddle Efficiency
 
 We take pride in RangoJS's lightweight nature, ensuring minimal overhead and resource consumption, so your APIs can shoot to the top in terms of efficiency.
+
+### Trail-Wise Routing
+
+Simplified route handling empowers developers to structure APIs effortlessly, making it a breeze to define endpoints, request types, and middleware functions.
 
 ### Unyielding Reliability
 
