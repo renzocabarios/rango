@@ -22,7 +22,8 @@
     "spelling",
     "example",
     "scripts",
-    "package"
+    "package",
+    "version"
   ],
   "cSpell.words": ["rango"]
 }
