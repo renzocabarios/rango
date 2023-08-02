@@ -20,7 +20,8 @@
     "interfaces",
     "types",
     "spelling",
-    "example"
+    "example",
+    "scripts"
   ],
   "cSpell.words": ["rango"]
 }
