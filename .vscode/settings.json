@@ -15,7 +15,8 @@
     "req",
     "res",
     "send",
-    "constants"
+    "constants",
+    "static"
   ],
   "cSpell.words": ["rango"]
 }
