@@ -11,7 +11,8 @@
     "handler",
     "utils",
     "middleware",
-    "regex"
+    "regex",
+    "req"
   ],
   "cSpell.words": ["rango"]
 }
