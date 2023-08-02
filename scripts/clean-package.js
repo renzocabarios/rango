@@ -30,7 +30,7 @@ const scripts = {
 packageData.scripts = scripts;
 
 // Replace main value
-packageData.main = "index.js";
+packageData.main = "lib/index.js";
 
 // Overwrite original `package.json` with new data (i.e. minus the specific data).
 fs.writeFile(ORIG_PATH, JSON.stringify(packageData, null, 2), function (err) {
