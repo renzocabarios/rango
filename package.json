@@ -1,10 +1,11 @@
 {
   "name": "rango",
   "version": "0.0.0",
-  "description": "Minimal Flexible Fast Asynchronous MicroFramework for Backend Development that highly focused on simplicity, speed, low overhead and developer experience.",
+  "description": "RangoJS - a fearless gunslinging Node.js library that brings unmatched speed, precision, and power to API development. With RangoJS, crafting bullet-fast, sure aim, and ace-high APIs becomes an exhilarating adventure. Embrace the wild west spirit of web development and experience the thrill of building robust and lightning-quick APIs with ease.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "nodemon src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -16,10 +17,16 @@
     "nodejs",
     "router"
   ],
-  "author": "",
+  "author": "Mack Ignacio",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mackignacio/rango/issues"
   },
-  "homepage": "https://github.com/mackignacio/rango#readme"
+  "homepage": "https://github.com/mackignacio/rango#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  },
+  "type": "module"
 }
