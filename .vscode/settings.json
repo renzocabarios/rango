@@ -10,7 +10,8 @@
     "routes",
     "handler",
     "utils",
-    "middleware"
+    "middleware",
+    "regex"
   ],
   "cSpell.words": ["rango"]
 }
