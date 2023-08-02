@@ -19,7 +19,8 @@
     "static",
     "interfaces",
     "types",
-    "spelling"
+    "spelling",
+    "example"
   ],
   "cSpell.words": ["rango"]
 }
