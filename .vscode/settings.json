@@ -9,7 +9,8 @@
     "websocket",
     "routes",
     "handler",
-    "utils"
+    "utils",
+    "middleware"
   ],
   "cSpell.words": ["rango"]
 }
