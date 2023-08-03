@@ -436,6 +436,151 @@ But RangoJS, now that's a different breed altogether! With RangoJS, we ain't bui
 
 This approach in RangoJS makes the codebase incredibly easy to wrangle and scale. No more riding all over the codebase trying to find the right file for each route. Nope, we got them all right there in one place, making it easier to maintain.
 
+## Middlewares
+
+In RangoJS, middleware plays a vital role in managing and processing incoming HTTP requests before they reach the route handlers. Middleware functions are executed in the order they are defined, allowing you to perform various tasks such as authentication, logging, data parsing, error handling, and more.
+
+### What is Middleware?
+
+A middleware, in the context of RangoJS, are functions that have access to the `requestObject` request and response objects `responseObjects` inside the `Context` object and the `next()` function. They can modify the request and response objects, terminate the request-response cycle, or pass control to the next middleware in the stack.
+
+### Using Middleware
+
+To use middleware in RangoJS, you can employ the `app.use()` method or specify middleware functions directly in your route definitions. The order of middleware registration matters, as they are executed sequentially. This is similar to what Express.js implements on their API.
+
+### Global Middleware
+
+Global middleware is applied to all routes and is registered using app.use() without a specific route path. This type of middleware is typically used for tasks that need to be executed on every request, such as parsing request bodies, setting headers, or logging.
+
+```ts
+// Import the RangoJS and http module
+import rango from "rango";
+import bodyParser from "body-parser";
+import logger from "./logger";
+
+// Create an instance of the RangoJS app
+const app = rango();
+
+// Global middleware example
+app.use(bodyParser.json()); // Parse JSON request bodies
+app.use(logger); // Custom logging middleware
+```
+
+### Route-Specific Middleware
+
+Route-specific middleware is applied only to specific routes or route groups. You can't add them using `app.use()` with a specific route path or directly within your route definition. You need to define them using the `middlewares` key inside your route definition.
+
+```ts
+// Route-specific middleware example
+const authMiddleware = (context: Context, next: NextFunction) => {
+  // Check authentication logic
+  if (req.isAuthenticated()) {
+    next(); // Proceed to the next middleware or route handler
+  } else {
+    // Stop the request-cycle and send back a response
+    res.status(401).send("Unauthorized");
+  }
+};
+
+app.add([
+  {
+    path: "users",
+    middlewares: [
+      // Inline middleware function callback
+      (context: Context, next: NextFunction) => {
+        // Check user 'isAdmin'
+        if(req.user.isAdmin()){
+          res.status(401).send("Unauthorized");
+        } else{
+          next(); // Proceed to the next middleware or route handler
+        }
+      },
+      // route specific middleware function callback
+      authMiddleware
+    ]
+  },
+])
+```
+
+### Error Handling Middleware
+
+Error handling middleware is used to catch and process errors that occur during request processing. These middleware functions have an additional `error` key on the `Context` object, allowing them to handle errors and respond appropriately.
+
+```ts
+// Import the RangoJS and http module
+import rango from "rango";
+import http from "http";
+
+// Create an instance of the RangoJS app
+const app = rango();
+
+// Error handling middleware example
+const errorHandler = ({ error }: Context, next: NextFunction) => {
+  if(error){
+    // Logs the error
+    console.error(err);
+
+    // Respond with a generic error message
+    res.status(500).send(`Something went wrong!`);
+  }
+};
+
+// Applying error handling middleware at the end of the middleware stack
+app.use(errorHandler);
+
+app.add([
+  // Your route configurations will be added here
+  ...
+]);
+
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server started on http://localhost:${port}`);
+});
+```
+
+Middlewares in RangoJS is a powerful tool that enables you to handle common tasks, enhance the behavior of your routes, and ensure smooth request processing. By understanding and utilizing middleware effectively, you can create robust and well-structured web applications.
+
+### Legacy Middlewares
+
+In RangoJS, we can use Express.js middlewares as legacy middlewares. These are the same good old middlewares you're used to in Express.js - they help us manage requests, enhance routes, and more. With RangoJS, you can easily hook 'em into your application, creating a smooth and seamless migration experience.
+
+### How to Use Legacy Middlewares
+
+Here's how we can wrangle them Express.js middlewares into RangoJS:
+
+1. First, install any Express.js middleware using NPM: For this example we install `cors`
+
+    ```sh
+    npm install cors
+    ```
+
+2. Import the middleware you installed and mount it on RangoJS
+
+    ```ts
+    // Import the RangoJS
+    import rango from "rango";
+    // Import the Express.js `cors` middleware
+    import cors from "cors";
+
+    // Create an instance of the RangoJS app
+    const app = rango();
+
+    // Applying Express.js `cors` middleware
+    app.use(cors());
+
+    app.add([
+      // Your route configurations will be added here
+      ...
+    ]);
+
+    const port = 3000;
+    app.listen(port, () => {
+      console.log(`Server started on http://localhost:${port}`);
+    });
+    ```
+
+And that's it, cowboy coder! You've successfully integrated Express.js middlewares as legacy middlewares in your RangoJS application. With RangoJS and Express.js middlewares, you've got yourself a powerful combo that'll keep your application riding smooth and your codebase well-organized.
 > You've successfully set up an RangoJS project, created a basic server, and sent a response to a user request. Now you can dive deeper into RangoJS and explore its powerful features to build robust and sophisticated web applications.
 >
 > Happy coding! 🚀
