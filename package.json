@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "jest",
-    "clean": "rimraf index.js && rimraf index.d.ts && rimraf lib",
+    "clean": "rimraf lib",
     "tgz": "rimraf *.tgz",
     "package": "node ./scripts/clean-package.js",
     "prepack": "npm run clean && npm run package && tsc",
