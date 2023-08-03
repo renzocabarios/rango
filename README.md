@@ -773,8 +773,8 @@ You can use multiple Query Params in a single route by adding them to the URL qu
 app.add({
   path: "search",
   GET: (context) => {
-    const searchTerm = req.query.q || 'No search term';
-    const sortBy = req.query.sort || 'date';
+    const searchTerm = context.query.q || 'No search term';
+    const sortBy = context.query.sort || 'date';
     return `Searching for "${searchTerm}" sorted by "${sortBy}"`;
   },
 });
