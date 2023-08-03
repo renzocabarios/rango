@@ -56,7 +56,11 @@ Prepare to reload your coding skills and unleash the gunslinging fury of RangoJS
 
 Join us in the fast-paced showdown of API development as we ride into the future with RangoJS. Embrace the gunslinging spirit, and together, we'll paint the wild west of web development with unmatched success and innovation.
 
-## Getting Started Guide
+## Howdy, Let Start
+
+Welcome to the RangoJS Getting Started Guide, where we'll help you wrangle your way through the wild world of RangoJS and become a true cowboy coder! Saddle up your code and get ready to ride like a seasoned trailblazer!
+
+In this guide, we'll show you how to set up your RangoJS application, lasso those routes, and round up your data like a pro wrangler. So grab your hat, tighten them boots, and let's hit the trail with RangoJS! 🤠🚀
 
 ### Prerequisites
 
