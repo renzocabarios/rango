@@ -146,17 +146,23 @@ With your cowboy hat on tight, let's wrangle some code and create a basic server
 
 ## Starting the RangoJS Server
 
-To start the server, run the following command in your terminal:
+To kickstart that trusty server, just mosey on over to your terminal and wrangle up this command:
 
 ```sh
 nodemon app.ts
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) in your web browser, and you should see the message **"Hello, RangoJS!"** displayed on the page.
+Now that our trusty server's up and runnin', it's time to hitch our wagon to the trail and see what RangoJS has rustled up for us! Head on over to your web browser, and pay a visit to this link:
 
-## Understanding the Code
+[http://localhost:3000](http://localhost:3000)
 
-Let's break down the code in **app.js**:
+There, right before your very eyes, you'll find the message **"Hello, RangoJS!"** all shiny and gleamin' like the stars in the night sky. Ain't that somethin'? RangoJS sure knows how to make an impression!
+
+So kick back, relax, and enjoy the ride with RangoJS as your trusty sidekick. Happy trails and happy codin', cowboy! 🌵🤠🚀
+
+### Understanding the Code
+
+Let's break down the code in **app.ts**:
 
 We imported the RangoJS module using `import rango from 'rango'`.
 
