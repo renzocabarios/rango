@@ -442,7 +442,7 @@ In RangoJS, middleware plays a vital role in managing and processing incoming HT
 
 ### What is Middleware?
 
-A middleware, in the context of RangoJS, are functions that have access to the `requestObject` request and response objects `responseObjects` inside the `Context` object and the `next()` function. They can modify the request and response objects, terminate the request-response cycle, or pass control to the next middleware in the stack.
+A middleware, in the context of RangoJS, are functions that have access to the `requestObject` and `responseObjects` inside the `Context` object and the `next()` function. They can modify the request and response objects, terminate the request-response cycle, or pass control to the next middleware in the stack.
 
 ### Using Middleware
 
