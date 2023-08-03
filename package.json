@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "clean": "rimraf lib",
-    "tgz": "rimraf *.tgz",
+    "tgz": "rimraf --glob *.tgz",
     "package": "node ./scripts/clean-package.js",
     "prepack": "npm run clean && npm run package && tsc",
     "postpack": "npm run clean && node ./scripts/restore-package.js",
