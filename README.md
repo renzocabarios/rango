@@ -20,37 +20,37 @@ Speaking of ace-high API development, RangoJS equips you with the tools to secur
 
 ## Features
 
-### Blazingly-Fast Performance
+- **Blazingly-Fast Performance**
 
-Built on top of Node.js and Typescript, RangoJS harnesses the full potential of asynchronous I/O operations to deliver unmatched speed and responsiveness, even under heavy loads.
+  Built on top of Node.js and Typescript, RangoJS harnesses the full potential of asynchronous I/O operations to deliver unmatched speed and responsiveness, even under heavy loads.
 
-### Featherweight Footprint
+- **Featherweight Footprint**
 
-RangoJS streamlined design guarantees minimal resource consumption, allowing you to create lean and efficient APIs without compromising on functionality.
+  RangoJS streamlined design guarantees minimal resource consumption, allowing you to create lean and efficient APIs without compromising on functionality.
 
-### Gunslinger-Friendly
+- **Gunslinger-Friendly**
 
-Embrace the gunslinger way of coding with RangoJS's intuitive syntax approach and well-documented features, making API development a breeze for developers of all backgrounds.
+  Embrace the gunslinger way of coding with RangoJS's intuitive syntax approach and well-documented features, making API development a breeze for developers of all backgrounds.
 
-### In the Saddle Efficiency
+- **In the Saddle Efficiency**
 
-We take pride in RangoJS's lightweight nature, ensuring minimal overhead and resource consumption, so your APIs can shoot to the top in terms of efficiency.
+  We take pride in RangoJS's lightweight nature, ensuring minimal overhead and resource consumption, so your APIs can shoot to the top in terms of efficiency.
 
-### Trail-Wise Routing
+- **Trail-Wise Routing**
 
-Simplified route handling empowers developers to structure APIs effortlessly, making it a breeze to define endpoints, request types, and middleware functions.
+  Simplified route handling empowers developers to structure APIs effortlessly, making it a breeze to define endpoints, request types, and middleware functions.
 
-### Unyielding Reliability
+- **Unyielding Reliability**
 
-Just like a seasoned gunslinger, RangoJS comes prepared. Built-in error handling and comprehensive testing tools guarantee your APIs stand tall with unwavering stability.
+  Just like a seasoned gunslinger, RangoJS comes prepared. Built-in error handling and comprehensive testing tools guarantee your APIs stand tall with unwavering stability.
 
-### Showdown-Ready Extensibility
+- **Showdown-Ready Extensibility**
 
-RangoJS embraces the spirit of adventure, providing a modular architecture that lets you customize and enhance functionalities with ease, whether you're drawing from third-party packages or crafting your own solutions.
+  RangoJS embraces the spirit of adventure, providing a modular architecture that lets you customize and enhance functionalities with ease, whether you're drawing from third-party packages or crafting your own solutions.
 
-### Sharpshooting Community Support
+- **Sharpshooting Community Support**
 
-At RangoJS, we ride together. Expect continuous updates, active community support, and a lively environment where gunslingers exchange ideas and celebrate triumphs.
+  At RangoJS, we ride together. Expect continuous updates, active community support, and a lively environment where gunslingers exchange ideas and celebrate triumphs.
 
 Prepare to reload your coding skills and unleash the gunslinging fury of RangoJS. Whether you're an experienced trailblazer or a greenhorn eager to learn, our library invites you to forge powerful APIs with unmatched speed, developer-friendliness, and reliability.
 
