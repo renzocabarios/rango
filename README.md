@@ -34,7 +34,7 @@ Speaking of ace-high API development, RangoJS equips you with the tools to secur
 
   Embrace the gunslinger way of coding with RangoJS's intuitive syntax approach and well-documented features, making API development a breeze for developers of all backgrounds.
 
-- **In the Saddle Efficiency**
+- **Fearlessly Efficient**
 
   We take pride in RangoJS's lightweight nature, ensuring minimal overhead and resource consumption, so your APIs can shoot to the top in terms of efficiency.
 
