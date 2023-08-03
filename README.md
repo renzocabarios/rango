@@ -8,7 +8,7 @@
 
 ## Introduction
 
-> "Ace Up, Ride the Code, Bullet Fast Your APIs" - The Wild West of Node.js!
+> **"Ace Up, Ride the Code, Bullet Fast Your APIs" - The Wild West of Node.js!**
 
 Welcome to the untamed frontier of wild wild web development with RangoJS, the all-new, gunslinging Node.js library that will revolutionize the way you create APIs. Just like a skilled gunslinger, RangoJS delivers precision, speed, and unmatched performance, making your API development journey a thrilling adventure.
 

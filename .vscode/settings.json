@@ -23,7 +23,8 @@
     "example",
     "scripts",
     "package",
-    "version"
+    "version",
+    "readme"
   ],
   "cSpell.words": ["rango"]
 }
