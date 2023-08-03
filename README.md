@@ -1,4 +1,4 @@
-# Blazingly-Fast Featherweight Gunslinging Minimalist Web Framework for Node.js
+# Blazingly-Fast Featherweight Gunslinging Fearless Web Framework for Node.js
 
 <p align="center">
   <img width="100%" height="100%" src="https://github.com/mackignacio/rango/blob/main/rango_logo.png">
@@ -131,7 +131,7 @@ With your cowboy hat on tight, let's wrangle some code and create a basic server
 
     // Define a route for the home page
     app.add({
-      path: "/",
+      path: "",
       GET: () => {
         return "Hello, RangoJS!";
       }
