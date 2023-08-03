@@ -194,6 +194,75 @@ The server is now running and ready to handle incoming requests.
 
 To test each method, you can use tools like `curl`, `Postman`, or using a frontend application built from `React` or `Angular` that sends requests to your server using various methods.
 
+## Configuring Multiple Routes
+
+Now that we have the RangoJS project structure in place, let's configure multiple routes. In this example, we will create three routes: home, about, and contact.
+
+In **app.ts**, update the `app.add` function and replace it with the following code:
+
+```ts
+app.add([
+  {
+    path: "home",
+    GET: () => {
+      return "Welcome to the RangoJS!";
+    },
+  },
+  {
+    path: "about",
+    GET: () => {
+      return "About Us: Learn more about our library.";
+    },
+  },
+  {
+    path: "contact",
+    GET: () => {
+      return "Contact Us: Reach out to us for any issues/questions.";
+    },
+  }
+])
+```
+
+By updating the `app.add()` to handle an array of `routeObject`, you can now efficiently process multiple routes in one function call. This modification enhances the function's versatility, allowing it to adapt to different routing scenarios.
+
+## Define a Single Route with Multiple HTTP Methods
+
+Now, let's create a single route that supports multiple HTTP methods (**GET**, **POST**, **PUT**, **DELETE**, and **DELETE**). We'll handle each method differently based on the action we want to perform.
+
+In **app.ts**, update the `app.add` function and add the following code:
+
+```ts
+app.add([
+
+    // Existing routes ....
+
+  {
+    path: "users",
+    GET: () => {
+      // Logic to handle GET request for '/users'
+      return "This is a GET request!";
+    },
+    POST: () => {
+      // Logic to handle POST request for '/users'
+      return "This is a POST request!";
+    },
+    PUT: () => {
+      // Logic to handle PUT request for '/users'
+      return "This is a PUT request!";
+    },
+    PATCH: () => {
+      // Logic to handle PATCH request for '/users'
+      return "This is a PATCH request!";
+    },
+    DELETE: () => {
+      // Logic to handle DELETE request for '/users'
+      return "This is a DELETE request!";
+    },
+  }
+])
+```
+
+In this example, we use a common name for each `HTTP Methods` (**GET**, **POST**, **PUT**, **PATCH**, and **DELETE**) as function to handle all the supported HTTP methods. This makes your application more flexible and efficient, as it can perform different actions based on the HTTP method used and managing it in one place.
 > You've successfully set up an RangoJS project, created a basic server, and sent a response to a user request. Now you can dive deeper into RangoJS and explore its powerful features to build robust and sophisticated web applications.
 >
 > Happy coding! 🚀
