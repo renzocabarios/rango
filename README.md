@@ -599,25 +599,27 @@ Here's how we can wrangle them Express.js middlewares into RangoJS:
 2. Import the middleware you installed and mount it on RangoJS
 
     ```ts
-    // Import the RangoJS
+    // Import the RangoJS and http module
     import rango from "rango";
+    import http from "http";
+
     // Import the Express.js `cors` middleware
     import cors from "cors";
 
     // Create an instance of the RangoJS app
     const app = rango();
 
-    // Applying Express.js `cors` middleware
+    // Mounting Express.js `cors` middleware
     app.use(cors());
 
     app.add([
       // Your route configurations will be added here
-      ...
     ]);
 
+    // Start the server
     const port = 3000;
-    app.listen(port, () => {
-      console.log(`Server started on http://localhost:${port}`);
+    http.createServer(app).listen(port, () => {
+      console.log(`Server listening on port ${port}.`);
     });
     ```
 
