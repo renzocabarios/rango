@@ -460,7 +460,7 @@ To use middleware in RangoJS, you can employ the `app.use()` method or specify m
 
 ### Global Middleware
 
-Global middleware is applied to all routes and is registered using app.use() without a specific route path. This type of middleware is typically used for tasks that need to be executed on every request, such as parsing request bodies, setting headers, or logging.
+Global middleware is applied to all routes and is registered using app.use() without a specific route path. This type of middleware is typically used for tasks that need to be executed on every request, such as parsing `request bodies`, `setting headers`, or `logging`.
 
 ```ts
 // Import the RangoJS and http module
