@@ -12,7 +12,7 @@ export interface Route extends Partial<RouteMethodObject> {
   /**
    *
    */
-  children?: Route[];
+  children?: Routes;
   /**
    *
    */
@@ -30,7 +30,7 @@ export interface RouteWithChildren extends Partial<RouteMethodObject> {
   /**
    *
    */
-  children: Route[];
+  children: Routes;
 }
 
 /**
@@ -102,7 +102,7 @@ export interface RouteObjectCallback {
   /**
    *
    */
-  children: Route[];
+  children: Routes;
   /**
    *
    */

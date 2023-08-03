@@ -1,4 +1,4 @@
-import { Context, RequestObject, ResponseObject } from "./interfaces";
+import { Context, RequestObject, ResponseObject, Route, RouteEndpoint } from "./interfaces";
 
 /**
  * Type of request method
@@ -65,3 +65,8 @@ export type Middleware = LegacyMiddleware | LegacyMiddlewareError | MayaMiddlewa
  *
  */
 export type Middlewares = Middleware[];
+
+/**
+ *
+ */
+export type Routes = Route[];
