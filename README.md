@@ -154,11 +154,11 @@ nodemon app.ts
 
 Now that our trusty server's up and runnin', it's time to hitch our wagon to the trail and see what RangoJS has rustled up for us! Head on over to your web browser, and pay a visit to this link:
 
-[http://localhost:3000](http://localhost:3000)
+> [http://localhost:3000](http://localhost:3000)
 
-There, right before your very eyes, you'll find the message **"Hello, RangoJS!"** all shiny and gleamin' like the stars in the night sky. Ain't that somethin'? RangoJS sure knows how to make an impression!
+There, right before your very eyes, you'll find the message **"Hello, RangoJS!"** all shiny and gleaming like the stars in the night sky. Ain't that something? RangoJS sure knows how to make an impression!
 
-So kick back, relax, and enjoy the ride with RangoJS as your trusty sidekick. Happy trails and happy codin', cowboy! 🌵🤠🚀
+So kick back, relax, and enjoy the ride with RangoJS as your trusty sidekick. Happy gunslinging and coding, cowboy! 🌵🤠🚀
 
 ### Understanding the Code
 
