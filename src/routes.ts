@@ -1,5 +1,5 @@
-import { RequestMethod, RouteCallback, Middlewares, RouteMethodObjectCallback } from "./types";
-import { CreateRoute, Route, RouteEndpoints, RouteObject } from "./interfaces";
+import { RequestMethod, RouteCallback, RouteMethodObjectCallback, Middlewares } from "./types";
+import { CreateRoute, Route, RouteEndpoint, RouteObject } from "./interfaces";
 import RegEx from "./regex";
 
 const routes = new Map<string, RouteObject>();
@@ -31,7 +31,7 @@ function mapRoutePaths(paths: string[], route: Route, parent: Map<string, RouteO
 }
 
 function updateMiddlewares(route: Route, currentRoute: RouteObject) {
-  const middlewares: Middlewares[] = route?.middlewares !== undefined ? route.middlewares : [];
+  const middlewares: Middlewares = route?.middlewares !== undefined ? route.middlewares : [];
   currentRoute.middlewares = [...currentRoute.middlewares, ...middlewares];
 }
 
@@ -40,7 +40,7 @@ function updateEndpoints(route: Route, currentRoute: RouteObject) {
   const hasRouteMethods = routeKeys.some((e: any) => reqMethods.includes(e));
 
   if (hasRouteMethods) {
-    currentRoute.endpoints = routeKeys.map(mapEndpoints(route)).filter((e) => e !== null) as RouteEndpoints[];
+    currentRoute.endpoints = routeKeys.map(mapEndpoints(route)).filter((e) => e !== null) as RouteEndpoint[];
   }
 }
 
@@ -58,7 +58,7 @@ function mapRouteChildren(currentRoute: RouteObject) {
 }
 
 function mapEndpoints(route: Route) {
-  return (method: RequestMethod): RouteEndpoints | null => {
+  return (method: RequestMethod): RouteEndpoint | null => {
     if (reqMethods.includes(method)) {
       const callback = (route[method] as RouteMethodObjectCallback)?.callback ?? (route[method] as RouteCallback);
       const middlewares = (route[method] as RouteMethodObjectCallback)?.middlewares ?? [];
@@ -81,7 +81,7 @@ function createRouteObject(route: CreateRoute, parent?: Map<string, RouteObject>
 
 function checkRoutePathExist(pathname: string): RouteObject | undefined {
   const paths = pathname.split("/");
-  let middlewares: Middlewares[] = [];
+  let middlewares: Middlewares = [];
   let routeObj: RouteObject | undefined = undefined;
 
   // See https://leanylabs.com/blog/js-forEach-map-reduce-vs-for-for_of/#arrayforeach-vs-for-and-forof
@@ -98,8 +98,8 @@ function checkRoutePathExist(pathname: string): RouteObject | undefined {
   return routeObj;
 }
 
-function checkEndpointExist(routeObj: RouteObject, method: RequestMethod): RouteEndpoints | undefined {
-  let endpoint: RouteEndpoints | undefined = undefined;
+function checkEndpointExist(routeObj: RouteObject, method: RequestMethod): RouteEndpoint | undefined {
+  let endpoint: RouteEndpoint | undefined = undefined;
 
   routeObj.endpoints.some((e) => {
     const isExist = e.method === method;

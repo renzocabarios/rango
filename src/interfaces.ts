@@ -50,7 +50,7 @@ export interface RouteWithMiddlewares extends Partial<RouteMethodObject> {
 /**
  *
  */
-export interface RouteEndpoints {
+export interface RouteEndpoint {
   /**
    *
    */
@@ -76,7 +76,7 @@ export interface CreateRoute {
   /**
    *
    */
-  endpoints?: RouteEndpoints[];
+  endpoints?: RouteEndpoints;
   /**
    *
    */
@@ -98,7 +98,7 @@ export interface RouteObjectCallback {
   /**
    *
    */
-  endpoints: RouteEndpoints[];
+  endpoints: RouteEndpoints;
   /**
    *
    */
@@ -119,7 +119,7 @@ export interface RouteObject {
   /**
    *
    */
-  endpoints: RouteEndpoints[];
+  endpoints: RouteEndpoints;
   /**
    *
    */

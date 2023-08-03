@@ -9,7 +9,7 @@ import { Context } from "./interfaces";
  * @param middlewares List of middlewares
  * @param message A message from the previous middleware
  */
-function mapMiddlewares(middlewares: Middlewares[], context: Context, message?: any): void {
+function mapMiddlewares(middlewares: Middlewares, context: Context, message?: any): void {
   const { req, res } = context;
 
   if (!middlewares.length) return;

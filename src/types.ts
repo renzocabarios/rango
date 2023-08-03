@@ -70,3 +70,8 @@ export type Middlewares = Middleware[];
  *
  */
 export type Routes = Route[];
+
+/**
+ *
+ */
+export type RouteEndpoints = RouteEndpoint[];
