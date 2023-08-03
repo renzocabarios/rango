@@ -174,11 +174,11 @@ export interface RequestObject extends http.IncomingMessage, Partial<QueryParams
   /**
    *
    */
-  body: any;
+  body: unknown;
   /**
    *
    */
-  file: any;
+  file: unknown;
 }
 
 export interface QueryParams {
@@ -193,11 +193,11 @@ export interface QueryParams {
   /**
    *
    */
-  body: any;
+  body: unknown;
   /**
    *
    */
-  file: any;
+  file: unknown;
 }
 
 export interface MiddlewareContext {
@@ -216,7 +216,7 @@ export interface MiddlewareContext {
   /**
    *
    */
-  error?: any;
+  error?: unknown;
 }
 
 /**
