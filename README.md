@@ -1,4 +1,6 @@
-# Blazingly-Fast Featherweight Gunslinging Fearless Web Framework for Node.js
+<h1 align="center">
+  Blazingly-Fast, Featherweight, Fearlessly Efficient and Gunslinging Web Framework for Node.js
+</h1>
 
 <p align="center">
   <img width="60%" height="60%" src="https://github.com/mackignacio/rango/blob/main/rango_logo.png">
