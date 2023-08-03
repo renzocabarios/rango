@@ -662,7 +662,7 @@ app.add({
 
 // Start the server
 const port = 3000;
-  http.createServer(app).listen(port, () => {
+http.createServer(app).listen(port, () => {
   console.log(`Server listening on port ${port}.`);
 });
 ```
@@ -732,6 +732,54 @@ app.add({
 In this example, we've defined two Path Params: `id` and `postId`. They will be accessible inside the route callback using `context.params.id` and `context.params.postId`, respectively.
 
 With this powerful feature of Path Params, you can create dynamic and flexible routes to handle various scenarios in your web applications.
+
+## Query Params
+
+Query Params are a mighty tool that allows you to pass data to your server through the URL query string, making your routes more versatile and powerful. Query Params are key-value pairs that come after the ? in the URL. You can access them in your route handlers using the req.query object. In this section, we'll explore how to use Query Params in your RangoJS routes, so let's saddle up and get started!
+
+
+```ts
+// Import the RangoJS and http module
+import rango from "rango";
+import http from "http";
+
+// Create an instance of the RangoJS app
+const app = rango();
+
+// Using Query Params in route
+app.add({
+  path: "users",
+  GET: (context) => {
+    const userId = context.query.name || "stranger";
+    return `Howdy, Cowboy coder ${name}!`;
+  },
+});
+
+// Start the server
+const port = 3000;
+http.createServer(app).listen(port, () => {
+  console.log(`Server listening on port ${port}.`);
+});
+```
+
+In the example above, we've defined a route `/user`, and you can pass a Query Param named name to personalize the greeting. If no name is provided, it defaults to `'stranger'`.
+
+### Multiple Query Params
+
+You can use multiple Query Params in a single route by adding them to the URL query string.
+
+```ts
+app.add({
+  path: "search",
+  GET: (context) => {
+    const searchTerm = req.query.q || 'No search term';
+    const sortBy = req.query.sort || 'date';
+    return `Searching for "${searchTerm}" sorted by "${sortBy}"`;
+  },
+});
+```
+
+In this example, we've used two Query Params: `q` for the search term and sort to specify the sorting order. With this nifty feature, you can pass data to your server in a flexible and convenient way.
 
 ## Contributing
 
