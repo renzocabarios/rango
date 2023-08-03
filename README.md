@@ -344,9 +344,9 @@ Use **Individual Route Methods** when you have different actions and significant
 
 Use the **Single Route Method** when you have shared logic between multiple HTTP methods and want a more concise and DRY codebase.
 
-By combining the Individual Route Methods approach and the Single Route Method approach in Express.js can provide a balanced and flexible approach to handling HTTP requests. By using both approaches strategically, you can take advantage of their respective strengths and address their limitations.
+By combining the Individual Route Methods approach and the Single Route Method approach in one. RangoJS can provide a balanced and flexible approach to handling HTTP requests. By using both approaches strategically, you can take advantage of their respective strengths and address their limitations.
 
-### Pros of Combining both Approaches
+### Pros of Combining both Approaches in RangoJS
 
 - **Explicitness**: Each HTTP method has its dedicated route handler, making the code easier to read and understand.
 
