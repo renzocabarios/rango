@@ -83,8 +83,8 @@ Let's begin by setting up a new RangoJS project. Follow these steps:
 1. Create a new project directory:
 
     ```sh
-    mkdir my-rangojs-api
-    cd my-rangojs-api
+    mkdir my-rangojs-app
+    cd my-rangojs-app
     ```
 
 2. Initialize a new Node.js project:
