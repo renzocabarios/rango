@@ -625,7 +625,113 @@ Here's how we can wrangle them Express.js middlewares into RangoJS:
 
 And that's it, cowboy coder! You've successfully integrated Express.js middlewares as legacy middlewares in your RangoJS application. With RangoJS and Express.js middlewares, you've got yourself a powerful combo that'll keep your application riding smooth and your codebase well-organized.
 
+## Path Params
 
+Path Params are a powerful feature that allows you to extract dynamic values from the URL path, making your routes more flexible and versatile. Path Params are placeholders in the URL path that allow you to capture dynamic values and access them in your route handlers. You can define a Path Param using a colon followed by the param name. In this section, we'll explore how to use Path Params in your RangoJS routes, so let's hit the trail and get started!
+
+```ts
+// Import the RangoJS and http module
+import rango from "rango";
+import http from "http";
+
+// Create an instance of the RangoJS app
+const app = rango();
+
+// Add route with path params of 'id' in single path
+app.add({
+  path: "users/:id",
+  GET: (context) => {
+    const userId = context.params.id;
+    return `Hello, user with ID: ${userId}`;
+  },
+});
+
+// Add route with path params of 'id' in child path
+app.add({
+  path: "users"
+  children: [
+    {
+      path: ":id",
+      GET: (context) => {
+        const userId = context.params.id;
+        return `Hello, user with ID: ${userId}`;
+      }
+    }
+  ],
+});
+
+// Start the server
+const port = 3000;
+  http.createServer(app).listen(port, () => {
+  console.log(`Server listening on port ${port}.`);
+});
+```
+
+In the example above, we've defined a route **`/users/:id`** with a Path Param named `id`. When a request is made to this route with a specific ID, we can access that ID inside the route object using `context.params.id`.
+
+### Multiple Path Params
+
+You can use multiple Path Params in a single route by defining them in the URL path.
+
+```ts
+// Add route with path params of 'id' and 'postId' in a single path
+app.add({
+  path: "users/:id/posts/:postId",
+  GET: (context) => {
+    const userId = context.params.id;
+    const postId = req.params.postId;
+    return `User ${userId} posted with ID: ${postId}`;
+  },
+});
+
+// Add route with path params of 'id' in parent path
+app.add({
+  path: "users/:id"
+  children: [
+    {
+      // Add path params 'postId' in child path
+      path: "posts/:postId",
+      GET: (context) => {
+        const userId = context.params.id;
+        const postId = req.params.postId;
+        return `User ${userId} posted with ID: ${postId}`;
+      }
+    }
+  ],
+});
+
+// Add route with nested children and path params
+app.add({
+  path: "users"
+  children: [
+    {
+      // Add path params 'id'
+      path: "/:id",
+      children: [
+        {
+          // Add path for 'users/:id/posts'
+          path: "posts",
+          children: [
+            {
+              // Add path params 'postId' in child path
+              path: ":postId",
+              GET: (context) => {
+                const userId = context.params.id;
+                const postId = context.params.postId;
+                return `User ${userId} posted with ID: ${postId}`;
+              }
+            }
+          ]
+        }
+      ],
+    }
+  ],
+});
+```
+
+In this example, we've defined two Path Params: `id` and `postId`. They will be accessible inside the route callback using `context.params.id` and `context.params.postId`, respectively.
+
+With this powerful feature of Path Params, you can create dynamic and flexible routes to handle various scenarios in your web applications.
 
 ## Contributing
 
