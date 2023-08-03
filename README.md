@@ -64,15 +64,17 @@ In this guide, we'll show you how to set up your RangoJS application, lasso thos
 
 ### Prerequisites
 
-Before diving into RangoJS, ensure you have the following installed on your machine:
+Listen up, code cowboy! Before you saddle up and ride the RangoJS trail, make sure you've got the essentials roped and ready on your local machine:
 
-1. Node.js: Make sure you have Node.js installed. You can download it from the official website: [Node.js](https://nodejs.org).
+1. Your trusty steed, **Node.js**. You can download it from the official website [here](https://nodejs.org).
 
-2. npm (Node Package Manager): npm comes bundled with Node.js. However, it's essential to have the latest version. To update npm, run the following command in your terminal:
+2. A sturdy sidekick **NPM** (Node Package Manager) comes bundled with Node.js. However, it's essential to have the latest version. To update npm, run the following command in your terminal:
 
     ```sh
     npm install -g npm
     ```
+
+Once you've got these mighty tools, you're all set to wrangle RangoJS and conquer the digital frontier like a true code cowboy! Giddy-up and let's hit the trail!
 
 ### Setting up a New RangoJS Project
 
