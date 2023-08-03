@@ -39,7 +39,7 @@ export type NextFunction = (error?: any) => Promise<void> | void;
 /**
  *
  */
-export type RouteCallback = (ctx: Context) => Promise<unknown>;
+export type RouteCallback = (ctx: Context) => Promise<any> | any;
 
 /**
  *
