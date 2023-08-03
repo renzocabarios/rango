@@ -10,7 +10,7 @@ export type RequestMethod = "GET" | "POST" | "DELETE" | "OPTIONS" | "PUT" | "PAT
  */
 export type RouteMethodObjectCallback = {
   callback: RouteCallback;
-  middlewares: Middlewares[];
+  middlewares: Middlewares;
 };
 
 /**
@@ -59,4 +59,9 @@ export type MayaMiddleware = (context: Context, next: NextFunction) => void;
 /**
  *
  */
-export type Middlewares = LegacyMiddleware | LegacyMiddlewareError | MayaMiddleware;
+export type Middleware = LegacyMiddleware | LegacyMiddlewareError | MayaMiddleware;
+
+/**
+ *
+ */
+export type Middlewares = Middleware[];

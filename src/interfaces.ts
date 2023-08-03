@@ -1,4 +1,4 @@
-import { Middlewares, RequestMethod, RouteCallback, RouteMethodObject } from "./types";
+import { Middlewares, RequestMethod, RouteCallback, RouteEndpoints, RouteMethodObject, Routes } from "./types";
 import http from "http";
 
 /**
@@ -16,7 +16,7 @@ export interface Route extends Partial<RouteMethodObject> {
   /**
    *
    */
-  middlewares?: Middlewares[];
+  middlewares?: Middlewares;
 }
 
 /**
@@ -44,7 +44,7 @@ export interface RouteWithMiddlewares extends Partial<RouteMethodObject> {
   /**
    *
    */
-  middlewares: Middlewares[];
+  middlewares: Middlewares;
 }
 
 /**
@@ -62,7 +62,7 @@ export interface RouteEndpoints {
   /**
    *
    */
-  middlewares: Middlewares[];
+  middlewares: Middlewares;
 }
 
 /**
@@ -84,7 +84,7 @@ export interface CreateRoute {
   /**
    *
    */
-  middlewares?: Middlewares[];
+  middlewares?: Middlewares;
 }
 
 /**
@@ -127,7 +127,7 @@ export interface RouteObject {
   /**
    *
    */
-  middlewares: Middlewares[];
+  middlewares: Middlewares;
   /**
    *
    */
