@@ -494,6 +494,8 @@ http.createServer(app).listen(port, () => {
 });
 ```
 
+> [See the full example code here.](https://github.com/mackignacio/rango/blob/main/example/middlewares/global-middlewares/README.md)
+
 ### Route-Specific Middleware
 
 Route-specific middleware is applied only to specific routes or route groups. You can't add them using `app.use()` with a specific route path or directly within your route definition. You need to define them using the `middlewares` key inside your route definition.
