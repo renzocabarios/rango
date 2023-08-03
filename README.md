@@ -1,4 +1,4 @@
-# Lightweight Gunslinging Node.js API Library
+# Blazingly-Fast Featherweight Gunslinging Minimalist Web Framework for Node.js
 
 <p align="center">
   <img width="100%" height="100%" src="https://github.com/mackignacio/rango/blob/main/rango_logo.png">
