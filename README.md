@@ -192,6 +192,8 @@ http.createServer(app).listen(port, () => {
 
 The server is now running and ready to handle incoming requests.
 
+To test each method, you can use tools like `curl`, `Postman`, or using a frontend application built from `React` or `Angular` that sends requests to your server using various methods.
+
 > You've successfully set up an RangoJS project, created a basic server, and sent a response to a user request. Now you can dive deeper into RangoJS and explore its powerful features to build robust and sophisticated web applications.
 >
 > Happy coding! 🚀
