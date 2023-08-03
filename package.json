@@ -10,7 +10,7 @@
     "package": "node ./scripts/clean-package.js",
     "prepack": "npm run clean && npm run package && tsc",
     "postpack": "npm run clean && node ./scripts/restore-package.js",
-    "start": "npm run clean && npm run tgz && nodemon src/index.ts"
+    "start": "npm run clean && npm run tgz && tsc -w"
   },
   "repository": {
     "type": "git",
