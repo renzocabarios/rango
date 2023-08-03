@@ -7,7 +7,7 @@ const app = rango();
 
 // Define a route for the home page
 app.add({
-  path: "/",
+  path: "",
   GET: () => {
     return "Hello, RangoJS!";
   },
