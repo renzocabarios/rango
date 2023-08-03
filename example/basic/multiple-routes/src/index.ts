@@ -5,7 +5,7 @@ import http from "http";
 // Create an instance of the RangoJS app
 const app = rango();
 
-// Define a route for the home page
+// Define a multiple route for the home, about and contact page
 app.add([
   {
     path: "home",
