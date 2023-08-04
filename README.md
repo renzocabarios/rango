@@ -316,8 +316,6 @@ app.delete('/users', (req, res) => {
 });
 ```
 
-> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/child-routes/README.md)
-
 ### Single Route Method (app.all)
 
 With the single route method approach, you use **app.all** to define a route that handles all HTTP methods:
@@ -447,6 +445,8 @@ app.add([
   }
 ])
 ```
+
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/child-routes/README.md)
 
 You see, in Express.js, when we want to create child routes, we gotta use the `express.Router()` method to wrangle them together. Once we've got them rounded up, we then mount those child routes to a parent route using the `app.use()` method. It's like making a fancy corral for each route, just to keep them all organized and separated.
 
