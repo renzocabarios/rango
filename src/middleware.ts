@@ -9,7 +9,7 @@ import { Context } from "./interfaces";
  * @param middlewares List of middlewares
  * @param message A message from the previous middleware
  */
-function mapMiddlewares(middlewares: Middlewares, context: Context, message?: any): void {
+async function mapMiddlewares(middlewares: Middlewares, context: Context, message?: any): Promise<void> {
   const { req, res } = context;
 
   if (!middlewares.length) return;
@@ -17,9 +17,13 @@ function mapMiddlewares(middlewares: Middlewares, context: Context, message?: an
   const current = middlewares[0];
 
   // Create next function
-  const next = (error: unknown) => {
+  const next = async (error: unknown) => {
     if (error) return res.send(error, 400);
-    return mapMiddlewares(middlewares.slice(1), { ...context, req, res, error }, error);
+    return await mapMiddlewares(
+      middlewares.slice(1),
+      { ...context, req, res, error, body: req.body, file: req.file },
+      error
+    );
   };
 
   // Create middleware for express
@@ -27,7 +31,7 @@ function mapMiddlewares(middlewares: Middlewares, context: Context, message?: an
     message ? (<LegacyMiddlewareError>current)(message, req, res, next) : (<LegacyMiddleware>current)(req, res, next);
 
   // Check if arguments are more than 2
-  return current.length > 2 ? legacyMiddleware() : (<MayaMiddleware>current)(context, next);
+  return current.length > 2 ? await legacyMiddleware() : await (<MayaMiddleware>current)(context, next);
 }
 
 export default mapMiddlewares;
