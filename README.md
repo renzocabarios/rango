@@ -204,7 +204,6 @@ To test each method, you can use tools like `curl`, `Postman`, or using a fronte
 
 Well, now that you've got your spurs on, it's time to ride into unexplored territories and uncover the boundless capabilities that RangoJS has in store for you. Keep your eyes peeled as you mosey on ahead to discover all the remarkable things RangoJS can do for ya.
 
-
 ## Configuring Multiple Routes
 
 Now that we have the RangoJS project structure in place, let's configure multiple routes. In this example, we will create three routes: home, about, and contact.
@@ -234,7 +233,7 @@ app.add([
 ])
 ```
 
-By updating the `app.add()` to handle an array of `routeObject`, you can now efficiently process multiple routes in one function call. This modification enhances the function's versatility, allowing it to adapt to different routing scenarios.
+By updating the `app.add` to handle an array of `routeObject`, you can now efficiently process multiple routes in one function call. This modification enhances the function's versatility, allowing it to adapt to different routing scenarios.
 
 ## Define a Single Route with Multiple HTTP Methods
 
