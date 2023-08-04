@@ -98,6 +98,21 @@ function checkRoutePathExist(pathname: string): RouteObject | undefined {
   return routeObj;
 }
 
+function checkRouteChildrenPathExist(children: Map<string, RouteObject>, path: string) {
+  let routeObj: RouteObject | undefined = children.get(path);
+
+  if (!routeObj) {
+    for (const child of children.values()) {
+      if (child.hasParam) {
+        routeObj = child;
+        break;
+      }
+    }
+  }
+
+  return routeObj;
+}
+
 function checkEndpointExist(routeObj: RouteObject, method: RequestMethod): RouteEndpoint | undefined {
   let endpoint: RouteEndpoint | undefined = undefined;
 
