@@ -146,7 +146,7 @@ With your cowboy hat on tight, let's wrangle some code and create a basic server
     });
     ```
 
-## Starting the RangoJS Server
+### Starting the RangoJS Server
 
 To kickstart that trusty server, just mosey on over to your terminal and wrangle up this command:
 
@@ -154,7 +154,7 @@ To kickstart that trusty server, just mosey on over to your terminal and wrangle
 nodemon app.ts
 ```
 
-Now that our trusty server's up and runnin', it's time to hitch our wagon to the trail and see what RangoJS has rustled up for us! Head on over to your web browser, and pay a visit to this link:
+Now that our trusty server's up and running, it's time to hitch our wagon to the trail and see what RangoJS has rustled up for us! Head on over to your web browser, and pay a visit to this link:
 
 > [http://localhost:3000](http://localhost:3000)
 
