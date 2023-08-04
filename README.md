@@ -640,6 +640,8 @@ Here's how we can wrangle them Express.js middlewares into RangoJS:
     });
     ```
 
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/middlewares/legacy-middlewares/README.md)
+
 And that's it, cowboy coder! You've successfully integrated Express.js middlewares as legacy middlewares in your RangoJS application. With RangoJS and Express.js middlewares, you've got yourself a powerful combo that'll keep your application riding smooth and your codebase well-organized.
 
 ## Path Params
