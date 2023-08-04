@@ -28,7 +28,7 @@ function add(
 
 export type RangoApp = {
   use: (plugin: Middleware) => void;
-  listen: (port: number, listener: () => void) => void;
+  listen: (port: number, listener?: () => void) => void;
   add: {
     (routes: RouteWithChildren): void;
     (routes: RouteWithMiddlewares): void;
@@ -42,6 +42,6 @@ export type RangoApp = {
 
 export type Router = ((req: http.IncomingMessage, res: http.ServerResponse) => void) & RangoApp;
 
-type ListenFnArgs = [port: number, listeningListener?: (() => void) | undefined];
+type ListenFnArgs = [port: number, listener?: (() => void) | undefined];
 
 export default Object.assign(handler, { use, add, listen, headers: { "X-Powered-By": "RangoJS" } });
