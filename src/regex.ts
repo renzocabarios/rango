@@ -1,5 +1,8 @@
-function regex(url: string, full = false) {
-  const base = (val: string) => new RegExp(`^${val}${full ? "$" : ""}`);
+function base(val: string) {
+  return new RegExp(`^${val}$`);
+}
+
+function regex(url: string, full: boolean = false): RegExp | string {
   const notParam = (val: string) => `(?:\\/(${val}))`;
   const isParam = (val: string) => `(?:\\/(?<${val}>[\\w\\-]+?))`;
   const pattern = url
