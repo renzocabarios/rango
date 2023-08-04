@@ -11,6 +11,7 @@
     "minor:alpha": "npm version preminor --preid=alpha -m \"feat(version): :sparkles: bump version to %s\"",
     "minor:beta": "npm version preminor --preid=beta -m \"feat(version): :sparkles: bump version to %s\"",
     "minor:rc": "npm version preminor --preid=rc -m \"feat(version): :sparkles: bump version to %s\"",
+    "patch": "npm version patch -m \"feat(version): :sparkles: bump version to %s\"",
     "package": "node ./scripts/clean-package.js",
     "prepack": "npm run clean && npm run package && tsc",
     "postpack": "npm run clean && node ./scripts/restore-package.js",
