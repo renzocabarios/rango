@@ -785,6 +785,8 @@ http.createServer(app).listen(port, () => {
 });
 ```
 
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/query-params/README.md)
+
 In the example above, we've defined a route `/user`, and you can pass a Query Param named name to personalize the greeting. If no name is provided, it defaults to `'stranger'`.
 
 ### Multiple Query Params
