@@ -316,6 +316,8 @@ app.delete('/users', (req, res) => {
 });
 ```
 
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/child-routes/README.md)
+
 ### Single Route Method (app.all)
 
 With the single route method approach, you use **app.all** to define a route that handles all HTTP methods:
