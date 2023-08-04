@@ -124,7 +124,7 @@ With your cowboy hat on tight, let's wrangle some code and create a basic server
 2. In **app.ts**, add the following code:
 
     ```ts
-    // Import the RangoJS and http module
+    // Import RangoJS and http module
     import rango from "rango";
     import http from "http";
 
@@ -463,7 +463,7 @@ To use middleware in RangoJS, you can employ the `app.use()` method or specify m
 Global middleware is applied to all routes and is registered using app.use() without a specific route path. This type of middleware is typically used for tasks that need to be executed on every request, such as parsing `request bodies`, `setting headers`, or `logging`.
 
 ```ts
-// Import the RangoJS and http module
+// Import RangoJS and http module
 import rango from "rango";
 import http from "http";
 
@@ -501,7 +501,7 @@ http.createServer(app).listen(port, () => {
 Route-specific middleware is applied only to specific routes or route groups. You can't add them using `app.use()` with a specific route path or directly within your route definition. You need to define them using the `middlewares` key inside your route definition.
 
 ```ts
-// Import the RangoJS and http module
+// Import RangoJS and http module
 import rango, { Context, NextFunction } from "rango";
 import http from "http";
 
@@ -553,7 +553,7 @@ http.createServer(app).listen(port, () => {
 Error handling middleware is used to catch and process errors that occur during request processing. These middleware functions have an additional `error` key on the `Context` object, allowing them to handle errors and respond appropriately.
 
 ```ts
-// Import the RangoJS and http module
+// Import RangoJS and http module
 import rango, { Context, NextFunction } from "rango";
 import http from "http";
 
@@ -604,7 +604,7 @@ Here's how we can wrangle them Express.js middlewares into RangoJS:
 2. Import the middleware you installed and mount it on RangoJS
 
     ```ts
-    // Import the RangoJS and http module
+    // Import RangoJS and http module
     import rango from "rango";
     import http from "http";
 
@@ -635,7 +635,7 @@ And that's it, cowboy coder! You've successfully integrated Express.js middlewar
 Path Params are a powerful feature that allows you to extract dynamic values from the URL path, making your routes more flexible and versatile. Path Params are placeholders in the URL path that allow you to capture dynamic values and access them in your route handlers. You can define a Path Param using a colon followed by the param name. In this section, we'll explore how to use Path Params in your RangoJS routes, so let's hit the trail and get started!
 
 ```ts
-// Import the RangoJS and http module
+// Import RangoJS and http module
 import rango from "rango";
 import http from "http";
 
@@ -744,7 +744,7 @@ Query Params are a mighty tool that allows you to pass data to your server throu
 
 
 ```ts
-// Import the RangoJS and http module
+// Import RangoJS and http module
 import rango from "rango";
 import http from "http";
 
