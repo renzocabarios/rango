@@ -14,6 +14,9 @@ function paramMapper(val: string) {
   return val.includes(":") ? isParam(val.substring(1)) : notParam(val);
 }
 
+function regex(url: string): string;
+function regex(url: string, full: false): string;
+function regex(url: string, full: true): RegExp;
 function regex(url: string, full: boolean = false): RegExp | string {
   return full ? base(url) : url.split("/").map(paramMapper).join("");
 }
