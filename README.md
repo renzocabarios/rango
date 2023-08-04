@@ -237,7 +237,7 @@ By updating the `app.add` to handle an array of `routeObject`, you can now effic
 
 ## Define a Single Route with Multiple HTTP Methods
 
-Now, let's create a single route that supports multiple HTTP methods (**GET**, **POST**, **PUT**, **DELETE**, and **DELETE**). We'll handle each method differently based on the action we want to perform.
+Now, let's create a single route that supports multiple HTTP methods (**GET**, **POST**, **PUT**, **DELETE**, and **DELETE**). We'll handle each method differently based on the action we want to perform using a `callback` function. We call these callback function route `endpoints`.
 
 In **app.ts**, update the `app.add` function and add the following code:
 
