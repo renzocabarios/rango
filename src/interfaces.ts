@@ -158,6 +158,10 @@ export interface ResponseObjectProps {
    *
    */
   status(code?: number): ResponseObjectProps;
+  /**
+   *
+   */
+  contentLength: number;
 }
 
 /**

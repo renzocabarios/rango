@@ -29,6 +29,8 @@ function createResponseObject(res: http.ServerResponse): ResponseObject {
         if (isText) res.writeHead(500, contentType[0]);
       }
 
+      this.contentLength = Buffer.byteLength(`${value}`, "utf8");
+
       endResponse(value);
     },
     json(json: object, statusCode = 200) {
@@ -46,6 +48,7 @@ function createResponseObject(res: http.ServerResponse): ResponseObject {
       return this;
     },
     statusCode: 200,
+    contentLength: 0,
   });
 }
 
