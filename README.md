@@ -146,6 +146,8 @@ With your cowboy hat on tight, let's wrangle some code and create a basic server
     });
     ```
 
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/getting-started/README.md)
+
 ### Starting the RangoJS Server
 
 To kickstart that trusty server, just mosey on over to your terminal and wrangle up this command:
