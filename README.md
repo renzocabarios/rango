@@ -793,6 +793,7 @@ In the example above, we've defined a route `/user`, and you can pass a Query Pa
 You can use multiple Query Params in a single route by adding them to the URL query string.
 
 ```ts
+// Add route with multiple query params
 app.add({
   path: "search",
   GET: (context) => {
