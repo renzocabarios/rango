@@ -44,17 +44,22 @@ export type RouteCallback = (ctx: Context) => Promise<any> | any;
 /**
  *
  */
-export type LegacyMiddleware = (req: RequestObject, res: ResponseObject, next: NextFunction) => void;
+export type LegacyMiddleware = (req: RequestObject, res: ResponseObject, next: NextFunction) => Promise<void> | void;
 
 /**
  *
  */
-export type LegacyMiddlewareError = (error: any, req: RequestObject, res: ResponseObject, next: NextFunction) => void;
+export type LegacyMiddlewareError = (
+  error: any,
+  req: RequestObject,
+  res: ResponseObject,
+  next: NextFunction
+) => Promise<void> | void;
 
 /**
  *
  */
-export type MayaMiddleware = (context: Context, next: NextFunction) => void;
+export type MayaMiddleware = (context: Context, next: NextFunction) => Promise<void> | void;
 
 /**
  *
