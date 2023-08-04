@@ -10,13 +10,13 @@ app.add({
   path: "users/:id",
   GET: (context) => {
     const userId = context.params.id;
-    return `Hello, user with ID: ${userId}`;
+    return `ID of ${userId} found in users!`;
   },
 });
 
 // Add route with path params of 'id' in child path
 app.add({
-  path: "users",
+  path: "user",
   children: [
     {
       path: ":id",
