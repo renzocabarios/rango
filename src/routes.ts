@@ -87,8 +87,13 @@ function checkRoutePathExist(pathname: string): RouteObject | undefined {
   // See https://leanylabs.com/blog/js-forEach-map-reduce-vs-for-for_of/#arrayforeach-vs-for-and-forof
   // Why we use for-of instead of map, forEach or reduce
   for (const value of paths) {
+    const prevRegex = routeObj?.regex ?? "";
     routeObj = !routeObj ? routes.get(value) : checkRouteChildrenPathExist(routeObj.children, value);
     middlewares = [...middlewares, ...(routeObj?.middlewares ?? [])];
+
+    if (routeObj !== undefined) {
+      routeObj.regex = prevRegex + routeObj.regex;
+    }
   }
 
   if (routeObj !== undefined) {
