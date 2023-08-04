@@ -115,9 +115,9 @@ Let's begin by setting up a new RangoJS project. Ride along with these instructi
 
 ### Creating a Basic RangoJS Server
 
-Well, howdy, cowboy coder! Now that we've got RangoJS lassoed and ready, it's high time to build ourselves a sturdy corral for our code. So, saddle up and crack open that trusty ol' text editor or IDE of yours - the one that feels like an old friend.
+Well, howdy, cowboy coder! Now that we've got RangoJS lassoed and ready, it's high time to build ourselves a sturdy corral for our code. So, saddle up and crack open that trusty text editor or IDE of yours - the one that feels like an old friend.
 
-With your cowboy hat on tight, let's wrangle some code and create a basic server that'll stand tall like a strong, dependable stallion. Get ready to ride the RangoJS wave and blaze the trail in this digital frontier! Just follow the step below, cowboy!
+With your cowboy hat on tight, let's wrangle some code and create a basic server that'll stand tall like a strong, dependable stallion. Get ready to ride the RangoJS wave and blaze the trail in this digital frontier! Just follow the steps below, cowboy!
 
 1. Create a new file named **app.ts** in the project root directory.
 
