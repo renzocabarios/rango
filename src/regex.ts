@@ -10,13 +10,12 @@ function isParam(val: string) {
   return `(?:\\/(?<${val}>[\\w\\-]+?))`;
 }
 
-function regex(url: string, full: boolean = false): RegExp | string {
-  const pattern = url
-    .split("/")
-    .map((val) => (val.includes(":") ? isParam(val.substring(1)) : notParam(val)))
-    .join("");
+function paramMapper(val: string) {
+  return val.includes(":") ? isParam(val.substring(1)) : notParam(val);
+}
 
-  return base(pattern);
+function regex(url: string, full: boolean = false): RegExp | string {
+  return full ? base(url) : url.split("/").map(paramMapper).join("");
 }
 
 export default regex;
