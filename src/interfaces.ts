@@ -115,7 +115,7 @@ export interface RouteObject {
   /**
    *
    */
-  regex: RegExp;
+  regex: string;
   /**
    *
    */
