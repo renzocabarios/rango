@@ -25,7 +25,8 @@
     "package",
     "version",
     "readme",
-    "plugins"
+    "plugins",
+    "github"
   ],
   "cSpell.words": ["rango"]
 }
