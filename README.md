@@ -80,7 +80,7 @@ Once you've got these mighty tools, you're all set to wrangle RangoJS and conque
 
 ### Setting up a New RangoJS Project
 
-Let's begin by setting up a new RangoJS project. Follow these steps:
+Let's begin by setting up a new RangoJS project. Ride along with these instructions:
 
 1. Create a new project directory:
 
