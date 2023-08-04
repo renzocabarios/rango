@@ -4,6 +4,7 @@ import { checkEndpointExist, checkRoutePathExist } from "./routes";
 import sendFile, { isFileRequest } from "./static";
 import { RouteCallback } from "./types";
 import plugins from "./plugins";
+import RegEx from "./regex";
 
 /**
  * A function that manage an incoming request.
@@ -29,6 +30,9 @@ async function send(context: RouterContext): Promise<void> {
     // Send error message if path is not found
     return res.send({ message: `Path of ${path} is missing.`, status: "PathNotFound", error: true }, 406);
   }
+
+  // Set path `params` if RegEx group result is not undefined
+  context.params = RegEx(routePathExist.regex, true).exec("/" + path)?.groups ?? {};
 
   // Check if endpoint exist in route object
   // If exist will return an endpoint object
