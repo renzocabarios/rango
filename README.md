@@ -686,6 +686,8 @@ http.createServer(app).listen(port, () => {
 });
 ```
 
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/path-params/README.md)
+
 In the example above, we've defined a route **`/users/:id`** with a Path Param named `id`. When a request is made to this route with a specific ID, we can access that ID inside the route object using `context.params.id`.
 
 ### Multiple Path Params
