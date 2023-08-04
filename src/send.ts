@@ -2,6 +2,8 @@ import { RouterContext } from "./interfaces";
 import mapMiddlewares from "./middleware";
 import { checkEndpointExist, checkRoutePathExist } from "./routes";
 import sendFile, { isFileRequest } from "./static";
+import { RouteCallback } from "./types";
+import plugins from "./plugins";
 
 /**
  * A function that manage an incoming request.
@@ -38,29 +40,26 @@ async function send(context: RouterContext): Promise<void> {
     return res.send({ message, status: "MethodNotAllowed", error: true }, 405);
   }
 
-  try {
-    // Loop thru all middlewares and inject context
-    // If middleware doesn't have a "next()" function
-    // It will end the loop and proceed to execute the endpoint callback
-    mapMiddlewares([...routePathExist.middlewares, ...routeMethodExist.middlewares], context);
-  } catch (error) {
-    if (error) {
-      // Send error message if middleware has an error or failed to execute
-      res.send({ message: error, status: "MiddlewareError", error: true }, 403);
-    }
-  }
-
-  try {
-    // Execute the endpoint callback and await for its response
+  const callback: RouteCallback = async (context) => {
     const response = (await routeMethodExist.callback(context)) as { statusCode: number };
 
     // Send back the response
     // Set the status code of the response
     return res.send(response, response?.statusCode);
+  };
+
+  try {
+    // Loop thru all middlewares and inject context
+    // If middleware doesn't have a "next()" function
+    // It will end the loop and proceed to execute the endpoint callback
+    await mapMiddlewares(
+      [...plugins, ...routePathExist.middlewares, ...routeMethodExist.middlewares, callback],
+      context
+    );
   } catch (error) {
     if (error) {
-      // Send error message if callback has an error or failed to execute
-      res.send({ message: error, status: "ServerError", error: true }, 500);
+      // Send error message if middleware has an error or failed to execute
+      res.send({ message: error, status: "ServerError", error: true }, 403);
     }
   }
 }

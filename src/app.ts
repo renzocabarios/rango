@@ -2,9 +2,11 @@ import handler from "./handler";
 import http from "http";
 import { createRouteMapper } from "./routes";
 import { Route, RouteWithChildren, RouteWithMiddlewares } from "./interfaces";
+import { Middleware } from "./types";
+import plugins from "./plugins";
 
-function use(plugin: any) {
-  // TODO: "I'm still working on this" - Rango
+function use(plugin: Middleware) {
+  plugins.push(plugin);
 }
 
 function add(route: Route): void;
@@ -20,7 +22,7 @@ function add(
 }
 
 export type RangoApp = {
-  use: (plugin: any) => void;
+  use: (plugin: Middleware) => void;
   add: {
     (routes: RouteWithChildren): void;
     (routes: RouteWithMiddlewares): void;

@@ -24,7 +24,8 @@
     "scripts",
     "package",
     "version",
-    "readme"
+    "readme",
+    "plugins"
   ],
   "cSpell.words": ["rango"]
 }
