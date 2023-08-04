@@ -276,6 +276,8 @@ app.add([
 ])
 ```
 
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/single-route/README.md)
+
 In this example, we use a common name for each `HTTP Methods` (**GET**, **POST**, **PUT**, **PATCH**, and **DELETE**) as function to handle all the supported HTTP methods. This makes your application more flexible and efficient, as it can perform different actions based on the HTTP method used and managing it in one place.
 
 ## Why this Approach in Routing
