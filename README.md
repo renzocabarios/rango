@@ -160,7 +160,13 @@ Now that our trusty server's up and running, it's time to hitch our wagon to the
 
 There, right before your very eyes, you'll find the message **"Hello, RangoJS!"** all shiny and gleaming like the stars in the night sky. Ain't that something? RangoJS sure knows how to make an impression!
 
-So kick back, relax, and enjoy the ride with RangoJS as your trusty sidekick. Happy gunslinging and coding, cowboy! 🌵🤠🚀
+## Yeehaw! Code Cowboy
+
+You've successfully set up a RangoJS project, created a basic server, and sent a response to a user request. Now you can dive deeper into RangoJS and explore its powerful features to build robust and sophisticated web applications.
+
+### **Happy gunslinging and coding, Code Cowboy! 🌵🤠🚀**
+
+Saddle up and let your code roam free like a wild mustang, breaking new ground and blazing trails in this digital frontier. Ride with the wind in your hair and the thrill in your heart as you wrangle them bugs and rope up them features. Keep your eyes on the horizon, 'cause the sky's the limit when you're a code cowboy! So kick back, relax, and enjoy the ride with RangoJS as your trusty sidekick.
 
 ### Understanding the Code
 
@@ -198,11 +204,6 @@ To test each method, you can use tools like `curl`, `Postman`, or using a fronte
 
 ## Yeehaw!
 
-You've successfully set up an RangoJS project, created a basic server, and sent a response to a user request. Now you can dive deeper into RangoJS and explore its powerful features to build robust and sophisticated web applications.
-
-### **Happy gunslinging codes, Code Cowboy! 🤠🚀**
-
-Saddle up and let your code roam free like a wild mustang, breakin' new ground and blazin' trails in this digital frontier. Ride with the wind in your hair and the thrill in your heart as you wrangle them bugs and rope up them features. Keep your eyes on the horizon, 'cause the sky's the limit when you're a code cowboy! Happy gunslinging and coding! 🌵👨‍💻
 
 ## Configuring Multiple Routes
 
