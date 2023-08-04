@@ -772,7 +772,7 @@ const app = rango();
 app.add({
   path: "users",
   GET: (context) => {
-    const userId = context.query.name || "stranger";
+    const name = context.query.name || "stranger";
     return `Howdy, Cowboy coder ${name}!`;
   },
 });
