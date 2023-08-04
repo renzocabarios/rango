@@ -667,7 +667,7 @@ app.add({
 
 // Add route with path params of 'id' in child path
 app.add({
-  path: "users"
+  path: "users",
   children: [
     {
       path: ":id",
@@ -759,7 +759,6 @@ With this powerful feature of Path Params, you can create dynamic and flexible r
 ## Query Params
 
 Query Params are a mighty tool that allows you to pass data to your server through the URL query string, making your routes more versatile and powerful. Query Params are key-value pairs that come after the ? in the URL. You can access them in your route handlers using the req.query object. In this section, we'll explore how to use Query Params in your RangoJS routes, so let's saddle up and get started!
-
 
 ```ts
 // Import RangoJS and http module
