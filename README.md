@@ -502,7 +502,7 @@ http.createServer(app).listen(port, () => {
 });
 ```
 
-> [See the full example code here.](https://github.com/mackignacio/rango/blob/main/example/middlewares/global-middlewares/README.md)
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/middlewares/global-middlewares/README.md)
 
 ### Route-Specific Middleware
 
