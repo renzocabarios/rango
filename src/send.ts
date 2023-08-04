@@ -1,4 +1,4 @@
-import { RouterContext } from "./interfaces";
+import { Context } from "./interfaces";
 import mapMiddlewares from "./middleware";
 import { checkEndpointExist, checkRoutePathExist } from "./routes";
 import sendFile, { isFileRequest } from "./static";
@@ -12,7 +12,7 @@ import RegEx from "./regex";
  * @param context - The current router context.
  * @returns A promise that will be resolved when the router is ready.
  */
-async function send(context: RouterContext): Promise<void> {
+async function send(context: Context): Promise<void> {
   // Get method, path and res in context object
   const { method, path, res } = context;
 

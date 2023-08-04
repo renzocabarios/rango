@@ -226,12 +226,7 @@ export interface MiddlewareContext {
 /**
  *
  */
-export interface Context extends MiddlewareContext, QueryParams {}
-
-/**
- *
- */
-export interface RouterContext extends Context {
+export interface Context extends MiddlewareContext, QueryParams {
   /**
    *
    */

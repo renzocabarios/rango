@@ -1,5 +1,5 @@
 import { URL } from "url";
-import { RouterContext } from "./interfaces";
+import { Context } from "./interfaces";
 import { RequestMethod } from "./types";
 import { pathUrl, statusCodeFactory } from "./utils";
 import response from "./response";
@@ -17,8 +17,8 @@ const handler = (req: http.IncomingMessage, res: http.ServerResponse) => {
   const method = (req.method || "") as RequestMethod;
   const resObj = response(res);
 
-  // Create Router Context object
-  const context: RouterContext = {
+  // Create Rango Context object
+  const context: Context = {
     req: request(req),
     res: resObj,
     query,
