@@ -595,6 +595,8 @@ http.createServer(app).listen(port, () => {
 });
 ```
 
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/middlewares/error-handling-middlewares/README.md)
+
 Middlewares in RangoJS is a powerful tool that enables you to handle common tasks, enhance the behavior of your routes, and ensure smooth request processing. By understanding and utilizing middleware effectively, you can create robust and well-structured web applications.
 
 ### Legacy Middlewares
