@@ -466,6 +466,8 @@ A middleware, in the context of RangoJS, are functions that have access to the `
 
 To use middleware in RangoJS, you can employ the `app.use()` method or specify middleware functions directly in your route definitions. The order of middleware registration matters, as they are executed sequentially. This is similar to what Express.js implements on their API.
 
+> [See the full list of middleware here.](https://github.com/mackignacio/rango/blob/main/example/middlewares/README.md)
+
 ### Global Middleware
 
 Global middleware is applied to all routes and is registered using app.use() without a specific route path. This type of middleware is typically used for tasks that need to be executed on every request, such as parsing `request bodies`, `setting headers`, or `logging`.
