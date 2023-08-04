@@ -700,21 +700,21 @@ app.add({
   path: "users/:id/posts/:postId",
   GET: (context) => {
     const userId = context.params.id;
-    const postId = req.params.postId;
+    const postId = context.params.postId;
     return `User ${userId} posted with ID: ${postId}`;
   },
 });
 
 // Add route with path params of 'id' in parent path
 app.add({
-  path: "users/:id"
+  path: "users/:id",
   children: [
     {
       // Add path params 'postId' in child path
       path: "posts/:postId",
       GET: (context) => {
         const userId = context.params.id;
-        const postId = req.params.postId;
+        const postId = context.params.postId;
         return `User ${userId} posted with ID: ${postId}`;
       }
     }
@@ -723,7 +723,7 @@ app.add({
 
 // Add route with nested children and path params
 app.add({
-  path: "users"
+  path: "users",
   children: [
     {
       // Add path params 'id'
