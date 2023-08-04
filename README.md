@@ -170,11 +170,11 @@ Saddle up and let your code roam free like a wild mustang, breaking new ground a
 
 ### Understanding the Code
 
-Let's break down the code in **app.ts**:
+Let's break down the code in your **app.ts**.
 
 We imported the RangoJS module using `import rango from 'rango'`.
 
-We created an instance of the RangoJS app with `const app = rango()`.
+We created an instance of the RangoJS application with `const app = rango()`.
 
 We defined a route for the home page using
 
@@ -202,7 +202,7 @@ The server is now running and ready to handle incoming requests.
 
 To test each method, you can use tools like `curl`, `Postman`, or using a frontend application built from `React` or `Angular` that sends requests to your server using various methods.
 
-## Yeehaw!
+Well, now that you've got your spurs on, it's time to ride into unexplored territories and uncover the boundless capabilities that RangoJS has in store for you. Keep your eyes peeled as you mosey on ahead to discover all the remarkable things RangoJS can do for ya.
 
 
 ## Configuring Multiple Routes
