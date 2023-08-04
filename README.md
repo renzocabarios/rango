@@ -804,6 +804,8 @@ app.add({
 });
 ```
 
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/multiple-query-params/README.md)
+
 In this example, we've used two Query Params: `q` for the search term and sort to specify the sorting order. With this nifty feature, you can pass data to your server in a flexible and convenient way.
 
 ## Conclusion
