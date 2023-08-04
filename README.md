@@ -750,6 +750,8 @@ app.add({
 });
 ```
 
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/multiple-path-params/README.md)
+
 In this example, we've defined two Path Params: `id` and `postId`. They will be accessible inside the route callback using `context.params.id` and `context.params.postId`, respectively.
 
 With this powerful feature of Path Params, you can create dynamic and flexible routes to handle various scenarios in your web applications.
