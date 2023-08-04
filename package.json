@@ -7,6 +7,7 @@
     "test": "jest",
     "clean": "rimraf lib",
     "tgz": "rimraf --glob *.tgz",
+    "major": "npm version major -m \"feat(version): :sparkles: bump version to %s\"",
     "minor": "npm version minor -m \"feat(version): :sparkles: bump version to %s\"",
     "minor:alpha": "npm version preminor --preid=alpha -m \"feat(version): :sparkles: bump version to %s\"",
     "minor:beta": "npm version preminor --preid=beta -m \"feat(version): :sparkles: bump version to %s\"",
