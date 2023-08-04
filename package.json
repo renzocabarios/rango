@@ -7,6 +7,7 @@
     "test": "jest",
     "clean": "rimraf lib",
     "tgz": "rimraf --glob *.tgz",
+    "preminor":"npm version preminor --preid=alpha -m \"feat(version): :sparkles: bump version to %s\"",
     "package": "node ./scripts/clean-package.js",
     "prepack": "npm run clean && npm run package && tsc",
     "postpack": "npm run clean && node ./scripts/restore-package.js",
