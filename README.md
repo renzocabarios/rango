@@ -235,6 +235,8 @@ app.add([
 ])
 ```
 
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/multiple-routes/README.md)
+
 By updating the `app.add` to handle an array of `routeObject`, you can now efficiently process multiple routes in one function call. This modification enhances the function's versatility, allowing it to adapt to different routing scenarios.
 
 ## Define a Single Route with Multiple HTTP Methods
