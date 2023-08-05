@@ -47,6 +47,7 @@
     - [context.headers](#context-headers)
     - [context.path](#context-path)
     - [context.setStatus](#context-set-status)
+  - [Next Function](#next-function)
 
 Introduction
 ============
@@ -751,4 +752,15 @@ app.logger(customLogger)
         const { setStatus } = context.setStatus
     }
     ```
+
+## Next Function
+
+**`Description`**: This function is used in middleware and route handlers to pass control to the next middleware/route handler in the stack.
+
+```ts
+function middleware(context, next){
+    // Proceed to the next middleware/handler on the stack
+    next();
+}
+```
 
