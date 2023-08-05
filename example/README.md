@@ -6,6 +6,7 @@
 - [Prerequisites](#prerequisites)
 - [Setup Project](#setup-project)
 - [Getting Started](#getting-started)
+- [Starting the Server](#starting-the-server)
 - [Routing](#routing)
   - [Basic Routing](#basic-routing)
   - [Request and Response Handling](#request-and-response-handling)
@@ -144,6 +145,21 @@ app.listen(3000, () => {
 ```
 
 > [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/getting-started/README.md)
+
+Starting the Server
+===================
+
+To initiate the server reliably, kindly proceed to your terminal and execute the following command:
+
+```sh
+nodemon app.ts
+```
+
+Now that the server is operational, it's time to explore the capabilities of RangoJS. To do so, open your web browser and navigate to the following link:
+
+> [http://localhost:3000](http://localhost:3000)
+
+After opening up your web browser and accessing *http://localhost:3000*, you will be greeted with the message **"Hello, RangoJS!"**. This simple yet powerful display serves as an impressive introduction to your very first RangoJS application. The ability to swiftly render this message demonstrates the efficiency and capability of our framework, making it an exciting choice for web application development.
 
 Routing
 ===============
