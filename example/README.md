@@ -798,7 +798,9 @@ The context object representing the execution context of a route handler.
 
 ## Next Function
 
-**`Description`**: This function is used in middleware and route handlers to pass control to the next middleware/route handler in the stack.
+**`Description`**:
+
+This function is used in middleware and route handlers to pass control to the next middleware/route handler in the stack.
 
 ```ts
 function middleware(context, next){
