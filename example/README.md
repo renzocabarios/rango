@@ -24,6 +24,12 @@
   - [Multiple Path Params](#multiple-path-params)
   - [Query Params](#query-params)
   - [Multiple Query Params](#multiple-query-params)
+- [Logging](#logging)
+  - [Built-in Logger](#built-in-logger)
+  - [Custom Logger](#built-in-logger)
+  - [Logging Levels](#logging-levels)
+  - [Custom Logging Logic](#custom-logging-logic)
+  - [External Loggers](#external-loggers)
 
 Introduction
 ============
@@ -421,4 +427,81 @@ app.add({
 ```
 
 > [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/multiple-query-params/README.md)
+
+Logging
+=======
+
+Logging is a vital aspect of any web application, providing valuable insights into its behavior and helping developers monitor its performance and troubleshoot issues. This documentation focuses on logging in RangoJS, covering both the built-in logger and how to create and implement custom loggers.
+
+## Built-in Logger
+
+RangoJS comes with a built-in logger that allows you to record and analyze application events. This section explores the built-in logger's capabilities and how to utilize it effectively.
+
+```ts
+app.logger(true);
+```
+
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/logger/README.md)
+
+## Logging Levels
+
+Understand the different logging levels provided by the built-in logger and their significance:
+
+- trace
+- debug
+- info
+- warn
+- error
+- fatal
+
+## Custom Logger
+
+In certain scenarios, you may require a customized logging solution tailored to your application's specific needs. This section guides you on creating and implementing a custom logger in RangoJS.
+
+Learn how to set up and register a custom logger in your RangoJS application:
+
+```ts
+// Create custom logger callback
+const customLogger = (context: Context, next: NextFunction) => {
+  console.log("This is a logging function");
+  next();
+};
+
+// Mount custom logger to modify default logger
+app.logger(customLogger);
+```
+
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/logger/README.md)
+
+## Custom Logging Logic
+
+Understand how to implement custom logging logic to handle specific events and messages:
+
+```ts
+// custom-logging.js
+const customLogger = {
+  trace: (message) => {
+    // Custom trace logging logic
+  },
+  debug: (message) => {
+    // Custom debug logging logic
+  },
+  // Implement other log levels as needed
+};
+
+export default customLogger;
+```
+
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/logger/README.md)
+
+## External Loggers
+
+Discover how to integrate external logging libraries (e.g., Winston, Bunyan) as custom loggers in your RangoJS application:
+
+```ts
+const winston = require('winston');
+const winstonLogger = winston.createLogger(/* Configure Winston Logger */);
+
+app.logger(winstonLogger);
+```
 
