@@ -921,7 +921,7 @@ The response object representing the HTTP response to be sent back to the client
 
 ### Response Send
 
-- Send a `plain text`, `json` or `html` response to the client with the correct content type based on the `return` value of the route handler.
+- Send a `plain text`, `json` or `html` response to the client with the correct `Content-Type` based on the `return value`of the route handler.
 
     ```ts
     function middleware(context){
