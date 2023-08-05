@@ -19,6 +19,9 @@
   - [Method Specific Middlewares](#method-specific-middlewares)
   - [Error Handling Middlewares](#error-handling-middlewares)
   - [Legacy Middlewares](#legacy-middlewares)
+- [Request Parameters](#request-parameters)
+  - [Path Params](#path-params)
+  - [Multiple Path Params](#multiple-path-params)
 
 Introduction
 ============
@@ -346,3 +349,40 @@ app.use(legacyErrorMiddleware);
 
 > [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/middlewares/legacy-middlewares/README.md)
 
+Request Parameters
+==============
+
+Request parameters refer to the data sent by the client as part of an HTTP request. These parameters can be included in the URL path, known as `path params`, or in the query string of the URL, known as `query params`.
+
+## Path Params
+
+Path parameters are variables within the URL path itself. They are denoted by a colon followed by the parameter name. For example, in the route **'/users/:id',** `:id` is a path parameter. When a request is made to a route with a path parameter, Express extracts the value from the URL and makes it available in the req.params object.
+
+```ts
+app.add({
+  path: "users/:id",
+  GET: (context) => {
+    const userId = context.params.id;
+    return `Hello, user with ID: ${userId}`;
+  },
+});
+```
+
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/path-params/README.md)
+
+## Multiple Path Params
+
+Discover how to handle multiple path parameters in a single route:
+
+```ts
+app.add({
+  path: "users/:id/posts/:postsId",
+  GET: (context) => {
+    const userId = context.params.id;
+    const postId = context.params.postId;
+    return `User ${userId} posted with ID: ${postId}`;
+  },
+});
+```
+
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/multiple-path-params/README.md)
