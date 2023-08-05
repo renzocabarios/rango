@@ -811,7 +811,9 @@ function middleware(context, next){
 
 ## Request
 
-**`Description`**: The request object representing the HTTP request received from the client.
+**`Description`**:
+
+The request object representing the HTTP request received from the client.
 
 ### Request Body
 
