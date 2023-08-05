@@ -1045,7 +1045,7 @@ The Route object represents a specific route defined in RangoJS.
     ```ts
     GET: {
         callback: () => {
-
+          // Logic to handle GET request
         },
         middlewares: [ /* method specific middleware */]
     }
@@ -1069,7 +1069,7 @@ The Route object represents a specific route defined in RangoJS.
     ```ts
     POST: {
         callback: () => {
-
+          // Logic to handle POST request
         },
         middlewares: [ /* method specific middleware */]
     }
@@ -1093,7 +1093,7 @@ The Route object represents a specific route defined in RangoJS.
     ```ts
     PUT: {
         callback: () => {
-
+          // Logic to handle PUT request
         },
         middlewares: [ /* method specific middleware */]
     }
@@ -1117,7 +1117,7 @@ The Route object represents a specific route defined in RangoJS.
     ```ts
     PATCH: {
         callback: () => {
-
+          // Logic to handle PATCH request
         },
         middlewares: [ /* method specific middleware */]
     }
@@ -1141,7 +1141,7 @@ The Route object represents a specific route defined in RangoJS.
     ```ts
     DELETE: {
         callback: () => {
-
+          // Logic to handle DELETE request
         },
         middlewares: [ /* method specific middleware */]
     }
