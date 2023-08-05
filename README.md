@@ -903,6 +903,8 @@ const customLogger = (context: Context, next: NextFunction) => {
 app.logger(customLogger);
 ```
 
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/logger/README.md)
+
 Customizing logging output with a callback function in RangoJS provides developers with the flexibility to adapt logging messages to their specific needs. By following the steps outlined in this documentation, you can easily implement a custom logger, intercept log messages, and add additional metadata or formatting to suit your application's requirements.
 
 ## Conclusion
