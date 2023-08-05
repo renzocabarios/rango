@@ -650,7 +650,9 @@ Enable the built-in logger for the application.
 
 ## Context
 
-**`Description`**: The context object representing the execution context of a route handler.
+**`Description`**:
+
+The context object representing the execution context of a route handler.
 
 **`Methods`**:
 
