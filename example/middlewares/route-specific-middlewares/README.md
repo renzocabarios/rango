@@ -10,38 +10,17 @@ import http from "http";
 // Create an instance of the RangoJS app
 const app = rango();
 
-// Route-Specific middleware function
-const authMiddleware = (context: Context, next: NextFunction) => {
-  const { req, res } = context;
-  // Check authentication logic
-  if (req.isAuthenticated()) {
-    next(); // Proceed to the next middleware or route handler
-  } else {
-    // Stop the request-cycle and send back a response
-    res.status(401).send("Unauthorized");
-  }
+// Create Route-Specific middleware function
+const usersMiddleware = (context: Context, next: NextFunction) => {
+  console.log(`This middleware is executed for all '/users' routes`);
+  // Proceed to the next middleware or route handler
+  next();
 };
 
-app.add([
-  {
-    path: "users",
-    middlewares: [
-      // Inline middleware function callback
-      (context: Context, next: NextFunction) => {
-        const { req, res } = context;
-
-        // Check user 'isAdmin'
-        if (req.user.isAdmin()) {
-          res.status(401).send("Unauthorized");
-        } else {
-          next(); // Proceed to the next middleware or route handler
-        }
-      },
-      // route specific middleware function callback
-      authMiddleware,
-    ],
-  },
-]);
+app.add({
+  path: "users",
+  middlewares: [usersMiddleware],
+});
 
 // Start the server
 const port = 3000;
