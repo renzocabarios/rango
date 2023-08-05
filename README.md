@@ -386,6 +386,19 @@ So saddle up, partner, and embrace the cowboy spirit as you code fearlessly with
 
 ## [Checkout our API Documentations and Examples](https://github.com/mackignacio/rango/blob/main/example/README.md)
 
+## Team
+
+*RANGO* is the result of the work of a great community. Team members are
+listed in alphabetical order.
+
+**Lead Maintainers:**
+
+- [**Mack Ignacio**](https://github.com/mackignacio)
+
+**Contributors:**
+
+- [**Renzo Cabarios**](https://github.com/renzocabarios)
+
 ## Contributing
 
 Join the pioneers of web development and set out on a wild west adventure with RangoJS. Get ready to experience bullet-fast performance, sure aim precision, and ace-high results like never before. It's time to strap on your coding holster and let RangoJS lead you to API greatness. Are you up for the challenge? Let's ride into the sunset of web development together with RangoJS!
