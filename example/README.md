@@ -36,6 +36,17 @@
     - [app.use](#app-use)
     - [app.listen](#app-listen)
     - [app.logger](#app-logger)
+  - [Context](#context)
+    - [context.req](#context-request)
+    - [context.res](#context-response)
+    - [context.query](#context-query)
+    - [context.params](#context-params)
+    - [context.body](#context-body)
+    - [context.file](#context-file)
+    - [context.method](#context-method)
+    - [context.headers](#context-headers)
+    - [context.path](#context-path)
+    - [context.setStatus](#context-set-status)
 
 Introduction
 ============
@@ -594,4 +605,150 @@ app.logger(customLogger)
   - Set the logger with the custom function. The function must be a custom `Middleware`.
 
 > [See detailed example here.](https://github.com/mackignacio/rango/blob/main/example/basic/logger/README.md)
+
+## Context
+
+**`Description`**: The context object representing the execution context of a route handler.
+
+**`Methods`**:
+
+### Context Request
+
+- The request object associated with the context.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const req = context.req;
+
+        // Use destructuring
+        const { req } = context.req
+    }
+    ```
+
+### Context Response
+
+- The response object associated with the context.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const res = context.res;
+
+        // Use destructuring
+        const { res } = context.res
+    }
+    ```
+
+### Context Query
+
+- Object containing the query parameters of the request.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const query = context.query;
+
+        // Use destructuring
+        const { query } = context.query
+    }
+    ```
+
+### Context Params
+
+- Object containing the path parameters of the route.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const params = context.params;
+
+        // Use destructuring
+        const { params } = context.params
+    }
+    ```
+
+### Context Body
+
+- A chunk of incoming data.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const body = context.body;
+
+        // Use destructuring
+        const { body } = context.body
+    }
+    ```
+
+### Context File
+
+- A chunk of incoming file data.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const file = context.file;
+
+        // Use destructuring
+        const { file } = context.file
+    }
+    ```
+
+### Context Method
+
+- A string that denotes the HTTP method.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const method = context.method;
+
+        // Use destructuring
+        const { method } = context.method
+    }
+    ```
+
+### Context Headers
+
+- A list of headers from client request.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const headers = context.headers;
+
+        // Use destructuring
+        const { headers } = context.headers
+    }
+    ```
+
+### Context Path
+
+- The path of current route.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const path = context.path;
+
+        // Use destructuring
+        const { path } = context.path
+    }
+    ```
+
+### Context Set Status
+
+- Set the status of the response object.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const setStatus = context.setStatus;
+
+        // Use destructuring
+        const { setStatus } = context.setStatus
+    }
+    ```
 
