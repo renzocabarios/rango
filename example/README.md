@@ -585,22 +585,16 @@ Add a `routeObject` to the list of existing route.
 
 Set the incoming callback function as a global middleware.
 
-```ts
-app.use(cors())
-app.use(customMiddleware)
-app.use(legacyMiddleware)
-```
-
 **Options**
 
 - `callback`
   - Callback function must be a type of [`Middleware`](#route-middlewares).
 
-### App Listen
-
-```ts
-app.listen(port, callback)
-```
+  ```ts
+  app.use(cors())
+  app.use(customMiddleware)
+  app.use(legacyMiddleware)
+  ```
 
 Start the server and listen to incoming request.
 
