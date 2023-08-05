@@ -6,6 +6,12 @@
 - [Prerequisites](#prerequisites)
 - [Setup Project](#setup-project)
 - [Getting Started](#getting-started)
+- [Routing](#routing)
+  - [Basic Routing](#basic-routing)
+  - [Request and Response Handling](#request-and-response-handling)
+  - [Multiple Routes](#multiple-routes)
+  - [Single Route](#single-route)
+  - [Child Routes](#child-routes)
 
 Introduction
 ============
@@ -81,4 +87,119 @@ console.log(`Server listening on port ${port}`);
 ```
 
 > [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/getting-started/README.md)
+
+Routing
+===============
+
+RangoJS provides a simple and flexible routing mechanism through its app object. The most common HTTP methods used for routing are GET, POST, PUT, DELETE, etc. Each of these methods is used to define routes for different types of HTTP requests.
+
+## Basic Routing
+
+Define basic routes and route handlers to handle incoming requests:
+
+```ts
+app.add({
+    path: "",
+    GET: () => {
+        return "Hello, RangoJS!";
+    }
+});
+```
+
+## Request and Response Handling
+
+Discover how to access **`request`** and **`response`** objects and handle different types of requests:
+
+```ts
+app.add([
+  {
+    path: "",
+    GET: ({ req, res }) => {
+      return "'Hello, RangoJS!'";
+    },
+  }
+]);
+```
+
+## Multiple Routes
+
+Learn how to handle multiple routes with different paths:
+
+```ts
+app.add([
+  {
+    path: "home",
+    GET: () => {
+      return "Welcome Home to the RangoJS!";
+    },
+  },
+  {
+    path: "about",
+    GET: () => {
+      return "About Us: Learn more about our library.";
+    },
+  },
+  {
+    path: "contact",
+    GET: () => {
+      return "Contact Us: Reach out to us for any issues/questions.";
+    },
+  }
+]);
+```
+
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/multiple-routes/README.md)
+
+## Single Route
+
+Understand how to define a single route with multiple HTTP methods:
+
+```ts
+app.add({
+    path: "users",
+    GET: () => {
+      // Logic to handle GET request for '/users'
+      return "This is a GET request!";
+    },
+    POST: () => {
+      // Logic to handle POST request for '/users'
+      return "This is a POST request!";
+    },
+    PUT: () => {
+      // Logic to handle PUT request for '/users'
+      return "This is a PUT request!";
+    },
+    PATCH: () => {
+      // Logic to handle PATCH request for '/users'
+      return "This is a PATCH request!";
+    },
+    DELETE: () => {
+      // Logic to handle DELETE request for '/users'
+      return "This is a DELETE request!";
+    }
+});
+```
+
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/single-route/README.md)
+
+## Child Routes
+
+Learn how to implement child routes for better route organization:
+
+```ts
+app.add({
+    path: "parent",
+    // You can put single route methods here
+    // i.e. "GET","POST","DELETE","OPTIONS","PUT","PATCH"
+    children: [
+        {
+            path: "child",
+            // You can put single route methods here
+            // i.e. "GET","POST","DELETE","OPTIONS","PUT","PATCH"
+        }
+    ]
+});
+```
+
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/child-routes/README.md)
 
