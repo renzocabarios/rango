@@ -5,6 +5,7 @@
 - [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
 - [Setup Project](#setup-project)
+- [Getting Started](#getting-started)
 
 Introduction
 ============
@@ -57,4 +58,27 @@ Setup Project
     ```sh
     npm install typescript ts-node nodemon -D
     ```
+
+Getting Started
+===============
+
+Before diving into examples and middlewares, make sure you have RangoJS installed in your project:
+
+```sh
+npm install rango
+```
+
+To create a simple RangoJS application, create a new file (e.g., **`app.ts`**) and require the RangoJS module:
+
+```ts
+const rango = require("rango");
+const app = rango();
+const port = 3000;
+
+app.listen(port, () => {
+console.log(`Server listening on port ${port}`);
+});
+```
+
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/getting-started/README.md)
 
