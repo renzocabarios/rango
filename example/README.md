@@ -48,6 +48,14 @@
     - [context.path](#context-path)
     - [context.setStatus](#context-set-status)
   - [Next Function](#next-function)
+  - [Request](#request)
+    - [req.body](#request-body)
+    - [req.file](#request-file)
+    - [req.query](#request-query)
+    - [req.params](#request-params)
+    - [req.method](#request-method)
+    - [req.headers](#request-headers)
+    - [req.path](#request-path)
 
 Introduction
 ============
@@ -763,4 +771,106 @@ function middleware(context, next){
     next();
 }
 ```
+
+## Request
+
+**`Description`**: The request object representing the HTTP request received from the client.
+
+### Request Body
+
+- Same as [`context.body`](#context-body). Only added for legacy middlewares.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const body = context.req.body;
+
+        // Use destructuring to 'context.req'
+        const { body } = context.req;
+    }
+    ```
+
+### Request File
+
+- Same as [`context.file`](#context-file). Only added for legacy middlewares.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const file = context.req.file;
+
+        // Use destructuring to 'context.req'
+        const { file } = context.req;
+    }
+    ```
+
+### Request Headers
+
+- Same as [`context.headers`](#context-headers). Only added for legacy middlewares.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const headers = context.req.headers;
+
+        // Use destructuring to 'context.req'
+        const { headers } = context.req;
+    }
+    ```
+
+### Request Method
+
+- Same as [`context.method`](#context-method). Only added for legacy middlewares.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const method = context.req.method;
+
+        // Use destructuring to 'context.req'
+        const { method } = context.req;
+    }
+    ```
+
+### Request Params
+
+- Same as [`context.params`](#context-params). Only added for legacy middlewares.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const params = context.req.params;
+
+        // Use destructuring to 'context.req'
+        const { params } = context.req;
+    }
+    ```
+
+### Request Path
+
+- Same as [`context.path`](#context-path). Only added for legacy middlewares.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const path = context.req.path;
+
+        // Use destructuring to 'context.req'
+        const { path } = context.req;
+    }
+    ```
+
+### Request Query
+
+- Same as [`context.query`](#context-query). Only added for legacy middlewares.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const query = context.req.query;
+
+        // Use destructuring to 'context.req'
+        const { query } = context.req;
+    }
+    ```
 
