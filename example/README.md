@@ -684,7 +684,7 @@ The context object representing the execution context of a route handler.
         const req = context.req;
 
         // Use destructuring
-        const { req } = context.req
+        const { req } = context;
     }
     ```
 
@@ -698,7 +698,7 @@ The context object representing the execution context of a route handler.
         const res = context.res;
 
         // Use destructuring
-        const { res } = context.res
+        const { res } = context;
     }
     ```
 
@@ -712,7 +712,7 @@ The context object representing the execution context of a route handler.
         const query = context.query;
 
         // Use destructuring
-        const { query } = context.query
+        const { query } = context;
     }
     ```
 
@@ -726,7 +726,7 @@ The context object representing the execution context of a route handler.
         const params = context.params;
 
         // Use destructuring
-        const { params } = context.params
+        const { params } = context;
     }
     ```
 
@@ -740,7 +740,7 @@ The context object representing the execution context of a route handler.
         const body = context.body;
 
         // Use destructuring
-        const { body } = context.body
+        const { body } = context;
     }
     ```
 
@@ -754,7 +754,7 @@ The context object representing the execution context of a route handler.
         const file = context.file;
 
         // Use destructuring
-        const { file } = context.file
+        const { file } = context;
     }
     ```
 
@@ -768,7 +768,7 @@ The context object representing the execution context of a route handler.
         const method = context.method;
 
         // Use destructuring
-        const { method } = context.method
+        const { method } = context;
     }
     ```
 
@@ -782,7 +782,7 @@ The context object representing the execution context of a route handler.
         const headers = context.headers;
 
         // Use destructuring
-        const { headers } = context.headers
+        const { headers } = context;
     }
     ```
 
@@ -796,7 +796,7 @@ The context object representing the execution context of a route handler.
         const path = context.path;
 
         // Use destructuring
-        const { path } = context.path
+        const { path } = context;
     }
     ```
 
@@ -810,7 +810,7 @@ The context object representing the execution context of a route handler.
         const setStatus = context.setStatus;
 
         // Use destructuring
-        const { setStatus } = context.setStatus
+        const { setStatus } = context;
     }
     ```
 
