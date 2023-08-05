@@ -124,9 +124,8 @@ With your cowboy hat on tight, let's wrangle some code and create a basic server
 2. In **app.ts**, add the following code:
 
     ```ts
-    // Import RangoJS and http module
+    // Import RangoJS
     import rango from "rango";
-    import http from "http";
 
     // Create an instance of the RangoJS app
     const app = rango();
@@ -510,9 +509,8 @@ app.listen(port, () => {
 Route-specific middleware is applied only to specific routes or route groups. You can't add them using `app.use()` with a specific route path or directly within your route definition. You need to define them using the `middlewares` key inside your route definition.
 
 ```ts
-// Import RangoJS and http module
-import rango, { Context, NextFunction } from "rango";
-import http from "http";
+// Import RangoJS
+import rango, { Context, NextFunction } from "rango
 
 // Create an instance of the RangoJS app
 const app = rango();
@@ -564,9 +562,8 @@ app.listen(port, () => {
 Method-Specific middleware allows you to create middleware functions that are executed only for specific HTTP methods, such as **`GET`**, **`POST`**, **`PATCH`**, **`PUT`**, **`DELETE`**, etc. By utilizing method-specific middleware, you can customize the behavior of your application based on the type of request received.
 
 ```ts
-// Import RangoJS and http module
-import rango, { Context, NextFunction } from "rango";
-import http from "http";
+// Import RangoJS
+import rango, { Context, NextFunction } from "rango
 
 // Create an instance of the RangoJS app
 const app = rango();
@@ -633,9 +630,8 @@ Method-Specific middleware in RangoJS allows you to tailor the behavior of your 
 Error handling middleware is used to catch and process errors that occur during request processing. These middleware functions have an additional `error` key on the `Context` object, allowing them to handle errors and respond appropriately.
 
 ```ts
-// Import RangoJS and http module
-import rango, { Context, NextFunction } from "rango";
-import http from "http";
+// Import RangoJS
+import rango, { Context, NextFunction } from "rango
 
 // Create an instance of the RangoJS app
 const app = rango();
@@ -686,9 +682,8 @@ Here's how we can wrangle them Express.js middlewares into RangoJS:
 2. Import the middleware you installed and mount it on RangoJS
 
     ```ts
-    // Import RangoJS and http module
+    // Import RangoJS
     import rango from "rango";
-    import http from "http";
 
     // Import the Express.js `cors` middleware
     import cors from "cors";
@@ -832,7 +827,6 @@ Query Params are a mighty tool that allows you to pass data to your server throu
 ```ts
 // Import RangoJS
 import rango from "rango";
-
 
 // Create an instance of the RangoJS app
 const app = rango();
