@@ -4,6 +4,7 @@
 
 - [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
+- [Setup Project](#setup-project)
 
 Introduction
 ============
@@ -29,8 +30,31 @@ To use RangoJS, make sure you have the following prerequisites installed on your
 
     To check if npm is installed, run the following command in your terminal:
 
-    ```
+    ```sh
     npm -v
     ```
+
     It will show the installed npm version.
+
+Setup Project
+=============
+
+1. Create a new project directory:
+
+    ```sh
+    mkdir my-rangojs-app
+    cd my-rangojs-app
+    ```
+
+2. Initialize a new Node.js project:
+
+    ```sh
+    npm init -y
+    ```
+
+3. Install Typescript and Nodemon:
+
+    ```sh
+    npm install typescript ts-node nodemon -D
+    ```
 
