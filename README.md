@@ -140,16 +140,10 @@ Let's begin by setting up a new RangoJS project. Ride along with these instructi
     npm install rango
     ```
 
-4. Install Typescript:
+4. Install Typescript and Nodemon:
 
     ```sh
-    npm install typescript ts-node -D
-    ```
-
-5. Install Nodemon:
-
-    ```sh
-    npm install nodemon -D
+    npm install typescript ts-node nodemon -D
     ```
 
 ### Creating a Basic RangoJS Server
