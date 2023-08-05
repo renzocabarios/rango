@@ -915,7 +915,9 @@ The request object representing the HTTP request received from the client.
 
 ## Response
 
-**`Description`**: The response object representing the HTTP response to be sent back to the client.
+**`Description`**:
+
+The response object representing the HTTP response to be sent back to the client.
 
 ### Response Send
 
