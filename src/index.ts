@@ -1,9 +1,9 @@
 import { websocket, wsDisconnect } from "./websocket";
+import { Context, ResponseObject, RequestObject } from "./interfaces";
 import app, { Router } from "./app";
-import { Context } from "./interfaces";
 import { NextFunction } from "./types";
 
-export { Context, NextFunction };
+export { Context, NextFunction, ResponseObject, RequestObject };
 
 /**
  * A Nodejs library for managing routes. MayaJs use a declarative way of defining routes.
