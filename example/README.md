@@ -622,22 +622,29 @@ Start the server and listen to incoming request.
 
 Enable the built-in logger for the application.
 
-```ts
-app.logger()
-app.logger(true) /* or */ app.logger(false)
-app.logger(customLogger)
-```
-
 **Options**
 
 - `default`
   - Set to `false`
+
+  ```ts
+  app.logger()
+  ```
+
 - `Boolean`
   - When set to `true`, logging will be **enabled**
   - When set to `false`, logging will be **disabled**
-  - `default` is **disabled**
+
+  ```ts
+  app.logger(true) /* or */ app.logger(false)
+  ```
+
 - `Function`
   - Set the logger with the custom function. The function must be a custom `Middleware`.
+
+  ```ts
+  app.logger(customLogger)
+  ```
 
 > [See detailed example here.](https://github.com/mackignacio/rango/blob/main/example/basic/logger/README.md)
 
