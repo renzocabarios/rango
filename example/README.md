@@ -941,11 +941,11 @@ The response object representing the HTTP response to be sent back to the client
     ```ts
     function middleware(context){
         // Get value directly using 'context' object
-        context.res.json("Sending a JSON response to the client!");
+        context.res.json({ message : "Sending a JSON response to the client!" });
 
         // Use destructuring to 'context'
         const { res } = context;
-        res.json("Sending a JSON response to the client!");
+        res.json({ message : "Sending a JSON response to the client!" });
     }
     ```
 
