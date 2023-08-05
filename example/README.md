@@ -137,10 +137,9 @@ To create a simple RangoJS application, create a new file (e.g., **`app.ts`**) a
 ```ts
 const rango = require("rango");
 const app = rango();
-const port = 3000;
 
-app.listen(port, () => {
-console.log(`Server listening on port ${port}`);
+app.listen(3000, () => {
+  console.log(`Server listening on port ${port}`);
 });
 ```
 
