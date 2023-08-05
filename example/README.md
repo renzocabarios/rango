@@ -980,7 +980,9 @@ The response object representing the HTTP response to be sent back to the client
 
 ## Route
 
-**`Description`**: The Route object represents a specific route defined in RangoJS.
+**`Description`**:
+
+The Route object represents a specific route defined in RangoJS.
 
  ```ts
 {
