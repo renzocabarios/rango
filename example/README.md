@@ -56,6 +56,11 @@
     - [req.method](#request-method)
     - [req.headers](#request-headers)
     - [req.path](#request-path)
+  - [Response](#response)
+    - [res.send](#response-send)
+    - [res.json](#response-json)
+    - [res.html](#response-html)
+    - [res.contentLength](#response-content-length)
 
 Introduction
 ============
@@ -871,6 +876,69 @@ function middleware(context, next){
 
         // Use destructuring to 'context.req'
         const { query } = context.req;
+    }
+    ```
+
+## Response
+
+**`Description`**: The response object representing the HTTP response to be sent back to the client.
+
+### Response Send
+
+- Send a `plain text`, `json` or `html` response to the client with the correct content type based on the `return` value of the route handler.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        context.res.send("Sending a response to the client!");
+
+        // Use destructuring to 'context'
+        const { res } = context;
+        res.send("Sending a response to the client!");
+    }
+    ```
+
+### Response Json
+
+- Send `json` response to the client with the `Content-Type` of `application/json`.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        context.res.json("Sending a JSON response to the client!");
+
+        // Use destructuring to 'context'
+        const { res } = context;
+        res.json("Sending a JSON response to the client!");
+    }
+    ```
+
+### Response HTML
+
+- Send `text` response to the client with the `Content-Type` of `text/html`.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        context.res.html("<h1> Hello, RangoJS! </h1>");
+
+        // Use destructuring to 'context'
+        const { res } = context;
+        res.html("<h1> Hello, RangoJS! </h1>");
+    }
+    ```
+
+### Response Content Length
+
+- Calculate the length of the content send back to the client.
+
+    ```ts
+    function middleware(context){
+        // Get value directly using 'context' object
+        const contentLength =   context.res.contentLength;
+
+        // Use destructuring to 'context'
+        const { contentLength } = context.res;
     }
     ```
 
