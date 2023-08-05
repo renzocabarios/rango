@@ -202,7 +202,7 @@ You've successfully set up a RangoJS project, created a basic server, and sent a
 
 Saddle up and let your code roam free like a wild mustang, breaking new ground and blazing trails in this digital frontier. Ride with the wind in your hair and the thrill in your heart as you wrangle them bugs and rope up them features. Keep your eyes on the horizon, 'cause the sky's the limit when you're a code cowboy! So kick back, relax, and enjoy the ride with RangoJS as your trusty sidekick.
 
-### Understanding the Code
+## Understanding the Code
 
 Let's break down the code in your **app.ts**.
 
