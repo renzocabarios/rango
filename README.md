@@ -8,6 +8,45 @@
 
 *The name "**Rango**" comes from the animated adventure comedy film released in 2011. The story follows a chameleon named Rango, voiced by the legendary actor Johnny Depp. However, it's worth noting that "Rango" is originally a Spanish word that means "range" or "to range." It seems that the movie title "Rango" is also the same in Tagalog and has been kept as is, possibly due to its original Spanish origin.*
 
+# Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Setup Project](#setup-project)
+- [Getting Started](#howdy-let-start)
+- [Routing](example/README.md#routing)
+  - [Basic Routing](example/README.md#basic-routing)
+  - [Request and Response Handling](example/README.md#request-and-response-handling)
+  - [Multiple Routes](example/README.md#multiple-routes)
+  - [Single Route](example/README.md#single-route)
+  - [Child Routes](example/README.md#child-routes)
+- [Middlewares](example/README.md#middlewares)
+  - [Global Middlewares](example/README.md#global-middlewares)
+  - [Custom Middlewares](example/README.md#custom-middlewares)
+  - [Route Specific Middlewares](example/README.md#route-specific-middlewares)
+  - [Method Specific Middlewares](example/README.md#method-specific-middlewares)
+  - [Error Handling Middlewares](example/README.md#error-handling-middlewares)
+  - [Legacy Middlewares](example/README.md#legacy-middlewares)
+- [Request Parameters](example/README.md#request-parameters)
+  - [Path Params](example/README.md#path-params)
+  - [Multiple Path Params](example/README.md#multiple-path-params)
+  - [Query Params](example/README.md#query-params)
+  - [Multiple Query Params](example/README.md#multiple-query-params)
+- [Logging](example/README.md#logging)
+  - [Built-in Logger](example/README.md#built-in-logger)
+  - [Custom Logger](example/README.md#built-in-logger)
+  - [Logging Levels](example/README.md#logging-levels)
+  - [Custom Logging Logic](example/README.md#custom-logging-logic)
+  - [External Loggers](example/README.md#external-loggers)
+- [API References](example/README.md#api-references)
+  - [Application](example/README.md#application)
+  - [Router Context](example/README.md#context)
+  - [Next Function](example/README.md#next-function)
+  - [Request Object](example/README.md#request)
+  - [Response Object](example/README.md#response)
+  - [Route](example/README.md#route)
+
 ## Introduction
 
 > **"Ace Up, Ride the Code, Bullet Fast Your APIs" - The Wild West of Node.js!**
