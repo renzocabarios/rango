@@ -559,21 +559,25 @@ This is a concise yet comprehensive guide for RangoJS's API. These API reference
 
 ### App Add
 
-```ts
-app.add({ /* route object */ })
-app.add([
-    { /* route object */ }
-])
-```
-
 Add a `routeObject` to the list of existing route.
 
 **Options**
 
 - `routeObject`
   - An object with type of [`Route`](#route).
+
+  ```ts
+  app.add({ /* route object */ })
+  ```
+
 - `routeObject[]`
   - An array of `routeObject`.
+
+  ```ts
+  app.add([
+      { /* route object */ }
+  ])
+  ```
 
 **Options**
 
