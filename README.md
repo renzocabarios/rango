@@ -140,8 +140,8 @@ With your cowboy hat on tight, let's wrangle some code and create a basic server
 
     // Start the server
     const port = 3000;
-    http.createServer(app).listen(port, () => {
-      console.log(`Server listening on port ${port}.`);
+    app.listen(port, () => {
+      console.log(`Server listening on port ${port}`);
     });
     ```
 
@@ -700,8 +700,8 @@ Here's how we can wrangle them Express.js middlewares into RangoJS:
 
     // Start the server
     const port = 3000;
-    http.createServer(app).listen(port, () => {
-      console.log(`Server listening on port ${port}.`);
+    app.listen(port, () => {
+      console.log(`Server listening on port ${port}`);
     });
     ```
 
