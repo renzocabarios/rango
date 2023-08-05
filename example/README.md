@@ -648,6 +648,8 @@ Enable the built-in logger for the application.
 
 > [See detailed example here.](https://github.com/mackignacio/rango/blob/main/example/basic/logger/README.md)
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Context
 
 **`Description`**:
@@ -809,6 +811,8 @@ function middleware(context, next){
 }
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Request
 
 **`Description`**:
@@ -913,6 +917,8 @@ The request object representing the HTTP request received from the client.
     }
     ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Response
 
 **`Description`**:
@@ -977,6 +983,8 @@ The response object representing the HTTP response to be sent back to the client
         const { contentLength } = context.res;
     }
     ```
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Route
 
@@ -1146,3 +1154,4 @@ The Route object represents a specific route defined in RangoJS.
         middlewares: [ /* method specific middleware */]
     }
     ```
+**[⬆ back to top](#table-of-contents)**
