@@ -117,7 +117,7 @@ Listen up, code cowboy! Before you saddle up and ride the RangoJS trail, make su
 
 Once you've got these mighty tools, you're all set to wrangle RangoJS and conquer the digital frontier like a true code cowboy! Giddy-up and let's hit the trail!
 
-### Setting up a New RangoJS Project
+### Setup Project
 
 Let's begin by setting up a new RangoJS project. Ride along with these instructions:
 
