@@ -596,14 +596,27 @@ Set the incoming callback function as a global middleware.
   app.use(legacyMiddleware)
   ```
 
+### App Listen
+
 Start the server and listen to incoming request.
 
 **Options**
 
 - `port`
   - Set the port number for the server to listen
+
+  ```ts
+  app.listen(3000)
+  ```
+
 - `callback` : *OPTIONAL*
   - A callback function that will be executed once the server starts
+
+  ```ts
+  app.listen(3000, () => {
+    console.log(`Server listening on port ${port}`);
+  })
+  ```
 
 ### App Logger
 
