@@ -22,6 +22,8 @@
 - [Request Parameters](#request-parameters)
   - [Path Params](#path-params)
   - [Multiple Path Params](#multiple-path-params)
+  - [Query Params](#query-params)
+  - [Multiple Query Params](#multiple-query-params)
 
 Introduction
 ============
@@ -386,3 +388,37 @@ app.add({
 ```
 
 > [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/multiple-path-params/README.md)
+
+## Query Params
+
+Query parameters are additional key-value pairs appended to the URL after a question mark **`'?'`**. They are used to pass data to the server in the form of URL parameters. Express automatically parses the query parameters and makes them available in the req.query object.
+
+```ts
+app.add({
+  path: "users",
+  GET: (context) => {
+    const userId = context.query.name || "stranger";
+    return `Howdy, Cowboy coder ${name}!`;
+  },
+});
+```
+
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/query-params/README.md)
+
+## Multiple Query Params
+
+Learn how to handle multiple query parameters in a single request:
+
+```ts
+app.add({
+  path: "search",
+  GET: (context) => {
+    const searchTerm = context.query.q || 'No search term';
+    const sortBy = context.query.sort || 'date';
+    return `Searching for "${searchTerm}" sorted by "${sortBy}"`;
+  },
+});
+```
+
+> [See the full code here.](https://github.com/mackignacio/rango/blob/main/example/basic/multiple-query-params/README.md)
+
