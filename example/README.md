@@ -61,6 +61,15 @@
     - [res.json](#response-json)
     - [res.html](#response-html)
     - [res.contentLength](#response-content-length)
+  - [Route](#route)
+    - [path](#path)
+    - [GET](#get)
+    - [POST](#post)
+    - [PUT](#put)
+    - [PATCH](#patch)
+    - [DELETE](#delete)
+    - [children](#route-children)
+    - [middlewares](#route-middlewares)
 
 Introduction
 ============
@@ -942,3 +951,169 @@ function middleware(context, next){
     }
     ```
 
+## Route
+
+**`Description`**: The Route object represents a specific route defined in RangoJS.
+
+ ```ts
+{
+  path: string;
+  children?: Routes;
+  middlewares?: Middlewares;
+  GET: (context: Context) => Promise<any> | any;
+  POST: (context: Context) => Promise<any> | any;
+  PUT: (context: Context) => Promise<any> | any;
+  PATCH: (context: Context) => Promise<any> | any;
+  DELETE: (context: Context) => Promise<any> | any;
+}
+```
+
+### Path
+
+- The URL pattern associated with the route.
+
+    ```ts
+    {
+        path: ""
+    }
+    ```
+
+### Route Children
+
+- An array of route associated with the route.
+
+    ```ts
+    {
+        children: [/* route objects */]
+    }
+    ```
+
+### Route Middlewares
+
+- An array of middleware associated with the route.
+
+    ```ts
+    {
+        middlewares: [/* route specific middlewares */]
+    }
+    ```
+
+### GET
+
+- `Function`
+  - A route handler function that only executed for HTTP `GET` Method.
+
+    ```ts
+    GET: (context: Context) => {
+        // Logic to handle GET request
+    }
+    ```
+
+- `Object`
+  - `callback` : A route handler function that only executed for HTTP `GET` Method.
+  - `middleware` : An array of middleware associated with this HTTP `GET` Method.
+
+    ```ts
+    GET: {
+        callback: () => {
+
+        },
+        middlewares: [ /* method specific middleware */]
+    }
+    ```
+
+### POST
+
+- `Function`
+  - A route handler function that only executed for HTTP `POST` Method.
+
+    ```ts
+    POST: (context: Context) => {
+        // Logic to handle POST request
+    }
+    ```
+
+- `Object`
+  - `callback` : A route handler function that only executed for HTTP `POST` Method.
+  - `middleware` : An array of middleware associated with this HTTP `POST` Method.
+
+    ```ts
+    POST: {
+        callback: () => {
+
+        },
+        middlewares: [ /* method specific middleware */]
+    }
+    ```
+
+### PUT
+
+- `Function`
+  - A route handler function that only executed for HTTP `PUT` Method.
+
+    ```ts
+    PUT: (context: Context) => {
+        // Logic to handle PUT request
+    }
+    ```
+
+- `Object`
+  - `callback` : A route handler function that only executed for HTTP `PUT` Method.
+  - `middleware` : An array of middleware associated with this HTTP `PUT` Method.
+
+    ```ts
+    PUT: {
+        callback: () => {
+
+        },
+        middlewares: [ /* method specific middleware */]
+    }
+    ```
+
+### PATCH
+
+- `Function`
+  - A route handler function that only executed for HTTP `PATCH` Method.
+
+    ```ts
+    PATCH: (context: Context) => {
+        // Logic to handle PATCH request
+    }
+    ```
+
+- `Object`
+  - `callback` : A route handler function that only executed for HTTP `PATCH` Method.
+  - `middleware` : An array of middleware associated with this HTTP `PATCH` Method.
+
+    ```ts
+    PATCH: {
+        callback: () => {
+
+        },
+        middlewares: [ /* method specific middleware */]
+    }
+    ```
+
+### DELETE
+
+- `Function`
+  - A route handler function that only executed for HTTP `DELETE` Method.
+
+    ```ts
+    DELETE: (context: Context) => {
+        // Logic to handle DELETE request
+    }
+    ```
+
+- `Object`
+  - `callback` : A route handler function that only executed for HTTP `DELETE` Method.
+  - `middleware` : An array of middleware associated with this HTTP `DELETE` Method.
+
+    ```ts
+    DELETE: {
+        callback: () => {
+
+        },
+        middlewares: [ /* method specific middleware */]
+    }
+    ```
