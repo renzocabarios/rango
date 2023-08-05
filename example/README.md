@@ -440,6 +440,7 @@ app.add({
 Query parameters are additional key-value pairs appended to the URL after a question mark **`'?'`**. They are used to pass data to the server in the form of URL parameters. Express automatically parses the query parameters and makes them available in the req.query object.
 
 ```ts
+// Sample request to '/users?name=cowboy'
 app.add({
   path: "users",
   GET: (context) => {
@@ -456,6 +457,7 @@ app.add({
 Learn how to handle multiple query parameters in a single request:
 
 ```ts
+// Sample request to '/search?q=rangojs&sort=features'
 app.add({
   path: "search",
   GET: (context) => {
