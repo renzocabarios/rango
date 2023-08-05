@@ -30,6 +30,12 @@
   - [Logging Levels](#logging-levels)
   - [Custom Logging Logic](#custom-logging-logic)
   - [External Loggers](#external-loggers)
+- [API References](#api-references)
+  - [Application](#application)
+    - [app.add](#app-add)
+    - [app.use](#app-use)
+    - [app.listen](#app-listen)
+    - [app.logger](#app-logger)
 
 Introduction
 ============
@@ -504,4 +510,88 @@ const winstonLogger = winston.createLogger(/* Configure Winston Logger */);
 
 app.logger(winstonLogger);
 ```
+
+API References
+==============
+
+This is a concise yet comprehensive guide for RangoJS's API. These API references will equip you with the tools needed to craft robust and efficient web applications.
+
+## Application
+
+**`Description`**: The primary application object representing the RangoJS application.
+
+**`Methods`**:
+
+### App Add
+
+```ts
+app.add({ /* route object */ })
+app.add([
+    { /* route object */ }
+])
+```
+
+Add a `routeObject` to the list of existing route.
+
+**Options**
+
+- `routeObject`
+  - An object with type of [`Route`](#route).
+- `routeObject[]`
+  - An array of `routeObject`.
+
+**Options**
+
+### App Use
+
+Set the incoming callback function as a global middleware.
+
+```ts
+app.use(cors())
+app.use(customMiddleware)
+app.use(legacyMiddleware)
+```
+
+**Options**
+
+- `callback`
+  - Callback function must be a type of [`Middleware`](#route-middlewares).
+
+### App Listen
+
+```ts
+app.listen(port, callback)
+```
+
+Start the server and listen to incoming request.
+
+**Options**
+
+- `port`
+  - Set the port number for the server to listen
+- `callback` : *OPTIONAL*
+  - A callback function that will be executed once the server starts
+
+### App Logger
+
+Enable the built-in logger for the application.
+
+```ts
+app.logger()
+app.logger(true) /* or */ app.logger(false)
+app.logger(customLogger)
+```
+
+**Options**
+
+- `default`
+  - Set to `false`
+- `Boolean`
+  - When set to `true`, logging will be **enabled**
+  - When set to `false`, logging will be **disabled**
+  - `default` is **disabled**
+- `Function`
+  - Set the logger with the custom function. The function must be a custom `Middleware`.
+
+> [See detailed example here.](https://github.com/mackignacio/rango/blob/main/example/basic/logger/README.md)
 
