@@ -11,7 +11,7 @@ const options = {
 };
 
 const FILE_NAME = "ws.js";
-const DESTINATION = "lib/ws.js";
+const DESTINATION = "lib/rango.js";
 
 try {
   const minified = await minify(`scripts/${FILE_NAME}`, options);

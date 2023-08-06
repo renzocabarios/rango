@@ -9,7 +9,7 @@ function websocket() {
 
   WSS.on("connection", (ws: ws) => {
     ws.on("close", () => {
-      console.log("\x1b[32m[mayajs] Refresh browser\x1b[0m");
+      console.log("Rango refresh browser\x1b[0m");
     });
 
     clients.push(ws);
@@ -22,7 +22,7 @@ function wsDisconnect() {
 }
 
 function refreshScript() {
-  return `<script src="/js/ws.js"></script>`;
+  return `<script src="/js/rango.js"></script>`;
 }
 
 export { websocket, wsDisconnect, refreshScript };
