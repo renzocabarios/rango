@@ -398,6 +398,7 @@ listed in alphabetical order.
 **Contributors:**
 
 - [**Renzo Cabarios**](https://github.com/renzocabarios)
+- [**Ian Labicani**](https://github.com/ditosoft-ianlabicani)
 
 ## Contributing
 
