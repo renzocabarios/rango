@@ -24,6 +24,7 @@ removableProps.forEach((prop) => delete packageData[prop]);
 const scripts = {
   clean: "rimraf index.js && rimraf index.d.ts && rimraf lib",
   postpack: "npm run clean && node ./scripts/restore-package.js",
+  minify: "node ./scripts/mini.mjs",
 };
 
 // Replace scripts value

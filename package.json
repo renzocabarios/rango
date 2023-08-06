@@ -7,6 +7,7 @@
     "test": "jest",
     "clean": "rimraf lib",
     "tgz": "rimraf --glob *.tgz",
+    "minify": "node ./scripts/mini.mjs",
     "major": "npm version major -m \"feat(version): :sparkles: bump version to %s\"",
     "major:alpha": "npm version premajor --preid=alpha -m \"feat(version): :sparkles: bump major version to %s\"",
     "major:beta": "npm version premajor --preid=beta -m \"feat(version): :sparkles: bump major version to %s\"",
@@ -23,7 +24,7 @@
     "pre:beta": "npm version prerelease --preid=beta -m \"feat(version): :sparkles: bump version to %s\"",
     "pre:rc": "npm version prerelease --preid=rc -m \"feat(version): :sparkles: bump version to %s\"",
     "package": "node ./scripts/clean-package.js",
-    "prepack": "npm run clean && npm run package && tsc",
+    "prepack": "npm run clean && npm run package && tsc && npm run minify",
     "postpack": "npm run clean && node ./scripts/restore-package.js",
     "start": "npm run clean && npm run tgz && tsc -w"
   },
