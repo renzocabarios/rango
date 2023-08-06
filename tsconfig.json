@@ -13,5 +13,5 @@
     "emitDecoratorMetadata": true,
     "downlevelIteration": true
   },
-  "exclude": ["test", "lib", "example"]
+  "exclude": ["test", "lib", "example", "scripts"]
 }
