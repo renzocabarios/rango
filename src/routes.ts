@@ -70,12 +70,16 @@ function mapEndpoints(route: Route) {
 }
 
 function createRouteObject(route: CreateRoute): RouteObject;
+function createRouteObject(path: string, parent: Map<string, RouteObject>): RouteObject;
 function createRouteObject(route: CreateRoute, parent: Map<string, RouteObject>): RouteObject;
-function createRouteObject(route: CreateRoute, parent?: Map<string, RouteObject>): RouteObject {
-  const isExist = parent?.get(route.path);
-  if (isExist) return isExist;
+function createRouteObject(route: CreateRoute | string, parent?: Map<string, RouteObject>): RouteObject {
+  const isString = typeof route === "string";
+  const routePath = isString ? route : route.path;
+  const isExist = parent?.get(routePath);
 
-  const { path, endpoints = [], middlewares = [], children = new Map<string, RouteObject>() } = route;
+  if (isExist || (isString && isExist)) return isExist;
+
+  const { path, endpoints = [], middlewares = [], children = new Map<string, RouteObject>() } = route as CreateRoute;
   return { regex: RegEx(path), path, hasParam: path.includes(":"), endpoints, middlewares, children };
 }
 
@@ -88,7 +92,8 @@ function checkRoutePathExist(pathname: string): RouteObject | undefined {
   // Why we use for-of instead of map, forEach or reduce
   for (const value of paths) {
     const prevRegex = routeObj?.regex ?? "";
-    routeObj = !routeObj ? routes.get(value) : checkRouteChildrenPathExist(routeObj.children, value);
+    const childrenExists = (routeObj: RouteObject) => checkRouteChildrenPathExist(routeObj.children, value) ?? routeObj;
+    routeObj = !routeObj ? createRouteObject(value, routes) : createRouteObject(childrenExists(routeObj));
     middlewares = [...middlewares, ...(routeObj?.middlewares ?? [])];
 
     if (routeObj !== undefined) {
