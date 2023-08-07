@@ -206,11 +206,19 @@ Saddle up and let your code roam free like a wild mustang, breaking new ground a
 
 Let's break down the code in your **app.ts**.
 
-We imported the RangoJS module using `import rango from 'rango'`.
+We imported the RangoJS
 
-We created an instance of the RangoJS application with `const app = rango()`.
+```ts
+import rango from "rango";
+```
 
-We defined a route for the home page using
+We created an instance of the RangoJS application
+
+```ts
+const app = rango();
+```
+
+We defined a route for the home page
 
 ```ts
 app.add({
@@ -221,7 +229,7 @@ app.add({
 })
 ```
 
-When a user accesses the root URL (i.e., /), the provided callback function is executed, and the response **"Hello, RangoJS!"** is sent back. RangoJS automatically detects the returned data from the callback and assign the correct `content-type` in the header.
+When a user accesses the root URL (i.e., **/**), the provided callback function is executed, and the response **"Hello, RangoJS!"** is sent back. RangoJS automatically detects the returned data from the callback and assign the correct `content-type` in the header.
 
 We started the server on `port 3000` using
 
