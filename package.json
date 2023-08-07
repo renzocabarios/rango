@@ -29,8 +29,7 @@
     "package": "node ./scripts/clean-package.js",
     "prepack": "npm run clean && npm run package && tsc && mini",
     "postpack": "npm run clean && node ./scripts/restore-package.js",
-    "tsc": "start mini && tsc -w",
-    "start": "npm run clean && npm run tgz && npm run tsc"
+    "start": "npm run clean && npm run tgz && concurrently \"mini\" \"tsc -w\""
   },
   "repository": {
     "type": "git",
@@ -59,6 +58,7 @@
   "devDependencies": {
     "@types/node": "^13.13.52",
     "@types/ws": "^8.5.3",
+    "concurrently": "^8.2.0",
     "minify": "^10.3.0",
     "nodemon": "^3.0.1",
     "rimraf": "^5.0.1",
