@@ -1,10 +1,11 @@
-import { Context } from "./interfaces";
-import mapMiddlewares from "./middleware";
 import { checkEndpointExist, checkRoutePathExist } from "./routes";
+import { Context, RouteObject } from "./interfaces";
 import sendFile, { isFileRequest } from "./static";
+import mapMiddlewares from "./middleware";
 import { RouteCallback } from "./types";
 import plugins from "./plugins";
 import RegEx from "./regex";
+import cache from "./cache";
 
 /**
  * A function that manage an incoming request.
@@ -22,21 +23,27 @@ async function send(context: Context): Promise<void> {
     return sendFile(context);
   }
 
+  // Check cache routes
+  const cachedRoute = cache.get(path);
+
   // Check if route path exist
   // If exist will return a route object
-  const routePathExist = checkRoutePathExist(path);
+  const routePathExist = cachedRoute?.route ? cachedRoute?.route : checkRoutePathExist(path);
 
   if (!routePathExist) {
     // Send error message if path is not found
     return res.send({ message: `Path of ${path} is missing.`, status: "PathNotFound", error: true }, 406);
   }
 
+  // Create current path regex
+  const pathRegex = typeof routePathExist.regex === "string" ? RegEx(routePathExist.regex, true) : routePathExist.regex;
+
   // Set path `params` if RegEx group result is not undefined
-  context.params = RegEx(routePathExist.regex, true).exec("/" + path)?.groups ?? {};
+  context.params = pathRegex.exec("/" + path)?.groups ?? {};
 
   // Check if endpoint exist in route object
   // If exist will return an endpoint object
-  const routeMethodExist = checkEndpointExist(routePathExist, method);
+  const routeMethodExist = checkEndpointExist(routePathExist as RouteObject, method);
 
   if (!routeMethodExist) {
     // Send error message if method is not found or not allowed
@@ -53,13 +60,23 @@ async function send(context: Context): Promise<void> {
   };
 
   try {
+    // Build all middlewares to one single middlewares
+    const allMiddlewares = [...plugins, ...routePathExist.middlewares, ...routeMethodExist.middlewares];
+
+    // Add current route object to cache
+    cache.add({
+      path: routePathExist.path,
+      endpoints: routePathExist.endpoints,
+      middlewares: allMiddlewares,
+      children: routePathExist.children,
+      hasParam: routePathExist.hasParam,
+      regex: pathRegex,
+    });
+
     // Loop thru all middlewares and inject context
     // If middleware doesn't have a "next()" function
     // It will end the loop and proceed to execute the endpoint callback
-    await mapMiddlewares(
-      [...plugins, ...routePathExist.middlewares, ...routeMethodExist.middlewares, callback],
-      context
-    );
+    await mapMiddlewares([...allMiddlewares, callback], context);
   } catch (error) {
     if (error) {
       // Send error message if middleware has an error or failed to execute
