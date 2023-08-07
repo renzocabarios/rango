@@ -4,13 +4,13 @@
   "description": "RangoJS - a fearless gunslinging Node.js library that brings unmatched speed, precision, and power to API development. With RangoJS, crafting bullet-fast, sure aim, and ace-high APIs becomes an exhilarating adventure. Embrace the wild west spirit of web development and experience the thrill of building robust and lightning-quick APIs with ease.",
   "main": "lib/index.js",
   "bin": {
+    "mini": "./bin/mini.mjs",
     "release": "./bin/release.js"
   },
   "scripts": {
     "test": "jest",
     "clean": "rimraf lib",
     "tgz": "rimraf --glob *.tgz",
-    "minify": "node ./scripts/mini.mjs",
     "major": "release --release=major",
     "major:alpha": "release major --preid=alpha",
     "major:beta": "release major --preid=beta",
@@ -27,9 +27,10 @@
     "pre:beta": "release --preid=beta",
     "pre:rc": "release --preid=rc",
     "package": "node ./scripts/clean-package.js",
-    "prepack": "npm run clean && npm run package && tsc && npm run minify",
+    "prepack": "npm run clean && npm run package && tsc && mini",
     "postpack": "npm run clean && node ./scripts/restore-package.js",
-    "start": "npm run clean && npm run tgz && tsc -w"
+    "tsc": "start mini && tsc -w",
+    "start": "npm run clean && npm run tgz && npm run tsc"
   },
   "repository": {
     "type": "git",
