@@ -240,7 +240,7 @@ Well, now that you've got your spurs on, it's time to ride into unexplored terri
 
 ## Single Route with Multiple HTTP Methods
 
-Now, let's create a single route that supports multiple HTTP methods (**GET**, **POST**, **PUT**, **DELETE**, and **DELETE**). We'll handle each method differently based on the action we want to perform using a `callback` function. We call these callback function route `endpoints`.
+Now, let's create a single route that supports multiple HTTP methods (**GET**, **POST**, **PUT**, **PATCH** and **DELETE**). We'll handle each method differently based on the action we want to perform using a `callback` function. We call these callback function route `endpoints`.
 
 In **app.ts**, update the `app.add` function and add the following code:
 
