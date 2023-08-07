@@ -28,7 +28,8 @@
     "plugins",
     "github",
     "logger",
-    "settings"
+    "settings",
+    "file"
   ],
   "cSpell.words": ["rango"]
 }
