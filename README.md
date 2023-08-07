@@ -399,14 +399,14 @@ So saddle up, partner, and embrace the cowboy spirit as you code fearlessly with
 *RANGO* is the result of the work of a great community. Team members are
 listed in alphabetical order.
 
-### Lead Maintainers
+### Lead Maintainer
 
-  - [**Mack Ignacio**](https://github.com/mackignacio)
+- [*Mack Ignacio*](https://github.com/mackignacio)
 
 ### Contributors
 
-  - [**Ian Labicani**](https://github.com/ditosoft-ianlabicani)
-  - [**Renzo Cabarios**](https://github.com/renzocabarios)
+- [*Ian Labicani*](https://github.com/ditosoft-ianlabicani)
+- [*Renzo Cabarios*](https://github.com/renzocabarios)
 
 ## Contributing
 
