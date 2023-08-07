@@ -27,7 +27,7 @@ function freeAddressPort(port: number, callback: () => void) {
     const matcher = new RegExp(/LISTENING(?<pid>\d+)/);
     const pid = matcher.exec(strOut)?.groups?.pid;
 
-    exec(`tskill ${pid} /f`, (err, stdout, stderr) => {
+    exec(`tskill ${pid}`, (err, stdout, stderr) => {
       if (stdout) {
         console.log(`Successfully open port number`, port);
         callback();

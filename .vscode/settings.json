@@ -29,7 +29,8 @@
     "github",
     "logger",
     "settings",
-    "file"
+    "file",
+    "port"
   ],
   "cSpell.words": ["rango"]
 }
