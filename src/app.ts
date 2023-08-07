@@ -1,12 +1,12 @@
-import { exec } from "child_process";
-import { AddressInfo } from "net";
 import http from "http";
 import handler from "./handler";
 import { createRouteMapper } from "./routes";
 import { Route, RouteWithChildren, RouteWithMiddlewares } from "./interfaces";
+import { checkUsedPort, freeAddressPort, switchPort } from "./port";
 import { Middleware } from "./types";
 import plugins from "./plugins";
 import Logger from "./logger";
+import settings from "./settings";
 
 function logger(enable: boolean): void;
 function logger(logFn: Middleware): void;
@@ -24,33 +24,15 @@ function use(plugin: Middleware) {
   plugins.push(plugin);
 }
 
-
-function switchPort(port: number, server: http.Server) {
-  return (stdout: string) => {
-    console.log("Port", port, "already in use!", "Switching to any random open port.");
-
-    server.listen(0, () => {
-      const newPort = (server.address() as AddressInfo).port;
-      console.log(`Server is listening on port`, newPort);
-    });
-  };
-}
-
-function checkUsedPort(port: number, callback: (stdout: string) => void, start: () => void) {
-  exec(`netstat -ano | findstr ${port}`, (err, stdout, stderr) => {
-    if (stdout) {
-      return callback;
-    }
-
-    start();
-  });
+function killPort() {
+  settings.set("KILL_PORT", true);
 }
 
 function listen(this: Router, port: number, listener?: (() => void) | undefined) {
   const server = http.createServer(this);
   const callback = () => server.listen(port, listener);
 
-  if (KILL_PORT) {
+  if (settings.get("KILL_PORT")) {
     return checkUsedPort(port, freeAddressPort(port, callback), callback);
   }
 
@@ -84,6 +66,7 @@ export type RangoApp = {
     (logFn: Middleware): void;
     (enable: boolean): void;
   };
+  killPort: () => void;
   headers: { [x: string]: string };
 };
 
@@ -91,4 +74,4 @@ export type Router = ((req: http.IncomingMessage, res: http.ServerResponse) => v
 
 type ListenFnArgs = [port: number, listener?: (() => void) | undefined];
 
-export default Object.assign(handler, { use, add, logger, listen, headers: { "X-Powered-By": "RangoJS" } });
+export default Object.assign(handler, { use, add, logger, listen, killPort, headers: { "X-Powered-By": "RangoJS" } });
