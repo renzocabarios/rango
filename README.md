@@ -410,6 +410,6 @@ listed in alphabetical order.
 
 ## Contributing
 
-Join the pioneers of web development and set out on a wild west adventure with RangoJS. Get ready to experience bullet-fast performance, sure aim precision, and ace-high results like never before. It's time to strap on your coding holster and let RangoJS lead you to API greatness. Are you up for the challenge? Let's ride into the sunset of web development together with RangoJS!
+Join the pioneers of web development and set out on a wild west adventure with RangoJS. Get ready to experience bullet-fast performance, sure aim precision, and ace-high results like never before. It's time to strap on your coding holster and let RangoJS lead you to API greatness. Are you up for the challenge? See our [documentation](CONTRIBUTING.md) for contributors and let's ride into the sunset of web development together with RangoJS!
 
 **[⬆ back to top](#table-of-contents)**
