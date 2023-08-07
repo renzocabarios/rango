@@ -1,5 +1,7 @@
-import handler from "./handler";
+import { exec } from "child_process";
+import { AddressInfo } from "net";
 import http from "http";
+import handler from "./handler";
 import { createRouteMapper } from "./routes";
 import { Route, RouteWithChildren, RouteWithMiddlewares } from "./interfaces";
 import { Middleware } from "./types";
@@ -22,9 +24,37 @@ function use(plugin: Middleware) {
   plugins.push(plugin);
 }
 
-function listen(this: Router, ...args: ListenFnArgs) {
+
+function switchPort(port: number, server: http.Server) {
+  return (stdout: string) => {
+    console.log("Port", port, "already in use!", "Switching to any random open port.");
+
+    server.listen(0, () => {
+      const newPort = (server.address() as AddressInfo).port;
+      console.log(`Server is listening on port`, newPort);
+    });
+  };
+}
+
+function checkUsedPort(port: number, callback: (stdout: string) => void, start: () => void) {
+  exec(`netstat -ano | findstr ${port}`, (err, stdout, stderr) => {
+    if (stdout) {
+      return callback;
+    }
+
+    start();
+  });
+}
+
+function listen(this: Router, port: number, listener?: (() => void) | undefined) {
   const server = http.createServer(this);
-  return server.listen.apply(server, args);
+  const callback = () => server.listen(port, listener);
+
+  if (KILL_PORT) {
+    return checkUsedPort(port, freeAddressPort(port, callback), callback);
+  }
+
+  checkUsedPort(port, switchPort(port, server), callback);
 }
 
 function add(route: Route): void;
