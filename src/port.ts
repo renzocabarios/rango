@@ -2,11 +2,10 @@ import { exec, execSync } from "child_process";
 import { AddressInfo } from "net";
 import http from "http";
 
-function findOpenPort(): number {
-  const port = Math.floor(Math.random() * 90000) + 10000;
+function findOpenPort(port: number): number {
   try {
     execSync(`netstat -ano | findstr ${port}`);
-    return findOpenPort();
+    return findOpenPort(Math.floor(Math.random() * 90000) + 10000);
   } catch (error) {
     return port;
   }

@@ -1,4 +1,3 @@
-import { websocket, wsDisconnect } from "./websocket";
 import { Context, ResponseObject, RequestObject } from "./interfaces";
 import app, { Router } from "./app";
 import { NextFunction } from "./types";
@@ -35,17 +34,6 @@ export { Context, NextFunction, ResponseObject, RequestObject };
  * @return Router
  */
 function rango(): Router {
-  // Run websocket for non-production environment
-  if (!process?.env?.PRODUCTION) {
-    websocket();
-
-    process
-      .on("SIGKILL", wsDisconnect)
-      .on("SIGINT", wsDisconnect)
-      .on("exit", wsDisconnect)
-      .on("disconnect", wsDisconnect);
-  }
-
   // Return Router Instance
   return app;
 }
