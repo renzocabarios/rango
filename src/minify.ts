@@ -3,25 +3,18 @@ import { exec } from "child_process";
 import path from "path";
 
 const minify = (filename: string, destination: string) => {
-  return exec(`${path.resolve(__dirname, "../node_modules/.bin/minify")} ${destination}`, (err, stdout, stderr) => {
-    if (stdout) {
-      try {
-        const filePath = path.resolve(__dirname, `../lib/${filename}.js`);
-        const port = filename.split("-")?.[1] ?? 6969;
+  fs.readFile(`${path.resolve(__dirname, "ws.js")}`, (err, data) => {
+    if (data) {
+      const strOut = data.toString();
+      const port = filename.split("-")?.[1] ?? 6969;
+      const filePath = path.resolve(__dirname, `${filename}.js`);
 
-        fs.writeFile(filePath, stdout.replace("6969", port), (err) => {
-          if (!err) {
-            console.log(`JS successfully minified ${filename}.js`);
-          }
-        });
-      } catch (error) {
-        console.log(error);
-      }
-
-      return;
+      fs.writeFile(filePath, strOut.replace("6969", port), (err) => {
+        if (!err) {
+          console.log(`JS successfully minified ${filename}.js`);
+        }
+      });
     }
-
-    console.log(err ?? stderr);
   });
 };
 

@@ -18,14 +18,14 @@ function createWebSocket(server: http.Server, port: number) {
     WSS = new Server({ server });
 
     WSS.on("connection", () => {
-      console.log("Web browser has restarted.");
+      console.log("Web browser has been reloaded.");
     });
 
     WSS.on("listening", () => {
       console.log("Ready for HOT RELOAD!");
     });
 
-    const wsScript = "scripts/ws.js";
+    const wsScript = "ws.js";
     const resolvePath = path.resolve(__dirname, wsScript);
     const pathToWs = fs.existsSync(resolvePath) ? resolvePath : path.resolve(__dirname, `../${wsScript}`);
 
