@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "rango": "^1.0.0"
+    "rango": "^0.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1",
