@@ -36,10 +36,16 @@
     "url": "git+https://github.com/mackignacio/rango.git"
   },
   "keywords": [
+    "nodejs",
     "rest",
     "api",
-    "nodejs",
-    "router"
+    "router",
+    "framework",
+    "express",
+    "fast",
+    "backend",
+    "next",
+    "nest"
   ],
   "author": "Mack Ignacio",
   "license": "MIT",
