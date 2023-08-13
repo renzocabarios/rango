@@ -2,11 +2,12 @@ import http from "http";
 import handler from "./handler";
 import { createRouteMapper } from "./routes";
 import { Route, RouteWithChildren, RouteWithMiddlewares } from "./interfaces";
-import { checkUsedPort, freeAddressPort, switchPort } from "./port";
+import { checkUsedPort, findOpenPort, freeAddressPort } from "./port";
 import { Middleware } from "./types";
 import plugins from "./plugins";
 import Logger from "./logger";
 import settings from "./settings";
+import { createWebSocket, runWebsocket } from "./websocket";
 
 function logger(enable: boolean): void;
 function logger(logFn: Middleware): void;
@@ -29,14 +30,40 @@ function killPort() {
 }
 
 function listen(this: Router, port: number, listener?: (() => void) | undefined) {
-  const server = http.createServer(this);
-  const callback = () => server.listen(port, listener);
+  const server = http.createServer();
+
+  server.on("request", this);
 
   if (settings.get("KILL_PORT")) {
+    const callback = () => server.listen(port, runWebsocket(server, port, listener));
     return checkUsedPort(port, freeAddressPort(port, callback), callback);
   }
 
-  checkUsedPort(port, switchPort(port, server), callback);
+  // Run websocket for non-production environment
+  if (process?.env?.PRODUCTION === undefined && settings.get("WEBSOCKET")) {
+    [
+      "exit",
+      "disconnect",
+      "SIGBREAK",
+      "SIGHUP",
+      "SIGKILL",
+      "SIGINT",
+      "SIGUSR1",
+      "SIGUSR2",
+      "SIGSTOP",
+      "uncaughtException",
+      "SIGTERM",
+      "beforeExit",
+    ].forEach((eventType: any) => {
+      process.on(eventType, (code) => createWebSocket(server, port));
+    });
+  }
+
+  const newPort = findOpenPort(port);
+  const isPortChange = port !== newPort;
+  listener = isPortChange ? () => console.log(`Server switching port ${port}.`, "Listening to", newPort) : listener;
+
+  server.listen(newPort, runWebsocket(server, newPort, listener));
 }
 
 function add(route: Route): void;

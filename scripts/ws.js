@@ -2,15 +2,24 @@
   let openedSocketFlag = false;
   let hasError = false;
   let refresh = false;
-  let interval = setInterval(waitConnection, 2000);
+  let interval = setInterval(waitConnection(), 2000);
+
   const port = 6969;
   const delay = 2000;
 
-  async function waitConnection() {
-    if (!openedSocketFlag) await refreshPage();
+  function waitConnection(tries) {
+    return async function () {
+      if (tries > 5) {
+        refresh = false;
+        window.location.reload();
+        return;
+      }
+
+      if (!openedSocketFlag) await refreshPage(tries++);
+    };
   }
 
-  async function refreshPage() {
+  async function refreshPage(tries) {
     let ws = new WebSocket(`ws://localhost:${port}`);
 
     return new Promise((resolve, reject) => {
@@ -34,7 +43,7 @@
 
         if (!hasError) {
           console.log("Rango refreshing browser");
-          interval = setInterval(waitConnection, delay);
+          interval = setInterval(waitConnection(tries++), delay);
         }
       });
 
@@ -42,7 +51,7 @@
         if (!hasError) {
           console.log("Rango failed to refresh browser. Waiting for connection...");
           clearInterval(interval);
-          interval = setInterval(waitConnection, delay);
+          interval = setInterval(waitConnection(tries++), delay);
         }
 
         ws.close();

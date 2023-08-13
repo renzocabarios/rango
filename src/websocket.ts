@@ -1,58 +1,54 @@
-import { findOpenPort } from "./port";
-import ws, { WebSocket } from "ws";
-import fs from "fs";
+import websocket, { Server } from "ws";
+import http from "http";
 import path from "path";
+import fs from "fs";
 import minify from "./minify";
+import { AddressInfo } from "net";
+import settings from "./settings";
 
-let WSS: ws.Server<WebSocket>;
-let script = `<script src="/js/rango.js"></script>`;
+let WSS: websocket.Server<typeof websocket, typeof http.IncomingMessage>;
+let filename = "ws-3000";
 
-const clients: ws[] = [];
-const PORT = 6969;
+function createWebSocket(server: http.Server, port: number) {
+  try {
+    port = (server.address() as AddressInfo)?.port ?? port;
 
-function createSocket(port: number = 6969) {
-  WSS = new ws.Server({ port });
+    filename = `ws-${port}`;
 
-  WSS.on("connection", (ws: ws) => {
-    ws.on("close", () => {
-      console.log("Rango refresh browser\x1b[0m");
+    WSS = new Server({ server });
+
+    WSS.on("connection", () => {
+      console.log("Web browser has restarted.");
     });
 
-    clients.push(ws);
-  });
+    WSS.on("listening", () => {
+      console.log("Ready for HOT RELOAD!");
+    });
 
-  WSS.on("listening", () => {
-    console.log("WebSocket listening on port", port);
-  });
+    const wsScript = "scripts/ws.js";
+    const resolvePath = path.resolve(__dirname, wsScript);
+    const pathToWs = fs.existsSync(resolvePath) ? resolvePath : path.resolve(__dirname, `../${wsScript}`);
 
-  const filename = `rango${port === PORT ? "" : "-" + port}`;
-  script = `<script src="/js/${filename}.js"></script>`;
-
-  let pathToWs = path.resolve(__dirname, "scripts/ws.js");
-
-  if (!fs.existsSync(pathToWs)) {
-    pathToWs = path.resolve(__dirname, "../scripts/ws.js");
-  }
-
-  minify(filename, pathToWs);
-
-  return script;
-}
-
-function websocket() {
-  return createSocket(findOpenPort(PORT));
-}
-
-function wsDisconnect() {
-  clients.forEach((ws) => ws.close());
-
-  if (WSS?.close) {
-    WSS.close();
+    minify(filename, pathToWs);
+  } catch (error) {
+    console.log(error);
   }
 }
 
 function refreshScript() {
-  return script;
+  return `<script src="/${filename}.js"></script>`;
 }
 
-export { websocket, wsDisconnect, refreshScript };
+function runWebsocket(server: http.Server, port: number, callback?: () => void) {
+  if (WSS !== undefined) return;
+
+  // Run websocket for non-production environment
+  if (process?.env?.PRODUCTION === undefined && settings.get("WEBSOCKET")) {
+    createWebSocket(server, port);
+    settings.set("WEBSOCKET", false);
+  }
+
+  return callback;
+}
+
+export { createWebSocket, runWebsocket, refreshScript };

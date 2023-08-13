@@ -1,6 +1,5 @@
 import { ResponseObject } from "./interfaces";
-import { refreshScript, websocket, wsDisconnect } from "./websocket";
-import settings from "./settings";
+import { refreshScript } from "./websocket";
 import http from "http";
 
 const contentTypeValues = ["text/plain", "application/json", "text/html"];
@@ -39,23 +38,9 @@ function createResponseObject(res: http.ServerResponse): ResponseObject {
       return JSON.stringify(json);
     },
     html(html: string, statusCode = 200) {
-      let refresher = refreshScript();
-
-      // Run websocket for non-production environment
-      if (process?.env?.PRODUCTION === undefined && settings.get("WEBSOCKET")) {
-        refresher = websocket();
-
-        settings.set("WEBSOCKET", false);
-
-        process
-          .on("SIGKILL", wsDisconnect)
-          .on("SIGINT", wsDisconnect)
-          .on("exit", wsDisconnect)
-          .on("disconnect", wsDisconnect);
-      }
-
       res.writeHead(statusCode, contentType[2]);
       const body = (value: string) => (value.includes("<body>") ? value : `<body>${value}</body>`);
+      const refresher = refreshScript();
       return body(html).replace(/<\/body>/i, `${refresher}</body>`);
     },
     status(code: number) {
