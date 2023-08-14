@@ -11,7 +11,7 @@ const minify = (filename: string, destination: string) => {
 
       fs.writeFile(filePath, strOut.replace("6969", port), (err) => {
         if (!err) {
-          console.log(`JS successfully minified ${filename}.js`);
+          console.log(`Live reloading enabled for development environment`);
         }
       });
     }

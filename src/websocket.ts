@@ -22,7 +22,7 @@ function createWebSocket(server: http.Server, port: number) {
     });
 
     WSS.on("listening", () => {
-      console.log("Ready for HOT RELOAD!");
+      console.log("Initializing hot reload...");
     });
 
     const wsScript = "ws.js";
@@ -43,7 +43,7 @@ function runWebsocket(server: http.Server, port: number, callback?: () => void) 
   if (WSS !== undefined) return;
 
   // Run websocket for non-production environment
-  if (process?.env?.PRODUCTION === undefined && settings.get("WEBSOCKET")) {
+  if (process?.env?.PRODUCTION === undefined && !process?.env?.PRODUCTION && settings.get("WEBSOCKET")) {
     createWebSocket(server, port);
     settings.set("WEBSOCKET", false);
   }

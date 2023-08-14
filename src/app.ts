@@ -2,7 +2,7 @@ import http from "http";
 import handler from "./handler";
 import { createRouteMapper } from "./routes";
 import { Route, RouteWithChildren, RouteWithMiddlewares } from "./interfaces";
-import { checkUsedPort, findOpenPort, freeAddressPort } from "./port";
+import { checkUsedPort, findOpenPort, freeAddressPort, taskKill } from "./port";
 import { Middleware } from "./types";
 import plugins from "./plugins";
 import Logger from "./logger";
@@ -34,16 +34,26 @@ function listen(this: Router, port: number, listener?: (() => void) | undefined)
 
   server.on("request", this);
 
-  if (settings.get("KILL_PORT")) {
+  try {
+    const { pid, tcp, wait } = checkUsedPort(port);
+    const id = pid ?? tcp;
     const callback = () => server.listen(port, runWebsocket(server, port, listener));
-    return checkUsedPort(port, freeAddressPort(port, callback), callback);
+
+    if (settings.get("KILL_PORT")) {
+      return freeAddressPort(port, { pid, tcp, wait }, callback);
+    }
+
+    if (id) {
+      return taskKill(id, callback);
+    }
+
+    throw new Error();
+  } catch (error) {
+    const newPort = findOpenPort(port);
+    const isPortChanged = port !== newPort;
+    listener = isPortChanged ? () => console.log(`Server switching port ${port}.`, "Listening to", newPort) : listener;
+    server.listen(newPort, runWebsocket(server, newPort, listener));
   }
-
-  const newPort = findOpenPort(port);
-  const isPortChange = port !== newPort;
-  listener = isPortChange ? () => console.log(`Server switching port ${port}.`, "Listening to", newPort) : listener;
-
-  server.listen(newPort, runWebsocket(server, newPort, listener));
 }
 
 function add(route: Route): void;
