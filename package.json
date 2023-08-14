@@ -45,7 +45,8 @@
     "fast",
     "backend",
     "next",
-    "nest"
+    "nest",
+    "react"
   ],
   "author": "Mack Ignacio",
   "license": "MIT",
