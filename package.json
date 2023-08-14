@@ -55,7 +55,7 @@
   },
   "homepage": "https://github.com/mackignacio/rango#readme",
   "engines": {
-    "node": ">= 18"
+    "node": ">= 14"
   },
   "files": [
     "LICENSE",
