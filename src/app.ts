@@ -39,26 +39,6 @@ function listen(this: Router, port: number, listener?: (() => void) | undefined)
     return checkUsedPort(port, freeAddressPort(port, callback), callback);
   }
 
-  // Run websocket for non-production environment
-  if (process?.env?.PRODUCTION === undefined && settings.get("WEBSOCKET")) {
-    [
-      "exit",
-      "disconnect",
-      "SIGBREAK",
-      "SIGHUP",
-      "SIGKILL",
-      "SIGINT",
-      "SIGUSR1",
-      "SIGUSR2",
-      "SIGSTOP",
-      "uncaughtException",
-      "SIGTERM",
-      "beforeExit",
-    ].forEach((eventType: any) => {
-      process.on(eventType, (code) => createWebSocket(server, port));
-    });
-  }
-
   const newPort = findOpenPort(port);
   const isPortChange = port !== newPort;
   listener = isPortChange ? () => console.log(`Server switching port ${port}.`, "Listening to", newPort) : listener;
