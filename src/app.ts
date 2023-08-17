@@ -10,7 +10,7 @@ import settings from "./settings";
 import { createWebSocket, runWebsocket } from "./websocket";
 import guards from "./guards";
 
-function addGuard(guard: Guard) {
+function guardRoute(guard: Guard) {
   guards.push(guard);
 }
 
@@ -74,7 +74,7 @@ function add(
 }
 
 export type RangoApp = {
-  addGuard: (guard: Guard) => void;
+  guardRoute: (guard: Guard) => void;
   use: (plugin: Middleware) => void;
   listen: (port: number, listener?: () => void) => void;
   add: {
@@ -97,4 +97,12 @@ export type Router = ((req: http.IncomingMessage, res: http.ServerResponse) => v
 
 type ListenFnArgs = [port: number, listener?: (() => void) | undefined];
 
-export default Object.assign(handler, { use, add, logger, listen, killPort, headers: { "X-Powered-By": "RangoJS" } });
+export default Object.assign(handler, {
+  guardRoute,
+  use,
+  add,
+  logger,
+  listen,
+  killPort,
+  headers: { "X-Powered-By": "RangoJS" },
+});
