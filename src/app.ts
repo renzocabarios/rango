@@ -3,15 +3,15 @@ import handler from "./handler";
 import { createRouteMapper } from "./routes";
 import { Route, RouteWithChildren, RouteWithMiddlewares } from "./interfaces";
 import { checkUsedPort, findOpenPort, freeAddressPort, taskKill } from "./port";
-import { Guard, Middleware } from "./types";
+import { Guards, Middleware } from "./types";
 import plugins from "./plugins";
 import Logger from "./logger";
 import settings from "./settings";
 import { createWebSocket, runWebsocket } from "./websocket";
 import guards from "./guards";
 
-function guardRoute(guard: Guard) {
-  guards.push(guard);
+function guardRoute(_guards: Guards) {
+  guards.push(...[..._guards]);
 }
 
 function logger(enable: boolean): void;
@@ -74,7 +74,7 @@ function add(
 }
 
 export type RangoApp = {
-  guardRoute: (guard: Guard) => void;
+  guardRoute: (_guards: Guards) => void;
   use: (plugin: Middleware) => void;
   listen: (port: number, listener?: () => void) => void;
   add: {
