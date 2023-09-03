@@ -2,6 +2,7 @@ import { Context, ResponseObject, RequestObject } from "./interfaces";
 import app, { Router } from "./app";
 import { NextFunction } from "./types";
 import cors from "cors";
+import bodyParser from "body-parser";
 
 export { Context, NextFunction, ResponseObject, RequestObject };
 
@@ -37,6 +38,13 @@ export { Context, NextFunction, ResponseObject, RequestObject };
 function rango(): Router {
   // Initialize CORS plugin
   app.use(cors());
+
+  // Initialize BODY-PARSER plugin
+  // parse application/x-www-form-urlencoded
+  app.use(bodyParser.urlencoded({ extended: false }));
+
+  // parse application/json
+  app.use(bodyParser.json());
 
   // Return Router Instance
   return app;
