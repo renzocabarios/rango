@@ -1,6 +1,7 @@
 import { Context, ResponseObject, RequestObject } from "./interfaces";
 import app, { Router } from "./app";
 import { NextFunction } from "./types";
+import cors from "cors";
 
 export { Context, NextFunction, ResponseObject, RequestObject };
 
@@ -34,6 +35,9 @@ export { Context, NextFunction, ResponseObject, RequestObject };
  * @return Router
  */
 function rango(): Router {
+  // Initialize CORS plugin
+  app.use(cors());
+
   // Return Router Instance
   return app;
 }

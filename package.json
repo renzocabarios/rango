@@ -63,6 +63,7 @@
     "lib"
   ],
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@types/node": "^13.13.52",
     "@types/ws": "^8.5.5",
     "concurrently": "^8.2.0",
@@ -71,9 +72,11 @@
     "rimraf": "^5.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
-    "ws": "^8.13.0"
+    "ws": "^8.13.0",
+    "cors": "^2.8.5"
   },
   "peerDependencies": {
-    "ws": "^8.13.0"
+    "ws": "^8.13.0",
+    "cors": "^2.8.5"
   }
 }
