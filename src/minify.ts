@@ -1,5 +1,4 @@
 import fs from "fs";
-import { exec } from "child_process";
 import path from "path";
 
 const minify = (filename: string, destination: string) => {
@@ -10,8 +9,8 @@ const minify = (filename: string, destination: string) => {
       const filePath = path.resolve(__dirname, `${filename}.js`);
 
       fs.writeFile(filePath, strOut.replace("6969", port), (err) => {
-        if (!err) {
-          console.log(`Live reloading enabled for development environment`);
+        if (!err && process?.env?.PRODUCTION === undefined && !process?.env?.PRODUCTION) {
+          console.log(`Hot reload ready.`);
         }
       });
     }

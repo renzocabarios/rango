@@ -1,4 +1,5 @@
 import { exec, execSync } from "child_process";
+import settings from "./settings";
 
 function findOpenPort(port: number): number {
   try {
@@ -10,23 +11,24 @@ function findOpenPort(port: number): number {
 }
 
 function checkUsedPort(port: number) {
-  const matcher = new RegExp(/(LISTENING(?<pid>\d+))|(\d+SYN_SENT(?<tcp>\d+))|(?<wait>TIME_WAIT)/);
-  const stdout = execSync(`netstat -ano | findstr ${port}`);
-  const strOut = stdout.toString().replace(/\s/gm, "");
-  const pid = matcher.exec(strOut)?.groups?.pid;
-  const tcp = matcher.exec(strOut)?.groups?.tcp;
-  const wait = matcher.exec(strOut)?.groups?.wait;
+  try {
+    const matcher = new RegExp(/(LISTENING(?<pid>\d+))|(\d+SYN_SENT(?<tcp>\d+))|(?<wait>TIME_WAIT)/);
+    const stdout = execSync(`netstat -ano | findstr ${port}`);
+    const strOut = stdout.toString().replace(/\s/gm, "");
+    const pid = matcher.exec(strOut)?.groups?.pid;
+    const tcp = matcher.exec(strOut)?.groups?.tcp;
+    const wait = matcher.exec(strOut)?.groups?.wait;
 
-  return { pid, tcp, wait };
+    return { pid, tcp, wait };
+  } catch (error) {
+    return { pid: undefined, tcp: undefined, wait: undefined };
+  }
 }
 
 function taskKill(id: string, callback: () => void, error?: () => void) {
-  exec(`taskkill /f /im ${id}`, (err, stdout, stderr) => {
-    console.log(err);
-
+  exec(`taskkill /pid ${id} /T /F`, (err, stdout, stderr) => {
     if (stdout.includes("SUCCESS")) {
-      callback();
-      return;
+      return callback();
     }
 
     if (error) {
@@ -35,46 +37,42 @@ function taskKill(id: string, callback: () => void, error?: () => void) {
   });
 }
 
-function freeAddressPort(
-  port: number,
-  options: {
-    pid: string | undefined;
-    tcp: string | undefined;
-    wait: string | undefined;
-  },
-  callback: () => void
-) {
-  let { pid, tcp, wait } = options;
+function freeAddressPort(port: number, listener: () => void) {
+  let tries = 5;
 
-  const startPortChecking = () => {
-    const interval = setInterval(() => {
-      try {
-        if (!wait) {
-          console.log("Waiting for port", port, "to be released...");
-        }
+  const interval = setInterval(() => {
+    try {
+      const { pid, tcp, wait } = checkUsedPort(port);
+      const id = pid ?? tcp;
 
-        const pidTcp = checkUsedPort(port);
-        const id = pidTcp?.pid ?? pidTcp?.tcp;
-
-        if (id !== undefined) {
-          taskKill(id, () => {
-            clearInterval(interval);
-            callback();
-          });
-        }
-      } catch (error) {
-        clearInterval(interval);
-        callback();
+      if (!pid && !tcp && !wait) {
+        listener();
+        return clearInterval(interval);
       }
-    }, 3000);
-  };
 
-  if (!pid && !tcp) {
-    startPortChecking();
-    return;
-  }
+      if (tries < 1) {
+        clearInterval(interval);
+        throw new Error();
+      }
 
-  taskKill((pid ?? tcp) || "", callback, startPortChecking);
+      tries--;
+
+      if (wait && tries === 1 && settings.get("KILL_PORT")) {
+        tries++;
+      }
+
+      if (id !== undefined) {
+        taskKill(id, () => {
+          clearInterval(interval);
+          listener();
+        });
+      }
+    } catch (error) {
+      console.log(error);
+
+      clearInterval(interval);
+    }
+  }, 1000);
 }
 
 export { checkUsedPort, freeAddressPort, findOpenPort, taskKill };
