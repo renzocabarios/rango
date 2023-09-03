@@ -1,9 +1,8 @@
 import { ResponseObject } from "./interfaces";
 import { refreshScript } from "./websocket";
+import { contentType, isFileRequest } from "./file";
+import { promises as fs } from "fs";
 import http from "http";
-
-const contentTypeValues = ["text/plain", "application/json", "text/html"];
-const contentType = contentTypeValues.map((type) => ({ "Content-Type": type }));
 
 function createResponseObject(res: http.ServerResponse): ResponseObject {
   const endResponse = (value: any) => {
@@ -22,6 +21,7 @@ function createResponseObject(res: http.ServerResponse): ResponseObject {
       try {
         if (!isText) value = this.json(value?.message && isError ? { message: value?.message } : value, code);
         else if (htmlPattern.test(value)) value = this.html(value, code);
+        else if (isFileRequest(value)) value = this.html(value, code);
         else res.writeHead(code, contentType[0]);
       } catch (error) {
         const message = `${error}`.replace(/file:\/\/\/[A-Z]:.+\/(?=src)|^\s*at.*\)\n?|\(.+\n?/gm, "");
@@ -46,6 +46,12 @@ function createResponseObject(res: http.ServerResponse): ResponseObject {
     status(code: number) {
       this.statusCode = code;
       return this;
+    },
+    sendFile(filePath: string, type: string) {
+      fs.readFile(filePath).then((data) => {
+        res.writeHead(200, { "Content-Type": type });
+        return res.end(data, "utf-8");
+      });
     },
     statusCode: 200,
     contentLength: 0,

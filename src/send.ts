@@ -1,8 +1,9 @@
 import { checkEndpointExist, checkRoutePathExist } from "./routes";
 import { Context, RouteObject } from "./interfaces";
-import sendFile, { isFileRequest } from "./static";
 import mapMiddlewares from "./middleware";
 import { RouteCallback } from "./types";
+import { isFileRequest } from "./file";
+import sendFile from "./static";
 import plugins from "./plugins";
 import RegEx from "./regex";
 import cache from "./cache";
