@@ -53,6 +53,9 @@ function createResponseObject(res: http.ServerResponse): ResponseObject {
         return res.end(data, "utf-8");
       });
     },
+    setHeaders(options: { [x: string]: string }) {
+      Object.keys(options).forEach((key) => res.setHeader(key, options[key]));
+    },
     statusCode: 200,
     contentLength: 0,
   });
