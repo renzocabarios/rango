@@ -3,6 +3,7 @@ import app, { Router } from "./app";
 import { NextFunction } from "./types";
 import cors from "cors";
 import bodyParser from "body-parser";
+import helmet from "helmet";
 
 export { Context, NextFunction, ResponseObject, RequestObject };
 
@@ -45,6 +46,9 @@ function rango(): Router {
 
   // parse application/json
   app.use(bodyParser.json());
+
+  // Initialize HELMET plugin
+  app.use(helmet());
 
   // Return Router Instance
   return app;
