@@ -1,6 +1,6 @@
 {
   "name": "rango",
-  "version": "0.7.3-beta.0",
+  "version": "0.8.0-beta.0",
   "description": "RangoJS - a fearless gunslinging Node.js library that brings unmatched speed, precision, and power to API development. With RangoJS, crafting bullet-fast, sure aim, and ace-high APIs becomes an exhilarating adventure. Embrace the wild west spirit of web development and experience the thrill of building robust and lightning-quick APIs with ease.",
   "main": "lib/index.js",
   "bin": {
