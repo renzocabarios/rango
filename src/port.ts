@@ -52,7 +52,8 @@ function freeAddressPort(port: number, listener: () => void) {
 
       if (tries < 1) {
         clearInterval(interval);
-        throw new Error();
+        listener();
+        return;
       }
 
       tries--;
@@ -68,8 +69,6 @@ function freeAddressPort(port: number, listener: () => void) {
         });
       }
     } catch (error) {
-      console.log(error);
-
       clearInterval(interval);
     }
   }, 1000);
