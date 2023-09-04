@@ -1,5 +1,7 @@
 import rango from "rango";
 import AppController from "./controllers/app.controller";
+import SampleController from "./controllers/sample.controller";
+
 const app = rango();
 
 // Initialize logger
@@ -9,6 +11,12 @@ app.logger(true);
 app.add({
   path: "",
   controller: AppController,
+});
+
+// Add a single controller with path
+app.add({
+  path: "sample",
+  controller: SampleController,
 });
 
 // Define port number
