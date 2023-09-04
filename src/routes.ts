@@ -4,6 +4,8 @@ import {
   BaseRoute,
   RouteEndpoint,
   RouteObject,
+  RouteWithController,
+  Controller,
   RouteWithMiddleware,
   RouteWithChildren,
 } from "./interfaces";
@@ -28,6 +30,7 @@ function mapRoutePaths(paths: string[], route: BaseRoute, parent: Map<string, Ro
     updateChildren(route as RouteWithChildren, routeObj);
   }
 
+  const controller: Controller | undefined = (route as RouteWithController)?.controller;
   if (hasMorePaths) {
     const childRouteObj = mapRoutePaths(paths, route, routeObj.children);
     routeObj.children.set(childRouteObj.path, childRouteObj);
