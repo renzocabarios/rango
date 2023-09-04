@@ -117,28 +117,24 @@ function checkRoutePathExist(pathname: string): RouteObject | undefined {
   const paths = pathname.split("/");
   let middlewares: Middlewares = [];
   let routeObj: RouteObject | undefined = undefined;
+  let path = "";
 
   // See https://leanylabs.com/blog/js-forEach-map-reduce-vs-for-for_of/#arrayforeach-vs-for-and-forof
   // Why we use for-of instead of map, forEach or reduce
   for (const value of paths) {
-    const prevRegex = routeObj?.regex ?? "";
-    const prevPath = routeObj?.path ?? "";
+    const prevPath = path;
 
-    const childrenExists = (routeObj: RouteObject) => checkRouteChildrenPathExist(routeObj.children, value) ?? routeObj;
-    routeObj = !routeObj ? createRouteObject(value, routes) : createRouteObject(childrenExists(routeObj));
-    middlewares = [...middlewares, ...(routeObj?.middlewares ?? [])];
+    routeObj = !!routeObj ? checkRouteChildrenPathExist(routeObj.children, value) : routes.get(value);
 
     if (routeObj !== undefined) {
-      routeObj.regex = prevRegex + routeObj.regex;
-      routeObj.path = routeObj.path.length > 0 ? [prevPath, routeObj.path].join("/") : prevPath;
+      middlewares = [...middlewares, ...(routeObj.middlewares ?? [])];
+      path = path.length > 0 ? [prevPath, routeObj.path].join("/") : routeObj.path;
     }
   }
 
-  if (routeObj !== undefined) {
-    routeObj.middlewares = middlewares;
-  }
+  if (!routeObj) return;
 
-  return routeObj;
+  return createRouteObject({ path, middlewares, endpoints: [...routeObj.endpoints] });
 }
 
 function checkRouteChildrenPathExist(children: Map<string, RouteObject>, path: string) {
