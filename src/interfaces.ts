@@ -4,6 +4,7 @@ import {
   RoutePromiseCallback,
   RouteEndpoints,
   RouteMethodObject,
+  BaseRoutes,
   Routes,
 } from "./types";
 import http from "http";
@@ -11,32 +12,43 @@ import http from "http";
 /**
  *
  */
-export interface Route extends Partial<RouteMethodObject> {
+export interface BaseRoute extends Partial<RouteMethodObject> {
   /**
    *
    */
   path: string;
-  /**
-   *
-   */
-  children?: Routes;
-  /**
-   *
-   */
-  middlewares?: Middlewares;
 }
 
 /**
  *
  */
-export interface RouteWithChildren extends Partial<RouteMethodObject> {
+export interface RouteWithMiddleware extends BaseRoute {
   /**
    *
    */
-  path: string;
+  middlewares: Middlewares;
+}
+
+/**
+ *
+ */
+export interface RouteWithChildren extends BaseRoute {
   /**
    *
    */
+  children: BaseRoutes;
+}
+
+/**
+ *
+ */
+export interface RouteWithMiddleware extends BaseRoute {
+  /**
+   *
+   */
+  middlewares: Middlewares;
+}
+
   children: Routes;
 }
 

@@ -1,4 +1,7 @@
 import { RequestMethod, RoutePromiseCallback, RouteMethodObjectCallback, Middlewares, Route } from "./types";
+import {
+  BaseRoute,
+} from "./interfaces";
 import RegEx from "./regex";
 
 const routes = new Map<string, RouteObject>();
@@ -9,7 +12,7 @@ function createRouteMapper(route: Route): RouteObject {
   return mapRoutePaths(paths, route, routes);
 }
 
-function mapRoutePaths(paths: string[], route: Route, parent: Map<string, RouteObject>): RouteObject {
+function mapRoutePaths(paths: string[], route: BaseRoute, parent: Map<string, RouteObject>): RouteObject {
   const hasMorePaths = paths.length > 1;
   const path = paths.shift() as string;
   const routeObj: RouteObject = createRouteObject({ path }, parent);
@@ -34,7 +37,7 @@ function updateMiddlewares(route: Route, currentRoute: RouteObject) {
   currentRoute.middlewares = [...currentRoute.middlewares, ...middlewares];
 }
 
-function updateEndpoints(route: Route, currentRoute: RouteObject) {
+function updateEndpoints(route: BaseRoute, routeObject: RouteObject) {
   const routeKeys = Object.keys(route) as RequestMethod[];
   const hasRouteMethods = routeKeys.some((e: any) => reqMethods.includes(e));
 
@@ -50,7 +53,7 @@ function updateChildren(route: Route, currentRoute: RouteObject) {
 }
 
 function mapRouteChildren(currentRoute: RouteObject) {
-  return (childRoute: Route) => {
+  return (childRoute: BaseRoute) => {
     const childRouteObj = createRouteMapper(childRoute);
     currentRoute.children.set(childRouteObj.path, childRouteObj);
   };

@@ -1,4 +1,10 @@
-import { Context, RequestObject, ResponseObject, Route, RouteEndpoint } from "./interfaces";
+import {
+  Context,
+  RequestObject,
+  ResponseObject,
+  BaseRoute,
+  RouteEndpoint,
+} from "./interfaces";
 
 /**
  * Type of request method
