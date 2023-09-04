@@ -2,7 +2,7 @@ import { RequestMethod, RoutePromiseCallback, RouteMethodObjectCallback, Middlew
 import RegEx from "./regex";
 
 const routes = new Map<string, RouteObject>();
-const reqMethods: RequestMethod[] = ["GET", "POST", "DELETE", "OPTIONS", "PUT", "PATCH"];
+const reqMethods: RequestMethod[] = ["GET", "POST", "DELETE", "OPTIONS", "PUT", "PATCH", "HEAD"];
 
 function createRouteMapper(route: Route): RouteObject {
   const paths = route.path.split("/");

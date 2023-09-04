@@ -3,7 +3,7 @@ import { Context, RequestObject, ResponseObject, Route, RouteEndpoint } from "./
 /**
  * Type of request method
  */
-export type RequestMethod = "GET" | "POST" | "DELETE" | "OPTIONS" | "PUT" | "PATCH";
+export type RequestMethod = "GET" | "POST" | "DELETE" | "OPTIONS" | "PUT" | "PATCH" | "HEAD";
 
 /**
  *
