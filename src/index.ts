@@ -4,8 +4,9 @@ import { NextFunction } from "./types";
 import cors from "cors";
 import bodyParser from "body-parser";
 import helmet from "helmet";
+import { useController } from "./controller";
 
-export { Context, NextFunction, ResponseObject, RequestObject };
+export { Context, NextFunction, ResponseObject, RequestObject, useController };
 
 /**
  * A Nodejs library for managing routes. MayaJs use a declarative way of defining routes.

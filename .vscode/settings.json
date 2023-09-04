@@ -30,7 +30,8 @@
     "logger",
     "settings",
     "file",
-    "port"
+    "port",
+    "controller"
   ],
   "cSpell.words": ["rango"]
 }
