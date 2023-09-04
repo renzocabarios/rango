@@ -1,4 +1,5 @@
 import {
+  ControllerRoute,
   Middlewares,
   RequestMethod,
   RoutePromiseCallback,
@@ -42,11 +43,11 @@ export interface RouteWithChildren extends BaseRoute {
 /**
  *
  */
-export interface RouteWithMiddleware extends BaseRoute {
+export interface RouteWithController extends BaseRoute {
   /**
    *
    */
-  middlewares: Middlewares;
+  controller: Controller;
 }
 
 /**
