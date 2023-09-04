@@ -33,6 +33,18 @@ app.add([
   },
 ]);
 
+// Add single route
+app.add({
+  path: "/single",
+  GET: () => "Single GET Route",
+  POST: () => "Single POST Route",
+  PUT: () => "Single PUT Route",
+  PATCH: () => "Single PATCH Route",
+  DELETE: () => "Single DELETE Route",
+  HEAD: () => "Single HEAD Route",
+  OPTIONS: () => "Single OPTIONS Route",
+});
+
 // Define port number
 const PORT = 3000;
 
