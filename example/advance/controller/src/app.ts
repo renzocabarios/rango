@@ -27,6 +27,10 @@ app.add([
     path: "first",
     controller: FirstController,
   },
+  {
+    path: "second",
+    controller: SecondController,
+  },
 ]);
 
 // Define port number
