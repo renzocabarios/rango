@@ -15,6 +15,10 @@ const routes = new Map<string, RouteObject>();
 const reqMethods: RequestMethod[] = ["GET", "POST", "DELETE", "OPTIONS", "PUT", "PATCH", "HEAD"];
 
 function createRouteMapper(route: Route): RouteObject {
+  if (route.path.charAt(0) !== "/") {
+    route.path = route.path.padStart(route.path.length + 1, "/");
+  }
+
   const paths = route.path.split("/");
   return mapRoutePaths(paths, route, routes);
 }
