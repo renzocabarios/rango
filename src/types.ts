@@ -120,6 +120,11 @@ export type Route = BaseRoute | RouteWithChildren | RouteWithMiddleware | RouteW
 /**
  *
  */
+export type Routes = (BaseRoute | RouteWithChildren | RouteWithMiddleware | RouteWithController)[];
+
+/**
+ *
+ */
 export type ControllerRoute = {
   /**
    * Create a route inside a controller using a callback
