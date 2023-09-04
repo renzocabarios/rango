@@ -1,16 +1,18 @@
 import rango from "rango";
 import connect from "./db";
 import { Router } from "rango/lib/app";
-import addMiddleWares from "./middlewares";
-import addRoutes from "./routes";
-import { PORT } from "./env";
+import env from "./env";
+import { userController } from "./controllers";
+
+connect();
 
 const app: Router = rango();
 
-addMiddleWares(app);
-addRoutes(app);
+app.add([
+  {
+    path: "user",
+    controller: userController,
+  },
+]);
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-  connect();
-});
+app.listen(env.PORT);

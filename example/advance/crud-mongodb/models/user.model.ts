@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { MODEL } from "../../constants";
+import { MODEL } from "../constants";
 
 const schema = new mongoose.Schema({
   firstName: {

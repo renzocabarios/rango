@@ -39,24 +39,22 @@ const connect = () => {
 Define routes in RangoJS using HTTP Methods sames as Express.js framework, which RangoJS builds upon. These routes map URL patterns to specific controller methods.
 
 ```ts
+const userController = useController();
+
 // List Users
-controller.get(() => "UserController GET Route");
+userController.get(getAllUsers);
 
 // Get User by id
-controller.get(":id", ({ params }) => ({ message: `UserController GET Route`, params }));
+userController.get(":id", getUserById);
 
 // Create User
-controller.post(() => "UserController POST Route");
+userController.post(createUser);
 
 // Update User
-controller.put(() => "UserController PUT Route");
-
-// Update specific User field
-controller.patch(() => "UserController PATCH Route");
+userController.put(":id", updateUser);
 
 // Delete User
-controller.delete(() => "UserController DELETE Route");
-
+userController.delete(":id", deleteUserById);
 ```
 
 ## Models

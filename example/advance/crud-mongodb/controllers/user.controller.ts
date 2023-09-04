@@ -1,8 +1,8 @@
-import { Context } from "rango";
-import { users } from "../../services";
-import { IUser } from "../../interfaces/model";
+import { Context, useController } from "rango";
+import { users } from "../services";
+import { IUser } from "../interfaces";
 
-async function getAll(context: Context): Promise<any> {
+async function getAllUsers(context: Context): Promise<any> {
   try {
     const data = await users.getAll();
     return context.res.json({ data: data, status: "success" });
@@ -11,7 +11,7 @@ async function getAll(context: Context): Promise<any> {
   }
 }
 
-async function getById(context: Context): Promise<any> {
+async function getUserById(context: Context): Promise<any> {
   try {
     const { id } = context.params;
     const data = await users.getById(id.toString());
@@ -21,7 +21,7 @@ async function getById(context: Context): Promise<any> {
   }
 }
 
-async function create(context: Context): Promise<any> {
+async function createUser(context: Context): Promise<any> {
   try {
     const payload = context.body as IUser;
     const data = await users.create(payload);
@@ -32,7 +32,7 @@ async function create(context: Context): Promise<any> {
   }
 }
 
-async function update(context: Context): Promise<any> {
+async function updateUser(context: Context): Promise<any> {
   try {
     const { id } = context.params;
     const payload = context.body as IUser;
@@ -43,7 +43,7 @@ async function update(context: Context): Promise<any> {
   }
 }
 
-async function deleteById(context: Context): Promise<any> {
+async function deleteUserById(context: Context): Promise<any> {
   try {
     const { id } = context.params;
     const data = await users.deleteById(id.toString());
@@ -53,4 +53,12 @@ async function deleteById(context: Context): Promise<any> {
   }
 }
 
-export default { getAll, getById, create, update, deleteById };
+const userController = useController();
+
+userController.get(getAllUsers);
+userController.get(":id", getUserById);
+userController.post(createUser);
+userController.put(":id", updateUser);
+userController.delete(deleteUserById);
+
+export default userController;
