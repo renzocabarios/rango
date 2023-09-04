@@ -27,10 +27,22 @@ async function send(context: Context): Promise<void> {
   // Check cache routes
   const cachedRoute = cache.get(path);
 
-  // Check if route path exist
-  // If exist will return a route object
-  const routePathExist = cachedRoute?.route ? cachedRoute?.route : checkRoutePathExist(path);
+  // If cache route hasParams we need to check first if it might collide to other routes
+  let checkRoute: RouteObject | undefined;
+  if (cachedRoute?.route.hasParam) {
+    checkRoute = checkRoutePathExist(path);
+  }
 
+  // Check if route path exist in cached or in checked route
+  // If checkRoute and cachedRoute has the same path we will choose the cached route
+  let routePathExist = checkRoute?.path === cachedRoute?.route.path ? cachedRoute?.route : checkRoute;
+
+  // If route path not exist in cache or check route, we if route exist in the route list
+  if (!routePathExist) {
+    routePathExist = checkRoutePathExist(path);
+  }
+
+  // If route path doesn't exist in the route list
   if (!routePathExist) {
     // Send error message if path is not found
     return res.send({ message: `Path of ${path} is missing.`, status: "PathNotFound", error: true }, 406);
