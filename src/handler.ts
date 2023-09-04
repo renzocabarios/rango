@@ -1,7 +1,7 @@
 import { URL } from "url";
 import { Context } from "./interfaces";
 import { RequestMethod } from "./types";
-import { pathUrl, statusCodeFactory } from "./utils";
+import { statusCodeFactory } from "./utils";
 import response from "./response";
 import request from "./request";
 import http from "http";
