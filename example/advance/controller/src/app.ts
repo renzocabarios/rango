@@ -1,6 +1,8 @@
 import rango from "rango";
 const app = rango();
 
+// Initialize logger
+app.logger(true);
 
 // Define port number
 const PORT = 3000;
