@@ -121,7 +121,7 @@ export interface RouteObjectCallback {
   /**
    *
    */
-  children: Routes;
+  children: BaseRoutes;
   /**
    *
    */

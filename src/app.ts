@@ -4,6 +4,10 @@ import { BaseRoute, RouteWithChildren, RouteWithController, RouteWithMiddleware 
 import plugins from "./plugins";
 import Logger from "./logger";
 import settings from "./settings";
+
+import {
+  BaseRoutes,
+} from "./types";
 import { runWebsocket } from "./websocket";
 
 function logger(enable: boolean): void;

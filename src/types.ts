@@ -85,7 +85,7 @@ export type Middlewares = Middleware[];
 /**
  *
  */
-export type Routes = Route[];
+export type BaseRoutes = BaseRoute[];
 
 /**
  *
