@@ -1,6 +1,8 @@
 import rango from "rango";
 import AppController from "./controllers/app.controller";
 import SampleController from "./controllers/sample.controller";
+import FirstController from "./controllers/first.controller";
+import SecondController from "./controllers/second.controller";
 
 const app = rango();
 
@@ -18,6 +20,14 @@ app.add({
   path: "sample",
   controller: SampleController,
 });
+
+// Add a multiple controllers
+app.add([
+  {
+    path: "first",
+    controller: FirstController,
+  },
+]);
 
 // Define port number
 const PORT = 3000;
