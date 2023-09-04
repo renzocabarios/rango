@@ -1,14 +1,6 @@
 import { exec, execSync } from "child_process";
 import settings from "./settings";
 
-function findOpenPort(port: number): number {
-  try {
-    execSync(`netstat -ano | findstr ${port}`);
-    return findOpenPort(Math.floor(Math.random() * 65535));
-  } catch (error) {
-    return port;
-  }
-}
 
 function checkUsedPort(port: number) {
   try {
@@ -74,4 +66,4 @@ function freeAddressPort(port: number, listener: () => void) {
   }, 1000);
 }
 
-export { checkUsedPort, freeAddressPort, findOpenPort, taskKill };
+export default freeAddressPort;
