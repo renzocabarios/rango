@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 import helmet from "helmet";
 import { useController } from "./controller";
 
-export { Context, NextFunction, ResponseObject, RequestObject, useController };
+export { Context, NextFunction, ResponseObject, RequestObject, useController, Router };
 
 /**
  * A Nodejs library for managing routes. MayaJs use a declarative way of defining routes.
