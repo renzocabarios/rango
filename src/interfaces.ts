@@ -49,21 +49,47 @@ export interface RouteWithMiddleware extends BaseRoute {
   middlewares: Middlewares;
 }
 
-  children: Routes;
-}
-
 /**
- *
+ * An object that controls the flow of the incoming request by defining a set of functions for each request methods.
+ * A controller also allows you to define dependencies that you can use inside your route callback functions.
  */
-export interface RouteWithMiddlewares extends Partial<RouteMethodObject> {
+export interface Controller {
   /**
-   *
+   * A set of route
    */
-  path: string;
+  routes: Routes;
   /**
-   *
+   * A set of callable object that can be use inside the controller
    */
-  middlewares: Middlewares;
+  dependencies: any[];
+  /**
+   * Create a GET route
+   */
+  get: ControllerRoute;
+  /**
+   * Create a POST route
+   */
+  post: ControllerRoute;
+  /**
+   * Create a PUT route
+   */
+  put: ControllerRoute;
+  /**
+   * Create a PATCH route
+   */
+  patch: ControllerRoute;
+  /**
+   * Create a DELETE route
+   */
+  delete: ControllerRoute;
+  /**
+   * Create a HEAD route
+   */
+  head: ControllerRoute;
+  /**
+   * Create a OPTIONS route
+   */
+  options: ControllerRoute;
 }
 
 /**
