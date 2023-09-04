@@ -103,3 +103,26 @@ export type RouteWithChildrenList = RouteWithChildren[];
  *
  */
 export type RouteEndpoints = RouteEndpoint[];
+
+
+/**
+ *
+ */
+export type ControllerRoute = {
+  /**
+   * Create a route inside a controller using a callback
+   */
+  (cb: RouteCallback): Controller;
+  /**
+   * Create a route inside a controller using a callback with a define path
+   */
+  (path: string, cb: RouteCallback): Controller;
+  /**
+   * Create a route inside a controller using a callback with set of middlewares
+   */
+  // (middlewares: Middlewares, cb: RouteCallback): Controller;
+  /**
+   * Create a route inside a controller using a callback with a define path and set of middlewares
+   */
+  // (path: string, middlewares: Middlewares, cb: RouteCallback): Controller;
+};
