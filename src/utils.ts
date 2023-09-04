@@ -1,6 +1,9 @@
 import { ResponseObject } from "./interfaces";
 import Os from "os";
 
+/**
+ * A factory method for setting status codes
+ */
 export function statusCodeFactory(res: ResponseObject) {
   return (code: number) => {
     res.status(code);
@@ -16,7 +19,10 @@ export function isWindows() {
   return Os.platform() === "win32";
 }
 
-export const parseParams = (params: { [x: string]: string }) => {
+/**
+ * Parse request params object.
+ */
+export function parseParams(params: { [x: string]: string }) {
   let parsed: { [x: string]: string | number | boolean } = {};
 
   Object.keys(params).forEach((param) => {
@@ -36,4 +42,4 @@ export const parseParams = (params: { [x: string]: string }) => {
   });
 
   return parsed;
-};
+}
