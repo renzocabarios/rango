@@ -1,4 +1,5 @@
 import { ResponseObject } from "./interfaces";
+import Os from "os";
 
 export function statusCodeFactory(res: ResponseObject) {
   return (code: number) => {
@@ -6,7 +7,14 @@ export function statusCodeFactory(res: ResponseObject) {
   };
 }
 
-export const pathUrl = (url: string) => url.replace(/(^\/+)|(\/+$)/g, "");
+/**
+ * Determine whether the Node.js process runs on Windows.
+ *
+ * @returns {Boolean}
+ */
+export function isWindows() {
+  return Os.platform() === "win32";
+}
 
 export const parseParams = (params: { [x: string]: string }) => {
   let parsed: { [x: string]: string | number | boolean } = {};

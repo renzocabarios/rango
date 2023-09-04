@@ -1,6 +1,6 @@
 import { exec, execSync } from "child_process";
 import settings from "./settings";
-
+import { isWindows } from "./utils";
 
 function checkUsedPort(port: number) {
   try {
@@ -30,6 +30,8 @@ function taskKill(id: string, callback: () => void, error?: () => void) {
 }
 
 function freeAddressPort(port: number, listener: () => void) {
+  if (!isWindows()) return listener();
+
   let tries = 5;
 
   const interval = setInterval(() => {
