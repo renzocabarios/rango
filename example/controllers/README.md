@@ -37,40 +37,67 @@ export default controller;
 
 ## Controller Methods
 
-A controller's methods define the actions that can be performed within that controller. For example, a `UserController` might have methods like **listUsers**, **createUser**, **updateUser**, and **deleteUser**. These methods are responsible for handling HTTP requests, interacting with models, and rendering views.
+
+Here's a brief overview of the common HTTP methods and their purposes:
+
+### **GET**
+
+Retrieve data from the server.
 
 ```ts
-// List Users
-controller.get(() => "UserController GET Route");
+controller.get(() => "UserController List Users Route");
 
-// Get User by id
-controller.get(":id", ({ params }) => ({ message: `UserController GET Route`, params }));
-
-// Create User
-controller.post(() => "UserController POST Route");
-
-// Update User
-controller.put(() => "UserController PUT Route");
-
-// Update specific User field
-controller.patch(() => "UserController PATCH Route");
-
-// Delete User
-controller.delete(() => "UserController DELETE Route");
+controller.get(":id", ({ params }) => ({ message: `UserController Get User By ID Route`, params }));
 ```
 
-### HEAD and OPTIONS Methods
+### **POST**
+
+Send data to the server to create a new resource.
+
+```ts
+controller.post(() => "UserController Create Users Route");
+```
+
+### **PUT**
+
+Update an existing resource on the server.
+
+```ts
+controller.put("/:id", () => "UserController Update User Route");
+```
+
+### **PATCH**
+
+Update an existing resource on the server.
+
+```ts
+controller.patch("/:id", () => "UserController Update User Route");
+```
+
+### **DELETE**
+
+Remove a resource from the server.
+
+```ts
+controller.delete("/:id", () => "UserController Delete User Route");
+```
 
 The **HEAD** and **OPTIONS** HTTP methods are often used for metadata retrieval and request introspection, respectively. They are less common than `GET` or `POST` but serve crucial purposes in RESTful web services and API development.
 
-- **HEAD** Method: This method is used to retrieve metadata about a resource, such as its headers or content length. Unlike `GET`, it doesn't return the resource's body, making it useful for checking resource availability and obtaining basic information without the data payload.
+### **HEAD**
 
-- **OPTIONS** Method: The OPTIONS method is used to determine which HTTP methods and headers are supported by a resource. It allows clients to query the server about the capabilities of a particular endpoint, helping developers understand how to interact with the resource effectively.
+This method is used to retrieve metadata about a resource, such as its headers or content length. Unlike `GET`, it doesn't return the resource's body, making it useful for checking resource availability and obtaining basic information without the data payload.
 
 ```ts
 // HEAD method
 controller.head(() => "UserController HEAD Route");
+```
 
+### **OPTIONS**
+
+The OPTIONS method is used to determine which HTTP methods and headers are supported by a resource. It allows clients to query the server about the capabilities of a particular endpoint, helping developers understand how to interact with the resource effectively.
+
+```ts
 // OPTIONS method
 controller.options(() => "UserController OPTIONS Route");
 ```

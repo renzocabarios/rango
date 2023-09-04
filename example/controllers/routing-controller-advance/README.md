@@ -1,4 +1,4 @@
-# RangoJS Advanced Multiple Controllers with Simple Routing Documentation
+# RangoJS Advanced Controller Routing Documentation
 
 >Author: [Mack Ignacio](https://github.com/mackignacio)
 
