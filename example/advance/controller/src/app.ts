@@ -45,6 +45,20 @@ app.add({
   OPTIONS: () => "Single OPTIONS Route",
 });
 
+// Add another route in an array
+app.add([
+  {
+    path: "another",
+    GET: () => "Another GET Route",
+    POST: () => "Another POST Route",
+    PUT: () => "Another PUT Route",
+    PATCH: () => "Another PATCH Route",
+    DELETE: () => "Another DELETE Route",
+    HEAD: () => "Another HEAD Route",
+    OPTIONS: () => "Another OPTIONS Route",
+  },
+]);
+
 // Define port number
 const PORT = 3000;
 
