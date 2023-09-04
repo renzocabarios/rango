@@ -1,3 +1,6 @@
+import constants from "./constants";
+import { MimeTypeExtension } from "./types";
+
 const contentTypeValues = [
   "text/plain",
   "application/json",
@@ -155,17 +158,16 @@ const contentTypeObject = {
   "7z": "application/x-7z-compressed",
 };
 
-const contentType = contentTypeValues.map((type) => ({ "Content-Type": type }));
+const mimeTypes = constants.MIME_TYPES;
+const contentType = Object.keys(mimeTypes).map((key) => ({ "Content-Type": mimeTypes[key as MimeTypeExtension] }));
 const extPattern = /\.(?<ext>\w*?)$/g;
-
-type KeyOfContentTypeObject = keyof typeof contentTypeObject;
 
 export function getContentType(filename: string) {
   const match = fileExtension(filename);
-  let output = { "Content-Type": "text" };
+  let output = contentType[0];
 
   if (match?.groups?.ext) {
-    const type = contentTypeObject[(match?.groups?.ext || "text") as KeyOfContentTypeObject];
+    const type = mimeTypes[(match?.groups?.ext || "text") as MimeTypeExtension];
     output = { "Content-Type": type };
   }
 

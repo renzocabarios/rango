@@ -9,6 +9,7 @@ import {
   RouteWithController,
   RouteWithMiddleware,
 } from "./interfaces";
+import constants from "./constants";
 
 /**
  * Type of request method
@@ -143,3 +144,5 @@ export type ControllerRoute = {
    */
   // (path: string, middlewares: Middlewares, cb: RouteCallback): Controller;
 };
+
+export type MimeTypeExtension = keyof typeof constants.MIME_TYPES;

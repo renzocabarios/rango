@@ -1,7 +1,8 @@
-import { MIME_TYPES } from "./constants";
+import constants from "./constants";
 import { Context } from "./interfaces";
 import { promises as fs } from "fs";
 import path from "path";
+import { MimeTypeExtension } from "./types";
 
 const resolveDir = (filepath: string) => path.resolve(process.cwd(), "./public" + filepath);
 
@@ -9,7 +10,7 @@ export default async (context: Context): Promise<void> => {
   const { res, req } = context;
   let filePath = req.url === "/" ? resolveDir("/index.html") : resolveDir(req.url ?? "");
   const extension = path.extname(filePath).toLowerCase();
-  const contentType = MIME_TYPES[extension] || "application/octet-stream";
+  const contentType = constants.MIME_TYPES[extension as MimeTypeExtension] || "application/octet-stream";
 
   if (!contentType) return res.send({ message: "File format not supported!" }, 415);
 
