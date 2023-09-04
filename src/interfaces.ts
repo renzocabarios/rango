@@ -239,7 +239,7 @@ export interface QueryParams {
   /**
    *
    */
-  params: { [x: string]: string };
+  params: { [x: string]: string | number | boolean };
   /**
    *
    */
