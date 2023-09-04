@@ -1,6 +1,9 @@
 import { RequestMethod, RoutePromiseCallback, RouteMethodObjectCallback, Middlewares, Route } from "./types";
 import {
+  CreateRoute,
   BaseRoute,
+  RouteEndpoint,
+  RouteObject,
   RouteWithMiddleware,
   RouteWithChildren,
 } from "./interfaces";
