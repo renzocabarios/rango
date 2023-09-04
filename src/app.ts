@@ -15,7 +15,7 @@ import {
   Route,
 } from "./types";
 import { createRouteMapper } from "./routes";
-import { freeAddressPort } from "./port";
+import freePort from "./port";
 import { runWebsocket } from "./websocket";
 
 function logger(enable: boolean): void;
@@ -38,18 +38,20 @@ function killPort() {
   settings.set("KILL_PORT", true);
 }
 
-function listen(this: Router, port: number, listener: () => void) {
+function listen(this: Router, port: number, listener?: () => void) {
   const server = http.createServer();
   server.on("request", this);
 
   const runServer = (newPort: number) => {
     const isPortChanged = port !== newPort;
-    listener = isPortChanged ? () => console.log(`Server switching port ${port}.`, "Listening to", newPort) : listener;
+    const message = ["Listening to", newPort];
+    isPortChanged || message.unshift(`Server switching port ${port}.`);
+    listener = !isPortChanged && listener ? listener : () => console.log(...message);
     runWebsocket(server, newPort);
     server.listen(newPort, listener);
   };
 
-  freeAddressPort(port, () => runServer(port));
+  freePort(port, () => runServer(port));
 }
 
 function add(route: Route): void;
