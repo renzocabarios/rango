@@ -2,6 +2,7 @@ import { RequestMethod, RoutePromiseCallback, RouteMethodObjectCallback, Middlew
 import {
   BaseRoute,
   RouteWithMiddleware,
+  RouteWithChildren,
 } from "./interfaces";
 import RegEx from "./regex";
 
@@ -21,6 +22,7 @@ function mapRoutePaths(paths: string[], route: BaseRoute, parent: Map<string, Ro
   if (!hasMorePaths) {
     updateEndpoints(route, routeObj);
     updateMiddlewares(route as RouteWithMiddleware, routeObj);
+    updateChildren(route as RouteWithChildren, routeObj);
   }
 
   if (hasMorePaths) {
@@ -46,7 +48,7 @@ function updateEndpoints(route: BaseRoute, routeObject: RouteObject) {
   }
 }
 
-function updateChildren(route: Route, currentRoute: RouteObject) {
+function updateChildren(route: RouteWithChildren, currentRoute: RouteObject) {
   if (route?.children && route.children.length > 0) {
     route.children.forEach(mapRouteChildren(currentRoute));
   }
