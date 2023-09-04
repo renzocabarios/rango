@@ -144,12 +144,12 @@ function checkRoutePathExist(pathname: string): RouteObject | undefined {
 function checkRouteChildrenPathExist(children: Map<string, RouteObject>, path: string) {
   let routeObj: RouteObject | undefined = children.get(path);
 
-  if (!routeObj) {
-    for (const child of children.values()) {
-      if (child.hasParam) {
-        routeObj = child;
-        break;
-      }
+  if (routeObj) return routeObj;
+
+  for (const child of children.values()) {
+    if (child.hasParam) {
+      routeObj = child;
+      break;
     }
   }
 
