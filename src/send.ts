@@ -3,6 +3,7 @@ import { Context, RouteObject } from "./interfaces";
 import mapMiddlewares from "./middleware";
 import { RoutePromiseCallback } from "./types";
 import { isFileRequest } from "./file";
+import { parseParams } from "./utils";
 import sendFile from "./static";
 import plugins from "./plugins";
 import RegEx from "./regex";
@@ -52,7 +53,7 @@ async function send(context: Context): Promise<void> {
   const pathRegex = typeof routePathExist.regex === "string" ? RegEx(routePathExist.regex, true) : routePathExist.regex;
 
   // Set path `params` if RegEx group result is not undefined
-  context.params = pathRegex.exec("/" + path)?.groups ?? {};
+  context.params = parseParams(pathRegex.exec(path)?.groups ?? {});
 
   // Check if endpoint exist in route object
   // If exist will return an endpoint object
