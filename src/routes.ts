@@ -10,9 +10,9 @@ import {
   RouteWithChildren,
 } from "./interfaces";
 import RegEx from "./regex";
+import constants from "./constants";
 
 const routes = new Map<string, RouteObject>();
-const reqMethods: RequestMethod[] = ["GET", "POST", "DELETE", "OPTIONS", "PUT", "PATCH", "HEAD"];
 
 function createRouteMapper(route: Route): RouteObject {
   if (route.path.charAt(0) !== "/") {
@@ -66,7 +66,7 @@ function updateMiddlewares(route: RouteWithMiddleware, currentRoute: RouteObject
 
 function updateEndpoints(route: BaseRoute, routeObject: RouteObject) {
   const routeKeys = Object.keys(route) as RequestMethod[];
-  const hasRouteMethods = routeKeys.some((e: any) => reqMethods.includes(e));
+  const hasRouteMethods = routeKeys.some((e: any) => constants.REQUEST_METHODS.includes(e));
 
   if (hasRouteMethods) {
     routeKeys.forEach(mapEndpoints(route, routeObject));
@@ -88,7 +88,7 @@ function mapRouteChildren(currentRoute: RouteObject) {
 
 function mapEndpoints(route: Route, routeObject: RouteObject) {
   return (method: RequestMethod): RouteEndpoint | null => {
-    if (reqMethods.includes(method)) {
+    if (constants.REQUEST_METHODS.includes(method)) {
       const callback =
         (route[method] as RouteMethodObjectCallback)?.callback ?? (route[method] as RoutePromiseCallback);
       const middlewares = (route[method] as RouteMethodObjectCallback)?.middlewares ?? [];
