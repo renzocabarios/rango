@@ -1,10 +1,12 @@
 import {
   Context,
+  Controller,
   RequestObject,
   ResponseObject,
   BaseRoute,
   RouteEndpoint,
   RouteWithChildren,
+  RouteWithController,
   RouteWithMiddleware,
 } from "./interfaces";
 
@@ -98,6 +100,11 @@ export type RouteWithMiddlewares = RouteWithMiddleware[];
  *
  */
 export type RouteWithChildrenList = RouteWithChildren[];
+
+/**
+ *
+ */
+export type RouteWithControllers = RouteWithController[];
 
 /**
  *
