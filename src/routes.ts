@@ -35,6 +35,21 @@ function mapRoutePaths(paths: string[], route: BaseRoute, parent: Map<string, Ro
   }
 
   const controller: Controller | undefined = (route as RouteWithController)?.controller;
+
+  if (!hasMorePaths && controller && controller.routes.length > 0) {
+    controller.routes.forEach((item) => {
+      if (item.path === "/") {
+        updateEndpoints(item, routeObj);
+        updateMiddlewares(item as RouteWithMiddleware, routeObj);
+        updateChildren(item as RouteWithChildren, routeObj);
+        return;
+      }
+
+      const childRouteObj = mapRoutePaths(item.path.replace("/", "").split("/"), item, routeObj.children);
+      routeObj.children.set(childRouteObj.path, childRouteObj);
+    });
+  }
+
   if (hasMorePaths) {
     const childRouteObj = mapRoutePaths(paths, route, routeObj.children);
     routeObj.children.set(childRouteObj.path, childRouteObj);
