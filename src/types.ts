@@ -111,6 +111,11 @@ export type RouteWithControllers = RouteWithController[];
  */
 export type RouteEndpoints = RouteEndpoint[];
 
+/**
+ *
+ */
+
+export type Route = BaseRoute | RouteWithChildren | RouteWithMiddleware | RouteWithController;
 
 /**
  *
