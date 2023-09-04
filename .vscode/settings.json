@@ -31,7 +31,8 @@
     "settings",
     "file",
     "port",
-    "controller"
+    "controller",
+    "message"
   ],
   "cSpell.words": ["rango"]
 }

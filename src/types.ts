@@ -10,6 +10,7 @@ import {
   RouteWithMiddleware,
 } from "./interfaces";
 import constants from "./constants";
+import { TypeOfMessages } from "./message";
 
 /**
  * Type of request method
@@ -146,3 +147,5 @@ export type ControllerRoute = {
 };
 
 export type MimeTypeExtension = keyof typeof constants.MIME_TYPES;
+
+export type RangoMessages = keyof TypeOfMessages;

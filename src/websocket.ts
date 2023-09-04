@@ -4,6 +4,7 @@ import path from "path";
 import fs from "fs";
 import minify from "./minify";
 import settings from "./settings";
+import UseMessage from "./message";
 
 type WebSocketInstance = websocket.Server<typeof websocket, typeof http.IncomingMessage>;
 let WSS: WebSocketInstance;
@@ -11,12 +12,13 @@ let filename = "ws-3000";
 
 function createWebSocket(server: http.Server, port: number): void {
   try {
+    const [_, useMessage] = UseMessage();
     filename = `ws-${port}`;
 
     WSS = new WebSocketServer({ server });
 
     WSS.on("listening", () => {
-      console.log("Initializing hot reload for development environment.");
+      console.log(useMessage("init-hr"));
     });
 
     const wsScript = "ws.js";

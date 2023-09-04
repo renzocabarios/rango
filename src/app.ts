@@ -18,6 +18,9 @@ import {
 import { BaseRoute, RouteWithChildren, RouteWithController, RouteWithMiddleware } from "./interfaces";
 import { createRouteMapper } from "./routes";
 import { runWebsocket } from "./websocket";
+import UseMessage from "./message";
+
+const [setMessage, _] = UseMessage();
 
 function logger(enable: boolean): void;
 function logger(logFn: Middleware): void;
@@ -44,9 +47,10 @@ function listen(this: Router, port: number, listener?: () => void) {
   server.on("request", this);
 
   const runServer = (newPort: number) => {
+    const [_, useMessage] = UseMessage();
     const isPortChanged = port !== newPort;
-    const message = ["Listening to", newPort];
-    isPortChanged || message.unshift(`Server switching port ${port}.`);
+    const message = [useMessage("listen"), newPort];
+    !isPortChanged || message.unshift(`${useMessage("server-switch")} ${port}.`);
     listener = !isPortChanged && listener ? listener : () => console.log(...message);
     runWebsocket(server, newPort);
     server.listen(newPort, listener);
@@ -71,7 +75,7 @@ function add(args: Route | Routes): void {
 
 export type RangoApp = {
   use: (plugin: Middleware) => void;
-  listen: (port: number, listener: () => void) => void;
+  listen: (port: number, listener?: () => void) => void;
   add: {
     (route: Route): void;
     (routes: Routes): void;
@@ -89,6 +93,7 @@ export type RangoApp = {
     (enable: boolean): void;
   };
   killPort: () => void;
+  message: (key: RangoMessages, value: string) => void;
   headers: { [x: string]: string };
 };
 
@@ -96,4 +101,12 @@ export type Router = ((req: http.IncomingMessage, res: http.ServerResponse) => v
 
 type ListenFnArgs = [port: number, listener?: (() => void) | undefined];
 
-export default Object.assign(handler, { use, add, logger, listen, killPort, headers: { "X-Powered-By": "RangoJS" } });
+export default Object.assign(handler, {
+  use,
+  add,
+  logger,
+  listen,
+  killPort,
+  message: setMessage,
+  headers: { "X-Powered-By": "RangoJS" },
+});
