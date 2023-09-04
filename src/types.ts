@@ -4,6 +4,7 @@ import {
   ResponseObject,
   BaseRoute,
   RouteEndpoint,
+  RouteWithMiddleware,
 } from "./interfaces";
 
 /**
@@ -87,6 +88,10 @@ export type Middlewares = Middleware[];
  */
 export type BaseRoutes = BaseRoute[];
 
+/**
+ *
+ */
+export type RouteWithMiddlewares = RouteWithMiddleware[];
 /**
  *
  */

@@ -1,6 +1,7 @@
 import { RequestMethod, RoutePromiseCallback, RouteMethodObjectCallback, Middlewares, Route } from "./types";
 import {
   BaseRoute,
+  RouteWithMiddleware,
 } from "./interfaces";
 import RegEx from "./regex";
 
@@ -18,9 +19,8 @@ function mapRoutePaths(paths: string[], route: BaseRoute, parent: Map<string, Ro
   const routeObj: RouteObject = createRouteObject({ path }, parent);
 
   if (!hasMorePaths) {
-    updateMiddlewares(route, routeObj);
     updateEndpoints(route, routeObj);
-    updateChildren(route, routeObj);
+    updateMiddlewares(route as RouteWithMiddleware, routeObj);
   }
 
   if (hasMorePaths) {
@@ -32,7 +32,7 @@ function mapRoutePaths(paths: string[], route: BaseRoute, parent: Map<string, Ro
   return routeObj;
 }
 
-function updateMiddlewares(route: Route, currentRoute: RouteObject) {
+function updateMiddlewares(route: RouteWithMiddleware, currentRoute: RouteObject) {
   const middlewares: Middlewares = route?.middlewares !== undefined ? route.middlewares : [];
   currentRoute.middlewares = [...currentRoute.middlewares, ...middlewares];
 }
