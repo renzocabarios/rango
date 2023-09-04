@@ -69,7 +69,7 @@ function updateEndpoints(route: BaseRoute, routeObject: RouteObject) {
   const hasRouteMethods = routeKeys.some((e: any) => reqMethods.includes(e));
 
   if (hasRouteMethods) {
-    currentRoute.endpoints = routeKeys.map(mapEndpoints(route)).filter((e) => e !== null) as RouteEndpoint[];
+    routeKeys.forEach(mapEndpoints(route, routeObject));
   }
 }
 
@@ -86,13 +86,13 @@ function mapRouteChildren(currentRoute: RouteObject) {
   };
 }
 
-function mapEndpoints(route: Route) {
+function mapEndpoints(route: Route, routeObject: RouteObject) {
   return (method: RequestMethod): RouteEndpoint | null => {
     if (reqMethods.includes(method)) {
       const callback =
         (route[method] as RouteMethodObjectCallback)?.callback ?? (route[method] as RoutePromiseCallback);
       const middlewares = (route[method] as RouteMethodObjectCallback)?.middlewares ?? [];
-      return { method, callback, middlewares };
+      routeObject.endpoints.push({ method, callback, middlewares });
     }
 
     return null;
