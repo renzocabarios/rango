@@ -6,8 +6,16 @@ import Logger from "./logger";
 import settings from "./settings";
 
 import {
+  Middleware,
   BaseRoutes,
+  RouteWithControllers,
+  RouteWithChildrenList,
+  RouteWithMiddlewares,
+  Routes,
+  Route,
 } from "./types";
+import { createRouteMapper } from "./routes";
+import { freeAddressPort } from "./port";
 import { runWebsocket } from "./websocket";
 
 function logger(enable: boolean): void;
@@ -41,22 +49,20 @@ function listen(this: Router, port: number, listener: () => void) {
     server.listen(newPort, listener);
   };
 
-  try {
-    freeAddressPort(port, () => runServer(port));
-  } catch (error) {
-    runServer(findOpenPort(port));
-  }
+  freeAddressPort(port, () => runServer(port));
 }
 
 function add(route: Route): void;
-function add(route: Route[]): void;
-function add(routes: RouteWithChildren): void;
-function add(routes: RouteWithChildren[]): void;
+function add(routes: Routes): void;
+function add(route: BaseRoute): void;
+function add(routes: BaseRoutes): void;
+function add(route: RouteWithChildren): void;
+function add(route: RouteWithController): void;
+function add(route: RouteWithMiddleware): void;
+function add(routes: RouteWithChildrenList): void;
 function add(routes: RouteWithMiddlewares): void;
-function add(routes: RouteWithMiddlewares[]): void;
-function add(
-  args: Route | RouteWithChildren | RouteWithMiddlewares | Route[] | RouteWithChildren[] | RouteWithMiddlewares[]
-): void {
+function add(routes: RouteWithControllers): void;
+function add(args: Route | Routes): void {
   Array.isArray(args) ? args.forEach(createRouteMapper) : createRouteMapper(args);
 }
 
@@ -64,12 +70,16 @@ export type RangoApp = {
   use: (plugin: Middleware) => void;
   listen: (port: number, listener: () => void) => void;
   add: {
-    (routes: RouteWithChildren): void;
-    (routes: RouteWithMiddlewares): void;
     (route: Route): void;
-    (routes: RouteWithChildren[]): void;
-    (routes: RouteWithMiddlewares[]): void;
-    (routes: Route[]): void;
+    (routes: Routes): void;
+    (route: BaseRoute): void;
+    (routes: BaseRoutes): void;
+    (route: RouteWithChildren): void;
+    (route: RouteWithMiddleware): void;
+    (route: RouteWithController): void;
+    (routes: RouteWithChildrenList): void;
+    (routes: RouteWithMiddlewares): void;
+    (routes: RouteWithControllers): void;
   };
   logger: {
     (logFn: Middleware): void;
