@@ -420,8 +420,9 @@ listed in alphabetical order.
 
 ### Contributors
 
-- [*Ian Labicani*](https://github.com/ditosoft-ianlabicani)
 - [*Renzo Cabarios*](https://github.com/renzocabarios)
+- [*Karl Eñano*](https://github.com/nanotechkarl)
+- [*Ian Labicani*](https://github.com/ditosoft-ianlabicani)
 
 ## Contributing
 
