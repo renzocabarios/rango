@@ -9,7 +9,7 @@ export type RequestMethod = "GET" | "POST" | "DELETE" | "OPTIONS" | "PUT" | "PAT
  *
  */
 export type RouteMethodObjectCallback = {
-  callback: RouteCallback;
+  callback: RoutePromiseCallback;
   middlewares: Middlewares;
 };
 
@@ -28,7 +28,7 @@ export type RouteMethodObject = {
    * }
    * ```
    */
-  [P in RequestMethod]: RouteCallback | RouteMethodObjectCallback;
+  [P in RequestMethod]: RoutePromiseCallback | RouteMethodObjectCallback;
 };
 
 /**
@@ -39,7 +39,12 @@ export type NextFunction = (error?: any) => Promise<void> | void;
 /**
  *
  */
-export type RouteCallback = (ctx: Context) => Promise<any> | any;
+export type RoutePromiseCallback = (ctx: Context) => Promise<any> | any;
+
+/**
+ *
+ */
+export type RouteCallback = RoutePromiseCallback | RouteMethodObjectCallback;
 
 /**
  *

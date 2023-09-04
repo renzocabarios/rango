@@ -1,7 +1,7 @@
 import { checkEndpointExist, checkRoutePathExist } from "./routes";
 import { Context, RouteObject } from "./interfaces";
 import mapMiddlewares from "./middleware";
-import { RouteCallback } from "./types";
+import { RoutePromiseCallback } from "./types";
 import { isFileRequest } from "./file";
 import sendFile from "./static";
 import plugins from "./plugins";
@@ -52,7 +52,7 @@ async function send(context: Context): Promise<void> {
     return res.send({ message, status: "MethodNotAllowed", error: true }, 405);
   }
 
-  const callback: RouteCallback = async (context) => {
+  const callback: RoutePromiseCallback = async (context) => {
     const response = (await routeMethodExist.callback(context)) as { statusCode: number };
 
     // Send back the response

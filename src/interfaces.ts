@@ -1,4 +1,11 @@
-import { Middlewares, RequestMethod, RouteCallback, RouteEndpoints, RouteMethodObject, Routes } from "./types";
+import {
+  Middlewares,
+  RequestMethod,
+  RoutePromiseCallback,
+  RouteEndpoints,
+  RouteMethodObject,
+  Routes,
+} from "./types";
 import http from "http";
 
 /**
@@ -58,7 +65,7 @@ export interface RouteEndpoint {
   /**
    *
    */
-  callback: RouteCallback;
+  callback: RoutePromiseCallback;
   /**
    *
    */

@@ -1,5 +1,4 @@
-import { RequestMethod, RouteCallback, RouteMethodObjectCallback, Middlewares } from "./types";
-import { CreateRoute, Route, RouteEndpoint, RouteObject } from "./interfaces";
+import { RequestMethod, RoutePromiseCallback, RouteMethodObjectCallback, Middlewares, Route } from "./types";
 import RegEx from "./regex";
 
 const routes = new Map<string, RouteObject>();
@@ -60,7 +59,8 @@ function mapRouteChildren(currentRoute: RouteObject) {
 function mapEndpoints(route: Route) {
   return (method: RequestMethod): RouteEndpoint | null => {
     if (reqMethods.includes(method)) {
-      const callback = (route[method] as RouteMethodObjectCallback)?.callback ?? (route[method] as RouteCallback);
+      const callback =
+        (route[method] as RouteMethodObjectCallback)?.callback ?? (route[method] as RoutePromiseCallback);
       const middlewares = (route[method] as RouteMethodObjectCallback)?.middlewares ?? [];
       return { method, callback, middlewares };
     }
