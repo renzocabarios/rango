@@ -433,4 +433,8 @@ listed in alphabetical order.
 
 Join the pioneers of web development and set out on a wild west adventure with RangoJS. Get ready to experience bullet-fast performance, sure aim precision, and ace-high results like never before. It's time to strap on your coding holster and let RangoJS lead you to API greatness. Are you up for the challenge? See our [documentation](CONTRIBUTING.md) for contributors and let's ride into the sunset of web development together with RangoJS!
 
+## Acknowledgments
+
+RangoJS is inspired by [Express.js](https://expressjs.com/), a fantastic web application framework. We extend our heartfelt thanks to the dedicated open-source community that supports and contributes to both projects. Your innovation and commitment have been instrumental in shaping RangoJS into what it is today. We stand on the shoulders of giants, and we're excited to continue this journey of web development together.
+
 **[⬆ back to top](#table-of-contents)**
