@@ -14,8 +14,8 @@ import constants from "./constants";
 
 const routes = new Map<string, RouteObject>();
 
-function createRouteMapper(route: Route): RouteObject {
-  if (route.path.charAt(0) !== "/") {
+function createRouteMapper(route: Route, isChild: any = false): RouteObject {
+  if (route.path.charAt(0) !== "/" && !isChild) {
     route.path = route.path.padStart(route.path.length + 1, "/");
   }
 
@@ -81,7 +81,8 @@ function updateChildren(route: RouteWithChildren, currentRoute: RouteObject) {
 
 function mapRouteChildren(currentRoute: RouteObject) {
   return (childRoute: BaseRoute) => {
-    const childRouteObj = createRouteMapper(childRoute);
+    childRoute.path = childRoute.path.replace("/", "");
+    const childRouteObj = createRouteMapper(childRoute, true);
     currentRoute.children.set(childRouteObj.path, childRouteObj);
   };
 }
