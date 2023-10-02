@@ -96,6 +96,11 @@ export type Guard = (context: Context) => Promise<boolean> | boolean;
 /**
  *
  */
+export type Guards = Guard[];
+
+/**
+ *
+ */
 export type BaseRoutes = BaseRoute[];
 
 /**
