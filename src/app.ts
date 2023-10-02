@@ -4,6 +4,7 @@ import handler from "./handler";
 import plugins from "./plugins";
 import Logger from "./logger";
 import settings from "./settings";
+import guards from "./guards";
 
 import {
   Middleware,
@@ -14,6 +15,7 @@ import {
   Routes,
   Route,
   RangoMessages,
+  Guard,
 } from "./types";
 import { BaseRoute, RouteWithChildren, RouteWithController, RouteWithMiddleware } from "./interfaces";
 import { createRouteMapper } from "./routes";
@@ -32,6 +34,10 @@ function logger(arg: boolean | Middleware): void {
   if (typeof arg === "function") {
     plugins.push(arg);
   }
+}
+
+function addGuard(_guard: Guard) {
+  guards.push(_guard);
 }
 
 function use(plugin: Middleware) {
@@ -88,6 +94,7 @@ export type RangoApp = {
     (routes: RouteWithMiddlewares): void;
     (routes: RouteWithControllers): void;
   };
+  addGuard: (_guard: Guard) => void;
   logger: {
     (logFn: Middleware): void;
     (enable: boolean): void;
@@ -104,6 +111,7 @@ type ListenFnArgs = [port: number, listener?: (() => void) | undefined];
 export default Object.assign(handler, {
   use,
   add,
+  addGuard,
   logger,
   listen,
   killPort,
