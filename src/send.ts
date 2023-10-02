@@ -6,8 +6,10 @@ import { isFileRequest } from "./file";
 import { parseParams } from "./utils";
 import sendFile from "./static";
 import plugins from "./plugins";
+import guards from "./guards";
 import RegEx from "./regex";
 import cache from "./cache";
+import mapGuards from "./guard";
 
 /**
  * A function that manage an incoming request.
@@ -72,6 +74,13 @@ async function send(context: Context): Promise<void> {
     // Set the status code of the response
     return res.send(response, response?.statusCode);
   };
+
+  const routeGuarded = await mapGuards(guards, context);
+
+  if (!routeGuarded) {
+    const message = `Route is guarded.`;
+    return res.send({ message, status: "ServerError", error: true }, 405);
+  }
 
   try {
     // Build all middlewares to one single middlewares
