@@ -91,6 +91,11 @@ export type Middlewares = Middleware[];
 /**
  *
  */
+export type Guard = (context: Context) => Promise<boolean> | boolean;
+
+/**
+ *
+ */
 export type BaseRoutes = BaseRoute[];
 
 /**
